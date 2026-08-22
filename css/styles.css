@@ -441,7 +441,7 @@ body {
 .cut--home {
   inset: 0;
   transform: none;
-  clip-path: polygon(58% 0, 100% 0, 100% 100%, 38% 100%);
+  clip-path: polygon(64% 0, 100% 0, 100% 100%, 54% 100%);
 }
 
 .cut--about {
@@ -558,105 +558,69 @@ body {
   line-height: 1.55;
 }
 
-/* Running text on the orange flood is near-black. Poster slash titles stay cream. */
-.on-orange {
-  color: var(--black);
+/* Flow text on #FA6F12 is #221011. Poster slash titles stay cream. */
+.flood,
+.on-orange,
+.screen--cast,
+.screen--rates,
+.screen--how,
+.screen--rules,
+.screen--spec,
+.screen--proof,
+.screen--faq,
+.legal-page,
+.screen--about .screen__copy,
+.cast__copy {
+  background-color: var(--orange);
+  color: #221011;
 }
 
-.on-orange .idx,
-.on-orange .subhead,
-.on-orange h3,
-.on-orange .lede,
-.on-orange p,
-.on-orange .kicker,
-.on-orange .caption,
-.on-orange li,
-.on-orange a,
-.on-orange .num,
-.on-orange label,
-.on-orange summary {
-  color: var(--black);
-}
-
-.on-orange .caption,
-.on-orange .source {
+.flood :is(p, li, a, h3, h2.subhead, label, summary, button, .lede, .kicker, .caption, .subhead, .note, .source, .idx, .num, .tag, .meta, .meta b, .meta span, .form-note),
+.on-orange :is(p, li, a, h3, h2.subhead, label, summary, .lede, .kicker, .caption, .subhead, .note, .source, .idx, .num, .tag),
+.screen--cast :is(p, li, a, h3, button, .lede, .kicker, .caption, .subhead, .idx, .num),
+.screen--rates :is(p, li, a, h3, h2.subhead, .lede, .kicker, .caption, .subhead),
+.screen--how :is(p, li, a, h3, h2.subhead, .lede, .kicker, .caption, .subhead, .num),
+.screen--rules :is(p, li, a, h3, h2.subhead, .lede, .kicker, .caption, .subhead, strong),
+.screen--spec :is(p, li, a, h3, h2.subhead, .lede, .kicker, .caption, .subhead),
+.screen--proof :is(p, li, a, h3, h2.subhead, .lede, .kicker, .caption, .subhead, .source, .stat .big),
+.screen--faq :is(p, li, a, h3, h2.subhead, .lede, .kicker, .caption, .subhead, summary),
+.legal-page :is(p, li, a, h2, .lede),
+.screen--about .screen__copy :is(p, .lede, .kicker, .caption, .subhead, .idx),
+.cast__copy :is(p, h3, .lede, .kicker, .caption, .subhead) {
+  color: #221011 !important;
   opacity: 1;
 }
 
-.on-orange .list li::before,
-.on-orange .faq summary::before {
-  color: var(--black);
-}
-
-.on-orange .crash,
-.on-orange .pack__head > h2,
-.on-orange h2.crash {
-  color: var(--cream);
-}
-
-.on-orange .crash .slash,
-.on-orange h2.crash .slash,
-.on-orange .pack__head > h2 .slash {
-  color: var(--black);
-}
-
-.screen--cast,
-.screen--rates .pack__head,
-.screen--rates .pack > .row,
-.screen--how .pack,
-.screen--rules .pack,
-.screen--spec .pack,
-.screen--proof .pack,
-.screen--faq .pack,
-.legal-page .pack {
-  color: var(--black);
-}
-
-.screen--cast :is(p, h3, li, a, button, .kicker, .lede, .caption, .subhead, .idx, .num),
-.screen--rates .pack__head :is(p, .kicker, .lede, .subhead),
-.screen--rates .pack > .row :is(p, h3, a),
-.screen--how .pack :is(p, h3, li, a, .kicker, .lede, .caption, .subhead, .num),
-.screen--rules .pack :is(p, h3, li, a, .kicker, .lede, .caption, .subhead, strong),
-.screen--spec .pack :is(p, h3, li, a, .kicker, .lede, .caption, .subhead),
-.screen--proof .pack :is(p, h3, li, a, .kicker, .lede, .caption, .subhead, .source, .stat .big),
-.screen--faq .pack :is(p, h3, li, a, .kicker, .lede, .caption, .subhead, summary),
-.legal-page .pack :is(p, h2, li, a, .lede) {
-  color: var(--black);
-}
-
+.flood :is(.crash, h1, .pack__head > h2:has(.slash)),
+.on-orange :is(.crash, h2.crash, .pack__head > h2:has(.slash)),
 .screen--cast .crash,
-.screen--rates .pack__head > h2,
-.screen--spec .pack__head > h2,
-.screen--proof .pack__head > h2,
-.legal-page h1 {
-  color: var(--cream);
+.screen--rates .pack__head > h2:has(.slash),
+.screen--spec .pack__head > h2:has(.slash),
+.screen--proof .pack__head > h2:has(.slash),
+.screen--how .pack__head > h2:has(.slash),
+.legal-page h1,
+.screen--about .crash {
+  color: #f4efc7 !important;
 }
 
+.flood :is(.crash, h1, .pack__head > h2) .slash,
+.on-orange :is(.crash, h2.crash) .slash,
 .screen--cast .crash .slash,
-.screen--rates .pack__head > h2 .slash,
-.screen--spec .pack__head > h2 .slash,
-.screen--proof .pack__head > h2 .slash,
+.screen--about .crash .slash,
 .legal-page h1 .slash {
-  color: var(--black);
+  color: #221011 !important;
 }
 
 .screen--cast .cast__pager button,
 .screen--rates .carousel__nav button {
-  color: var(--black);
+  color: #221011;
 }
 
 .screen--cast .cast__pager i,
 .screen--cast .cast__pager i.is-on,
 .screen--rates .dots i,
 .screen--rates .dots i.is-on {
-  background: var(--black);
-}
-
-.screen--proof .source,
-.screen--rates .caption,
-.screen--spec .caption,
-.screen--how .caption {
-  opacity: 1;
+  background: #221011;
 }
 
 .screen--spec .box {
@@ -666,31 +630,55 @@ body {
 
 .screen--spec .list li::before,
 .screen--rules .rules strong,
-.screen--faq .faq summary::before {
-  color: var(--black);
+.screen--faq .faq summary::before,
+.on-orange .list li::before {
+  color: #221011;
 }
 
-.screen--faq .faq details p {
-  color: var(--black);
-}
-
-.screen-chrome .caption {
-  color: var(--black);
-  opacity: 1;
-}
-
+.screen-chrome .caption,
 .screen-chrome .social {
-  color: var(--black);
+  color: #221011;
+  opacity: 1;
 }
 
 .footer__grid > :not(:first-child),
 .footer__grid > :not(:first-child) a,
-.footer__grid > :not(:first-child) .kicker {
-  color: var(--black);
+.footer__grid > :not(:first-child) .kicker,
+.footer .social--lg {
+  color: #221011;
 }
 
-.footer .social--lg {
-  color: var(--black);
+.screen--book .pack > .row > div:first-child {
+  background-color: var(--orange);
+  color: #221011;
+}
+
+.screen--book .pack > .row > div:first-child :is(p, a, .kicker, .subhead, .caption) {
+  color: #221011 !important;
+}
+
+.screen--book .crash {
+  color: #f4efc7 !important;
+}
+
+.screen--book .crash .slash {
+  color: #221011 !important;
+}
+
+.episode :is(p, li, h3, .kicker, .num, .price) {
+  color: var(--cream) !important;
+}
+
+.episode.featured :is(p, li, h3, .kicker, .num, .price) {
+  color: var(--black) !important;
+}
+
+.form,
+.form label,
+.form .form-note,
+.form .consent,
+.form .consent span {
+  color: var(--cream) !important;
 }
 
 .meta {
@@ -770,9 +758,26 @@ body {
   font-size: 1.1rem;
 }
 
+.screen--field .pack__head,
+.screen--play .pack__head {
+  background-color: var(--orange);
+  color: #221011;
+  padding: 0.4rem 0.2rem 1rem;
+}
+
+.screen--field .pack__head :is(p, .lede, .kicker, .subhead, .caption),
+.screen--play .pack__head :is(p, .lede, .kicker, .subhead, .caption) {
+  color: #221011 !important;
+}
+
+.screen--field .pack__head > h2:has(.slash),
+.screen--play .pack__head > h2:has(.slash) {
+  color: #f4efc7 !important;
+}
+
 @media (min-width: 900px) {
   .screen--home .screen__copy {
-    width: min(40%, 500px);
+    width: min(36%, 440px);
     padding-top: 4.2rem;
   }
 
@@ -810,6 +815,9 @@ body {
 
 .pack__head h2 {
   font-size: clamp(3.2rem, 10vw, 8.5rem);
+}
+
+.pack__head h2:has(.slash) {
   color: var(--cream);
 }
 
@@ -1478,7 +1486,7 @@ body {
 .faq details p {
   margin: 0;
   padding: 0 0 0.9rem 1rem;
-  color: color-mix(in srgb, var(--cream) 82%, var(--black));
+  color: inherit;
 }
 
 /* book form */
@@ -1719,11 +1727,13 @@ code {
   }
 
   .screen--home .screen__copy {
-    background: color-mix(in srgb, var(--black) 62%, transparent);
+    background: var(--black);
+    color: var(--cream);
   }
 
   .screen--about .screen__copy {
     background: var(--orange);
+    color: #221011;
   }
 
   .cast {
