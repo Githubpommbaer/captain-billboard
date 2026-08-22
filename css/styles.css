@@ -466,7 +466,7 @@ body {
 .cut--left {
   inset: 0;
   transform: none;
-  clip-path: polygon(0 0, 62% 0, 42% 100%, 0 100%);
+  clip-path: polygon(32% 0, 100% 0, 100% 100%, 12% 100%);
 }
 
 .screen__photo {
@@ -541,7 +541,7 @@ body {
   font-size: 0.72rem;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--white);
+  color: var(--black);
 }
 
 .subhead {
@@ -558,29 +558,139 @@ body {
   line-height: 1.55;
 }
 
+/* Running text on the orange flood is near-black. Poster slash titles stay cream. */
 .on-orange {
-  color: var(--white);
-}
-
-.on-orange .idx,
-.on-orange .crash,
-.on-orange .subhead,
-.on-orange h2,
-.on-orange h3 {
-  color: var(--cream);
-}
-
-.on-orange .crash .slash,
-.on-orange h2 .slash {
   color: var(--black);
 }
 
+.on-orange .idx,
+.on-orange .subhead,
+.on-orange h3,
 .on-orange .lede,
 .on-orange p,
 .on-orange .kicker,
 .on-orange .caption,
-.on-orange li {
-  color: var(--white);
+.on-orange li,
+.on-orange a,
+.on-orange .num,
+.on-orange label,
+.on-orange summary {
+  color: var(--black);
+}
+
+.on-orange .caption,
+.on-orange .source {
+  opacity: 1;
+}
+
+.on-orange .list li::before,
+.on-orange .faq summary::before {
+  color: var(--black);
+}
+
+.on-orange .crash,
+.on-orange .pack__head > h2,
+.on-orange h2.crash {
+  color: var(--cream);
+}
+
+.on-orange .crash .slash,
+.on-orange h2.crash .slash,
+.on-orange .pack__head > h2 .slash {
+  color: var(--black);
+}
+
+.screen--cast,
+.screen--rates .pack__head,
+.screen--rates .pack > .row,
+.screen--how .pack,
+.screen--rules .pack,
+.screen--spec .pack,
+.screen--proof .pack,
+.screen--faq .pack,
+.legal-page .pack {
+  color: var(--black);
+}
+
+.screen--cast :is(p, h3, li, a, button, .kicker, .lede, .caption, .subhead, .idx, .num),
+.screen--rates .pack__head :is(p, .kicker, .lede, .subhead),
+.screen--rates .pack > .row :is(p, h3, a),
+.screen--how .pack :is(p, h3, li, a, .kicker, .lede, .caption, .subhead, .num),
+.screen--rules .pack :is(p, h3, li, a, .kicker, .lede, .caption, .subhead, strong),
+.screen--spec .pack :is(p, h3, li, a, .kicker, .lede, .caption, .subhead),
+.screen--proof .pack :is(p, h3, li, a, .kicker, .lede, .caption, .subhead, .source, .stat .big),
+.screen--faq .pack :is(p, h3, li, a, .kicker, .lede, .caption, .subhead, summary),
+.legal-page .pack :is(p, h2, li, a, .lede) {
+  color: var(--black);
+}
+
+.screen--cast .crash,
+.screen--rates .pack__head > h2,
+.screen--spec .pack__head > h2,
+.screen--proof .pack__head > h2,
+.legal-page h1 {
+  color: var(--cream);
+}
+
+.screen--cast .crash .slash,
+.screen--rates .pack__head > h2 .slash,
+.screen--spec .pack__head > h2 .slash,
+.screen--proof .pack__head > h2 .slash,
+.legal-page h1 .slash {
+  color: var(--black);
+}
+
+.screen--cast .cast__pager button,
+.screen--rates .carousel__nav button {
+  color: var(--black);
+}
+
+.screen--cast .cast__pager i,
+.screen--cast .cast__pager i.is-on,
+.screen--rates .dots i,
+.screen--rates .dots i.is-on {
+  background: var(--black);
+}
+
+.screen--proof .source,
+.screen--rates .caption,
+.screen--spec .caption,
+.screen--how .caption {
+  opacity: 1;
+}
+
+.screen--spec .box {
+  background: var(--black);
+  color: var(--cream);
+}
+
+.screen--spec .list li::before,
+.screen--rules .rules strong,
+.screen--faq .faq summary::before {
+  color: var(--black);
+}
+
+.screen--faq .faq details p {
+  color: var(--black);
+}
+
+.screen-chrome .caption {
+  color: var(--black);
+  opacity: 1;
+}
+
+.screen-chrome .social {
+  color: var(--black);
+}
+
+.footer__grid > :not(:first-child),
+.footer__grid > :not(:first-child) a,
+.footer__grid > :not(:first-child) .kicker {
+  color: var(--black);
+}
+
+.footer .social--lg {
+  color: var(--black);
 }
 
 .meta {
@@ -1041,6 +1151,17 @@ body {
 
 .thumb.is-on b {
   color: var(--orange);
+}
+
+.screen--play .thumb,
+.screen--play .thumb b,
+.screen--play .thumb small,
+.screen--play .thumb.is-on b {
+  color: var(--black);
+}
+
+.screen--play .player figcaption {
+  color: var(--cream);
 }
 
 .player.is-missing::after {
