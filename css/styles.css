@@ -3,7 +3,7 @@
 :root {
   --orange: #fa6f12;
   --cream: #f4efc7;
-  --black: #231001;
+  --black: #221011;
   --white: #ffffff;
   --display: "Black Han Sans", "Anton", "Impact", sans-serif;
   --body: "Barlow", "Open Sans", "Segoe UI", sans-serif;
@@ -143,8 +143,8 @@ p + p {
   .rail nav {
     display: flex;
     flex-direction: column;
-    gap: 1.05rem;
-    font-size: 0.62rem;
+    gap: 0.85rem;
+    font-size: 0.6rem;
     font-weight: 700;
     letter-spacing: 0.18em;
     text-transform: uppercase;
