@@ -6,7 +6,7 @@
   if (year) year.textContent = String(new Date().getFullYear());
 
   document.querySelectorAll("video").forEach(function (video) {
-    var frame = video.closest(".trailer-frame");
+    var frame = video.closest(".player, .trailer-frame");
     var markMissing = function () {
       if (frame) frame.classList.add("is-missing");
     };
