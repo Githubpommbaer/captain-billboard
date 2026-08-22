@@ -1,0 +1,21 @@
+Drop the campaign stills here using these exact names. The site already points at them.
+
+- desert.jpg
+- voxis.jpg
+- placard.jpg
+- poster.jpg
+- family.jpg
+- pool.jpg
+- hills.jpg
+- rooftop.jpg
+- favicon.png
+- landing.jpg
+- laundry.jpg
+- statue.jpg
+- logo.png
+- brew.jpg
+- subway.jpg
+- aurum.jpg
+- tubeman.jpg
+- logo-sm.png
+- square.jpg
