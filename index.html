@@ -53,6 +53,12 @@
   </nav>
 
   <main id="main" class="stage">
+    <div class="pre-book">
+    <div class="sticky-col">
+      <div class="mobile-book">
+        <a class="btn" href="#book">Book the chest</a>
+      </div>
+    </div>
     <section class="screen screen--home" id="top">
       <p class="ghost" aria-hidden="true">HOME /</p>
       <div class="cut cut--home"></div>
@@ -60,29 +66,31 @@
       <figure class="screen__photo">
         <img src="assets/img/landing.jpg" alt="Dave, Captain Billboard, in a purple-and-gold suit doing a superhero landing in an empty parking lot. The chest placard reads AD SPACE AVAILABLE." width="1200" height="1500">
       </figure>
-      <div class="screen__copy on-orange">
-        <span class="idx">01</span>
-        <h1 class="subhead">I rent my chest. That’s the site.</h1>
-        <p class="lede">Name’s Dave. People call me Captain Billboard because the other names were taken and this one is, unfortunately, accurate. Forty by twenty-five centimetres. Chest and back. You pay. I wear it. I do not pretend it changed my life.</p>
-        <p class="note">I wrote this. The legal team let it through, which is either a compliment or a cry for help.</p>
-        <div class="btn-col">
-          <a class="btn" href="#book">Book the rectangle</a>
-          <a class="btn btn--line" href="#rates">See the prices</a>
+      <div class="slab">
+        <div class="screen__title">
+          <p class="tag">Yes, this is a website selling chest ads</p>
+          <p class="crash">DAVE <span class="slash">/</span></p>
         </div>
-        <div class="meta">
-          <div><b>40×25</b><span>cm, chest + back</span></div>
-          <div><b>5 days</b><span>approved art → field</span></div>
-          <div><b>€490</b><span>walk-on starts here</span></div>
+        <div class="screen__copy on-orange">
+          <span class="idx">01</span>
+          <h1 class="subhead">I rent my chest. That’s the site.</h1>
+          <p class="lede">Name’s Dave. People call me Captain Billboard because the other names were taken and this one is, unfortunately, accurate. Forty by twenty-five centimetres. Chest and back. You pay. I wear it. I do not pretend it changed my life.</p>
+          <p class="note">I wrote this. The legal team let it through, which is either a compliment or a cry for help.</p>
+          <div class="btn-col">
+            <a class="btn" href="#book">Book the rectangle</a>
+            <a class="btn btn--line" href="#rates">See the prices</a>
+          </div>
+          <div class="meta">
+            <div><b>40×25</b><span>cm, chest + back</span></div>
+            <div><b>5 days</b><span>approved art → field</span></div>
+            <div><b>€490</b><span>walk-on starts here</span></div>
+          </div>
         </div>
-      </div>
-      <div class="screen__title">
-        <p class="tag">Yes, this is a website selling chest ads</p>
-        <p class="crash">DAVE <span class="slash">/</span></p>
       </div>
       <div class="screen-chrome">
         <span class="lockup lockup--mark" aria-hidden="true">CB</span>
         <p class="caption">I don’t even like yoghurt.</p>
-        <ul class="social" aria-hidden="true">
+        <ul class="social" aria-label="Social marks, decorative only">
           <li>X</li>
           <li>f</li>
           <li>◎</li>
@@ -97,17 +105,19 @@
       <figure class="screen__photo">
         <img src="assets/img/rooftop.jpg" alt="Dave on a rooftop overlooking a city, back placard reading AD SPACE AVAILABLE." width="1600" height="1200">
       </figure>
-      <div class="screen__copy on-orange">
-        <span class="idx">02</span>
-        <h2 class="crash">ABOUT <span class="slash">/</span></h2>
-        <p class="kicker">They lie. I invoice.</p>
-        <p class="subhead">Everyone else is lying. I’m invoicing.</p>
-        <p class="lede">You know the posts. “This serum ruined other serums for me.” “I can’t shut up about this bank.” They can shut up. They were paid. I’m paid too. Difference: I put the invoice on my chest and I don’t do the voice.</p>
+      <div class="slab">
+        <div class="screen__copy on-orange">
+          <span class="idx">02</span>
+          <h2 class="crash">ABOUT <span class="slash">/</span></h2>
+          <p class="kicker">They lie. I invoice.</p>
+          <p class="subhead">Everyone else is lying. I’m invoicing.</p>
+          <p class="lede">You know the posts. “This serum ruined other serums for me.” “I can’t shut up about this bank.” They can shut up. They were paid. I’m paid too. Difference: I put the invoice on my chest and I don’t do the voice.</p>
+        </div>
       </div>
       <div class="screen-chrome">
         <span class="lockup lockup--mark" aria-hidden="true">CB</span>
         <p class="caption">Exhibit A: a grown man in lycra pointing at a blank ad. You’re still scrolling. That’s the product working.</p>
-        <ul class="social" aria-hidden="true">
+        <ul class="social" aria-label="Social marks, decorative only">
           <li>X</li><li>f</li><li>◎</li><li>▶</li>
         </ul>
       </div>
@@ -424,6 +434,7 @@
         <p class="caption" style="margin-top:1rem">Also in the kit: poster.jpg, voxis.jpg, logo.png — same folder, same names, no renaming. You’re welcome, future file-dropper.</p>
       </div>
     </section>
+    </div>
 
     <section class="screen screen--rates" id="rates">
       <p class="ghost" aria-hidden="true">RATE /</p>
@@ -695,7 +706,7 @@
           <li><a href="mailto:book@captainbillboard.com">book@captainbillboard.com</a></li>
           <li><a href="legal.html">Impressum / Datenschutz</a></li>
         </ul>
-        <ul class="social social--lg" aria-hidden="true">
+        <ul class="social social--lg" aria-label="Social marks, decorative only">
           <li>X</li><li>f</li><li>◎</li><li>▶</li>
         </ul>
       </div>
@@ -706,10 +717,6 @@
       <span>No Google Fonts were harmed.</span>
     </div>
   </footer>
-
-  <div class="mobile-book">
-    <a class="btn" href="#book">Book the chest</a>
-  </div>
 
   <script src="js/main.js"></script>
 </body>
