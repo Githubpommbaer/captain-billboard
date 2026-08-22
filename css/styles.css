@@ -7,7 +7,7 @@
   --white: #ffffff;
   --display: "Black Han Sans", "Anton", "Impact", sans-serif;
   --body: "Barlow", "Open Sans", "Segoe UI", sans-serif;
-  --rail: 112px;
+  --rail: 168px;
   --radius: 18px;
   --ease: cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -143,10 +143,10 @@ p + p {
   .rail nav {
     display: flex;
     flex-direction: column;
-    gap: 0.85rem;
-    font-size: 0.6rem;
+    gap: 0.75rem;
+    font-size: 14px;
     font-weight: 700;
-    letter-spacing: 0.18em;
+    letter-spacing: 0.04em;
     text-transform: uppercase;
   }
 
@@ -216,10 +216,21 @@ p + p {
 }
 
 .brand img {
-  width: 34px;
-  height: 34px;
-  object-fit: contain;
-  background: transparent;
+  display: none !important;
+}
+
+.site-header .btn {
+  min-width: 0;
+}
+
+@media (max-width: 979px) {
+  body:has(.mobile-book) .site-header .btn {
+    display: none;
+  }
+
+  .brand__name {
+    display: none;
+  }
 }
 
 .lockup {
@@ -365,8 +376,16 @@ p + p {
   }
 }
 
+.mobile-book[hidden] {
+  display: none;
+}
+
 body {
   padding-bottom: 4.6rem;
+}
+
+body.book-in-view {
+  padding-bottom: 0;
 }
 
 @media (min-width: 980px) {
@@ -550,9 +569,9 @@ body {
 }
 
 .crash {
-  font-size: clamp(4.8rem, 16vw, 13rem);
+  font-size: clamp(3.2rem, 12vw, 9rem);
   color: var(--cream);
-  max-width: 14ch;
+  max-width: 100%;
 }
 
 .crash .slash {
@@ -688,12 +707,20 @@ body {
   color: #221011 !important;
 }
 
-.episode :is(p, li, h3, .kicker, .num, .price) {
+.episode :is(p, li, h3, .kicker) {
   color: var(--cream) !important;
 }
 
-.episode.featured :is(p, li, h3, .kicker, .num, .price) {
-  color: var(--black) !important;
+.episode :is(.num, .price) {
+  color: #221011 !important;
+}
+
+.episode.featured :is(p, li, h3, .kicker) {
+  color: #221011 !important;
+}
+
+.episode.featured :is(.num, .price) {
+  color: var(--cream) !important;
 }
 
 .form,
@@ -800,8 +827,9 @@ body {
 
 @media (min-width: 900px) {
   .screen--home .screen__copy {
-    width: min(36%, 440px);
-    padding-top: 4.2rem;
+    width: min(38%, 460px);
+    margin: 2.4rem 0 2.4rem 1.4rem;
+    padding: 1.6rem 1.5rem 1.5rem;
   }
 
   .screen--home .screen__title {
@@ -813,15 +841,40 @@ body {
   }
 
   .screen--home .crash {
-    font-size: clamp(6rem, 14vw, 11rem);
+    font-size: clamp(5.2rem, 12vw, 9.5rem);
     margin-left: auto;
   }
 
   .screen--about .screen__copy {
     margin-left: auto;
-    width: min(50%, 580px);
-    padding-top: 5rem;
+    width: min(52%, 600px);
+    padding: 2.4rem 1.6rem 2.2rem 1.8rem;
+    padding-top: 3.2rem;
   }
+
+  .screen--about .crash {
+    font-size: clamp(2.8rem, 7vw, 5.6rem);
+    max-width: 100%;
+  }
+}
+
+.screen--home .screen__copy .btn {
+  background: #221011;
+  color: var(--cream);
+  border-color: #221011;
+}
+
+.screen--home .screen__copy .btn--line {
+  background: transparent;
+  color: #221011;
+  border-color: #221011;
+}
+
+.screen--home .screen__copy .btn:hover,
+.screen--home .screen__copy .btn--line:hover {
+  background: var(--cream);
+  color: #221011;
+  border-color: var(--cream);
 }
 
 /* --- modules --- */
@@ -1249,6 +1302,8 @@ body {
 
 .episode {
   position: relative;
+  display: flex;
+  flex-direction: column;
   min-height: 26rem;
   border-radius: 12px;
   overflow: hidden;
@@ -1257,34 +1312,49 @@ body {
 
 .episode img {
   width: 100%;
-  height: 100%;
+  height: 12rem;
   object-fit: cover;
-  min-height: 26rem;
+  flex: 0 0 12rem;
 }
 
 .episode__txt {
-  position: absolute;
-  inset: auto 0 0;
-  padding: 1.1rem;
-  background: linear-gradient(transparent, var(--black));
+  position: relative;
+  inset: auto;
+  flex: 1 1 auto;
+  padding: 1.1rem 1.1rem 1.2rem;
+  background: var(--black);
 }
 
 .episode .num {
-  color: var(--orange);
+  display: inline-block;
+  color: #221011;
+  background: var(--orange);
   font-size: 0.95rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
+  padding: 0.15rem 0.45rem;
+}
+
+.episode .price {
+  display: inline-block;
+  color: #221011;
+  background: var(--orange);
+  padding: 0.1rem 0.4rem;
 }
 
 .episode.featured .episode__txt {
-  background: linear-gradient(transparent, var(--orange));
+  background: var(--orange);
   color: var(--black);
 }
 
 .episode.featured .num,
+.episode.featured .price {
+  background: #221011;
+  color: var(--cream);
+}
+
 .episode.featured .kicker,
 .episode.featured h3,
-.episode.featured .price,
 .episode.featured li {
   color: var(--black);
 }
@@ -1743,8 +1813,13 @@ code {
   }
 
   .screen--home .screen__copy {
-    background: var(--black);
-    color: var(--cream);
+    background: var(--orange);
+    color: #221011;
+  }
+
+  .screen--about .crash {
+    font-size: clamp(2.6rem, 14vw, 4.4rem);
+    max-width: 100%;
   }
 
   .screen--about .screen__copy {

@@ -277,4 +277,18 @@
     }, { threshold: 0.25 });
     po.observe(proof);
   }
+
+  var sticky = document.querySelector(".mobile-book");
+  var book = document.getElementById("book");
+  if (sticky && book && "IntersectionObserver" in window) {
+    var hideSticky = function (on) {
+      if (on) sticky.setAttribute("hidden", "");
+      else sticky.removeAttribute("hidden");
+      document.body.classList.toggle("book-in-view", on);
+    };
+    var so = new IntersectionObserver(function (entries) {
+      hideSticky(entries.some(function (e) { return e.isIntersecting; }));
+    }, { threshold: 0.12 });
+    so.observe(book);
+  }
 })();
