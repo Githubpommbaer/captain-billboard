@@ -5,6 +5,21 @@
   var year = document.getElementById("y");
   if (year) year.textContent = String(new Date().getFullYear());
 
+  document.querySelectorAll("video").forEach(function (video) {
+    var frame = video.closest(".trailer-frame");
+    var markMissing = function () {
+      if (frame) frame.classList.add("is-missing");
+    };
+    video.addEventListener("error", markMissing);
+    video.querySelectorAll("source").forEach(function (source) {
+      source.addEventListener("error", markMissing);
+    });
+    if (frame) frame.classList.add("is-missing");
+    video.addEventListener("loadeddata", function () {
+      if (frame) frame.classList.remove("is-missing");
+    });
+  });
+
   document.querySelectorAll("img").forEach(function (img) {
     img.addEventListener("error", function () {
       var figure = img.closest(".shot, .hero-frame, .panel, .brand");
@@ -14,6 +29,10 @@
         mark.setAttribute("aria-hidden", "true");
         mark.textContent = "CB";
         img.replaceWith(mark);
+        return;
+      }
+      if (img.dataset.fallback === "hide") {
+        img.remove();
         return;
       }
       img.closest(".shot")?.classList.add("is-missing");
