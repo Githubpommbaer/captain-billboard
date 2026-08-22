@@ -222,6 +222,45 @@ p + p {
   background: transparent;
 }
 
+.lockup {
+  font-family: var(--display);
+  text-transform: uppercase;
+  letter-spacing: -0.03em;
+  line-height: 0.78;
+}
+
+.lockup--mark {
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  background: var(--orange);
+  color: #221011;
+  font-size: 0.82rem;
+  flex-shrink: 0;
+}
+
+.screen-chrome .lockup--mark {
+  width: 36px;
+  height: 36px;
+}
+
+.lockup--word {
+  margin: 0 0 0.85rem;
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  color: var(--cream);
+  max-width: 12ch;
+}
+
+.lockup--word span {
+  display: block;
+}
+
+.lockup--word .slash {
+  color: var(--orange);
+  font-style: normal;
+}
+
 .brand__mark {
   width: 34px;
   height: 34px;
@@ -1592,13 +1631,6 @@ body {
 .footer .crash {
   font-size: clamp(3.2rem, 9vw, 7rem);
   margin-bottom: 1.2rem;
-}
-
-.footer img {
-  height: 56px;
-  width: auto;
-  background: transparent;
-  margin-bottom: 0.7rem;
 }
 
 .footer h2 {
