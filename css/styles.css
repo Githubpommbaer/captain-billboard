@@ -668,14 +668,14 @@ body {
 
   .screen--home .screen__title {
     position: absolute;
-    right: 4%;
+    right: 5%;
     top: 16%;
-    width: min(52%, 720px);
+    width: min(50%, 680px);
     text-align: right;
   }
 
   .screen--home .crash {
-    font-size: clamp(7rem, 18vw, 13.5rem);
+    font-size: clamp(6rem, 14vw, 11rem);
     margin-left: auto;
   }
 
@@ -1572,6 +1572,7 @@ code {
     right: 0;
     height: 62vw;
     min-height: 240px;
+    order: 1;
   }
 
   .screen--home .screen__title {
@@ -1581,7 +1582,7 @@ code {
   }
 
   .screen--home .crash {
-    font-size: clamp(4.2rem, 24vw, 7rem);
+    font-size: clamp(4.2rem, 22vw, 6.4rem);
   }
 
   .screen--home .screen__copy,
@@ -1634,6 +1635,7 @@ code {
     left: 0;
     right: 0;
     bottom: 0;
+    order: 5;
     padding: 0 1.2rem 1rem;
   }
 }
