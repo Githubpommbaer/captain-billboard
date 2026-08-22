@@ -1089,6 +1089,14 @@ code {
 }
 
 @media (max-width: 899px) {
+  .screen--home .crash {
+    position: absolute;
+    right: 4%;
+    top: 8%;
+    z-index: 4;
+    font-size: clamp(3.6rem, 22vw, 6rem);
+  }
+
   .screen {
     min-height: auto;
   }
