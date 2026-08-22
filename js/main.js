@@ -35,8 +35,13 @@
         img.remove();
         return;
       }
-      img.closest(".shot")?.classList.add("is-missing");
+      if (figure && figure.classList.contains("shot")) {
+        figure.classList.add("is-missing");
+      }
       if (figure && figure.classList.contains("hero-frame")) {
+        figure.classList.add("is-missing");
+      }
+      if (figure && figure.classList.contains("panel")) {
         figure.classList.add("is-missing");
       }
     });

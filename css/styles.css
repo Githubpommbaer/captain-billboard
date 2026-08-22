@@ -136,6 +136,14 @@ p + p {
   margin-top: 0.9em;
 }
 
+code {
+  font-family: var(--mono);
+  font-size: 0.86em;
+  background: #fff4c4;
+  border: 1px solid color-mix(in srgb, var(--ink) 18%, transparent);
+  padding: 0.05em 0.28em;
+}
+
 .lede {
   font-size: clamp(1.15rem, 1.05rem + 0.45vw, 1.38rem);
   line-height: 1.5;
@@ -319,6 +327,11 @@ p + p {
   padding: 0.2rem 0.55rem 0.05rem;
   transform: rotate(-8deg);
   opacity: 0.92;
+}
+
+.stamp--ok {
+  color: var(--ok);
+  border-color: var(--ok);
 }
 
 .ticket {
@@ -649,6 +662,24 @@ body {
   min-height: 320px;
   background:
     linear-gradient(165deg, #d7c2ff 0%, #7eb4e0 48%, #f3d56a 100%);
+}
+
+.hero-frame.is-missing img {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  overflow: hidden;
+}
+
+.panel.is-missing {
+  min-height: 220px;
+  background:
+    linear-gradient(160deg, #c9b0f0, #7eb4e0 55%, #f3d56a);
+}
+
+.panel.is-missing img {
+  display: none;
 }
 
 .hero-frame.is-missing::after {
