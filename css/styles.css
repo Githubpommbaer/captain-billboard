@@ -7,7 +7,7 @@
   --white: #ffffff;
   --display: "Black Han Sans", "Anton", "Impact", sans-serif;
   --body: "Barlow", "Open Sans", "Segoe UI", sans-serif;
-  --rail: 168px;
+  --rail: 176px;
   --radius: 18px;
   --ease: cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -20,6 +20,7 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-bottom: calc(5.75rem + env(safe-area-inset-bottom, 0px));
 }
 
 body {
@@ -144,16 +145,22 @@ p + p {
     display: flex;
     flex-direction: column;
     gap: 0.75rem;
-    font-size: 14px;
+    font-size: 0.8125rem;
     font-weight: 700;
-    letter-spacing: 0.04em;
+    letter-spacing: 0.05em;
+    line-height: 1.2;
     text-transform: uppercase;
   }
 
   .rail nav a {
     position: relative;
     display: block;
-    padding: 0.15rem 0;
+    padding: 0.2rem 0;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--cream);
+    writing-mode: horizontal-tb;
+    transform: none;
   }
 
   .rail nav a.is-here::after {
@@ -197,6 +204,7 @@ p + p {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 0.75rem;
   padding: 0.75rem 1rem;
   background: var(--black);
 }
@@ -224,12 +232,17 @@ p + p {
 }
 
 @media (max-width: 979px) {
-  body:has(.mobile-book) .site-header .btn {
+  .site-header .btn {
     display: none;
   }
 
   .brand__name {
-    display: none;
+    display: none !important;
+  }
+
+  .brand {
+    min-width: 0;
+    flex: 1 1 auto;
   }
 }
 
@@ -381,11 +394,21 @@ p + p {
 }
 
 body {
-  padding-bottom: 4.6rem;
+  padding-bottom: calc(5.5rem + env(safe-area-inset-bottom, 0px));
 }
 
 body.book-in-view {
   padding-bottom: 0;
+}
+
+@media (max-width: 979px) {
+  #rates,
+  #book,
+  #rules,
+  #faq,
+  .footer {
+    padding-bottom: calc(5.75rem + env(safe-area-inset-bottom, 0px));
+  }
 }
 
 @media (min-width: 980px) {
@@ -462,10 +485,10 @@ body.book-in-view {
 
 .ghost {
   position: absolute;
-  left: -4%;
+  left: 4%;
   top: 4%;
   z-index: 1;
-  font-size: clamp(5.5rem, 20vw, 14rem);
+  font-size: clamp(2.4rem, 8vw, 5.5rem);
   color: transparent;
   -webkit-text-stroke: 1px color-mix(in srgb, var(--cream) 16%, transparent);
   pointer-events: none;
@@ -801,6 +824,9 @@ body.book-in-view {
   font-size: 0.85rem;
   letter-spacing: 0.04em;
   color: var(--cream);
+  cursor: default;
+  pointer-events: none;
+  user-select: none;
 }
 
 .social--lg {
@@ -826,35 +852,79 @@ body.book-in-view {
 }
 
 @media (min-width: 900px) {
-  .screen--home .screen__copy {
-    width: min(38%, 460px);
-    margin: 2.4rem 0 2.4rem 1.4rem;
-    padding: 1.6rem 1.5rem 1.5rem;
+  .screen--home,
+  .screen--about {
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    background: var(--orange);
+  }
+
+  .screen--home .cut,
+  .screen--about .cut,
+  .screen--home .ring {
+    display: none;
+  }
+
+  .screen--home .screen__photo,
+  .screen--about .screen__photo {
+    position: relative;
+    inset: auto;
+    left: auto;
+    right: auto;
+    grid-column: 1;
+    grid-row: 1 / span 4;
+    min-height: min(86vh, 820px);
   }
 
   .screen--home .screen__title {
-    position: absolute;
-    right: 5%;
-    top: 16%;
-    width: min(50%, 680px);
-    text-align: right;
+    position: relative;
+    right: auto;
+    top: auto;
+    width: auto;
+    grid-column: 2;
+    grid-row: 1;
+    text-align: left;
+    padding: 2.2rem 1.6rem 0;
+    background: var(--orange);
   }
 
   .screen--home .crash {
-    font-size: clamp(5.2rem, 12vw, 9.5rem);
-    margin-left: auto;
+    font-size: clamp(4.2rem, 10vw, 7.5rem);
+    margin-left: 0;
+    max-width: 100%;
+  }
+
+  .screen--home .screen__copy,
+  .screen--about .screen__copy {
+    grid-column: 2;
+    grid-row: 2;
+    width: auto;
+    max-width: none;
+    margin: 0;
+    padding: 1.4rem 1.6rem 2rem;
+    background: var(--orange);
   }
 
   .screen--about .screen__copy {
-    margin-left: auto;
-    width: min(52%, 600px);
-    padding: 2.4rem 1.6rem 2.2rem 1.8rem;
-    padding-top: 3.2rem;
+    grid-row: 1 / span 2;
+    padding-top: 2.4rem;
   }
 
   .screen--about .crash {
-    font-size: clamp(2.8rem, 7vw, 5.6rem);
+    font-size: clamp(2.4rem, 6vw, 4.2rem);
     max-width: 100%;
+    overflow: visible;
+  }
+
+  .screen--home .screen-chrome,
+  .screen--about .screen-chrome {
+    grid-column: 1 / -1;
+    position: relative;
+    left: auto;
+    right: auto;
+    bottom: auto;
+    padding: 0.8rem 1.2rem 1rem;
+    background: var(--black);
   }
 }
 

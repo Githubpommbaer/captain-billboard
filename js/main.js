@@ -279,16 +279,23 @@
   }
 
   var sticky = document.querySelector(".mobile-book");
-  var book = document.getElementById("book");
-  if (sticky && book && "IntersectionObserver" in window) {
-    var hideSticky = function (on) {
+  var hideOn = ["rates", "book", "rules", "faq"].map(function (id) {
+    return document.getElementById(id);
+  }).filter(Boolean);
+  if (sticky && hideOn.length && "IntersectionObserver" in window) {
+    var visible = {};
+    var paintSticky = function () {
+      var on = Object.keys(visible).some(function (k) { return visible[k]; });
       if (on) sticky.setAttribute("hidden", "");
       else sticky.removeAttribute("hidden");
       document.body.classList.toggle("book-in-view", on);
     };
     var so = new IntersectionObserver(function (entries) {
-      hideSticky(entries.some(function (e) { return e.isIntersecting; }));
-    }, { threshold: 0.12 });
-    so.observe(book);
+      entries.forEach(function (entry) {
+        visible[entry.target.id] = entry.isIntersecting;
+      });
+      paintSticky();
+    }, { threshold: 0, rootMargin: "0px 0px -70px 0px" });
+    hideOn.forEach(function (el) { so.observe(el); });
   }
 })();
