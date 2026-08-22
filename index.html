@@ -16,9 +16,10 @@
     <nav>
       <a href="#top">Home</a>
       <a href="#confession">About</a>
-      <a href="#proof">Proof</a>
-      <a href="#rates">Rate</a>
-      <a href="#book">Book</a>
+      <a href="#liars">Characters</a>
+      <a href="#rates">Episode</a>
+      <a href="#trailer">Trailers</a>
+      <a href="#field">Gallery</a>
     </nav>
     <a class="rail__cta" href="#book">Book</a>
   </aside>
@@ -28,23 +29,39 @@
       <img src="assets/img/logo-sm.png" alt="" width="34" height="34" data-fallback="mark">
       <span class="brand__name">Captain Billboard <small>Dave • paid space only</small></span>
     </a>
-    <a class="btn" href="#book">Book</a>
+    <div class="site-header__end">
+      <a class="btn" href="#book">Book</a>
+      <button class="burger" type="button" aria-expanded="false" aria-controls="mobile-nav">
+        <span class="burger__lines" aria-hidden="true"></span>
+        <span class="visually-hidden">Menu</span>
+      </button>
+    </div>
   </header>
+
+  <nav class="drawer" id="mobile-nav" hidden>
+    <a href="#top">Home</a>
+    <a href="#confession">About</a>
+    <a href="#liars">Characters</a>
+    <a href="#rates">Episode</a>
+    <a href="#trailer">Trailers</a>
+    <a href="#field">Gallery</a>
+    <a href="#book">Book</a>
+  </nav>
 
   <main id="main" class="stage">
     <section class="screen screen--home" id="top">
-      <p class="ghost" aria-hidden="true">HOME</p>
+      <p class="ghost" aria-hidden="true">HOME /</p>
       <div class="cut cut--home"></div>
+      <div class="ring" aria-hidden="true"></div>
       <figure class="screen__photo">
         <img src="assets/img/landing.jpg" alt="Dave, Captain Billboard, in a purple-and-gold suit doing a superhero landing in an empty parking lot. The chest placard reads AD SPACE AVAILABLE." width="1200" height="1500">
       </figure>
       <div class="screen__copy">
         <span class="idx">01</span>
-        <p class="kicker" style="letter-spacing:0.16em;text-transform:uppercase;font-size:0.72rem;margin:0 0 0.6rem">Yes, this is a website selling chest ads</p>
         <h1 class="subhead">I rent my chest. That’s the site.</h1>
         <p class="lede">Name’s Dave. People call me Captain Billboard because the other names were taken and this one is, unfortunately, accurate. Forty by twenty-five centimetres. Chest and back. You pay. I wear it. I do not pretend it changed my life.</p>
         <p class="note">I wrote this. The legal team let it through, which is either a compliment or a cry for help.</p>
-        <div class="btn-row">
+        <div class="btn-col">
           <a class="btn" href="#book">Book the rectangle</a>
           <a class="btn btn--line" href="#rates">See the rate card</a>
         </div>
@@ -54,15 +71,24 @@
           <div><b>€490</b><span>walk-on starts here</span></div>
         </div>
       </div>
-      <p class="crash" aria-hidden="true">DAVE <span class="slash">/</span></p>
-      <div class="pack" style="padding-top:0">
+      <div class="screen__title">
+        <p class="tag">Yes, this is a website selling chest ads</p>
+        <p class="crash">DAVE <span class="slash">/</span></p>
+      </div>
+      <div class="screen-chrome">
+        <img src="assets/img/logo-sm.png" alt="" width="36" height="36" data-fallback="hide">
         <p class="caption">I don’t even like yoghurt.</p>
-        <p class="caption">Exhibit A: a grown man in lycra pointing at a blank ad. You’re still scrolling. That’s the product working.</p>
+        <ul class="social" aria-label="Elsewhere">
+          <li><span aria-hidden="true">X</span></li>
+          <li><span aria-hidden="true">f</span></li>
+          <li><span aria-hidden="true">◎</span></li>
+          <li><span aria-hidden="true">▶</span></li>
+        </ul>
       </div>
     </section>
 
     <section class="screen screen--about" id="confession">
-      <p class="ghost" aria-hidden="true">ABOUT</p>
+      <p class="ghost" aria-hidden="true">ABOUT /</p>
       <div class="cut cut--about"></div>
       <figure class="screen__photo">
         <img src="assets/img/rooftop.jpg" alt="Dave on a rooftop overlooking a city, back placard reading AD SPACE AVAILABLE." width="1600" height="1200">
@@ -70,75 +96,113 @@
       <div class="screen__copy on-orange">
         <span class="idx">02</span>
         <h2 class="crash">ABOUT <span class="slash">/</span></h2>
-        <p class="kicker" style="letter-spacing:0.16em;text-transform:uppercase;font-size:0.72rem;margin:0.8rem 0">Confession / the liars</p>
+        <p class="kicker">Confession / the liars</p>
         <p class="subhead">Everyone else is lying. I’m invoicing.</p>
         <p class="lede">You know the posts. “This serum ruined other serums for me.” “I can’t shut up about this bank.” They can shut up. They were paid. I’m paid too. Difference: I put the invoice on my chest and I don’t do the voice.</p>
       </div>
+      <div class="screen-chrome">
+        <img src="assets/img/logo-sm.png" alt="" width="36" height="36" data-fallback="hide">
+        <p class="caption">Exhibit A: a grown man in lycra pointing at a blank ad. You’re still scrolling. That’s the product working.</p>
+        <ul class="social" aria-hidden="true">
+          <li>X</li><li>f</li><li>◎</li><li>▶</li>
+        </ul>
+      </div>
     </section>
 
-    <section class="screen" id="liars">
-      <div class="cut cut--left"></div>
-      <div class="pack">
-        <div class="row thirds">
-          <article class="mod reveal">
-            <div class="mod__flip">
-              <div class="mod__face">
-                <img src="assets/img/square.jpg" alt="Dave standing in a neon city square at night in the Captain Billboard suit." width="800" height="1000">
-                <div class="veil">
-                  <span class="num">01</span>
+    <section class="screen screen--cast" id="liars">
+      <p class="ghost" aria-hidden="true">CHARACTERS /</p>
+      <div class="cut cut--cast"></div>
+      <div class="cast" data-cast>
+        <div class="cast__picks" role="tablist" aria-label="Character looks">
+          <button type="button" class="is-on" role="tab" aria-selected="true" data-cast="0">
+            <img src="assets/img/square.jpg" alt="">
+          </button>
+          <button type="button" role="tab" aria-selected="false" data-cast="1">
+            <img src="assets/img/statue.jpg" alt="">
+          </button>
+          <button type="button" role="tab" aria-selected="false" data-cast="2">
+            <img src="assets/img/landing.jpg" alt="">
+          </button>
+        </div>
+
+        <div class="cast__stage">
+          <article class="cast__slide is-on" data-cast="0">
+            <span class="cast__num" aria-hidden="true">01</span>
+            <figure class="cast__photo">
+              <div class="mod__flip">
+                <div class="mod__face">
+                  <img src="assets/img/square.jpg" alt="Dave standing in a neon city square at night in the Captain Billboard suit." width="800" height="1000">
+                </div>
+                <div class="mod__back">
+                  <span class="num">Lie</span>
                   <h3>The love letter</h3>
-                  <p>A creator whispers that your yoghurt is a personality. It isn’t. It’s dairy. Cute dairy, maybe. Still dairy.</p>
                 </div>
               </div>
-              <div class="mod__back">
-                <span class="num">Lie</span>
-                <h3>The love letter</h3>
-              </div>
+            </figure>
+            <div class="cast__copy on-orange">
+              <p class="crash">DAVE <span class="slash">/</span></p>
+              <h3>The love letter</h3>
+              <p>A creator whispers that your yoghurt is a personality. It isn’t. It’s dairy. Cute dairy, maybe. Still dairy.</p>
             </div>
           </article>
-          <article class="mod reveal">
-            <div class="mod__flip">
-              <div class="mod__face">
-                <img src="assets/img/statue.jpg" alt="Captain Billboard beside a statue." width="800" height="1000">
-                <div class="veil">
-                  <span class="num">02</span>
+
+          <article class="cast__slide" data-cast="1" hidden>
+            <span class="cast__num" aria-hidden="true">02</span>
+            <figure class="cast__photo">
+              <div class="mod__flip">
+                <div class="mod__face">
+                  <img src="assets/img/statue.jpg" alt="Captain Billboard beside a statue." width="800" height="1000">
+                </div>
+                <div class="mod__back">
+                  <span class="num">Lie</span>
                   <h3>The lifestyle</h3>
-                  <p>Sunrise, linen, a bottle held like a newborn. Nobody wakes up like that. I wake up and put on a rectangle.</p>
                 </div>
               </div>
-              <div class="mod__back">
-                <span class="num">Lie</span>
-                <h3>The lifestyle</h3>
-              </div>
+            </figure>
+            <div class="cast__copy on-orange">
+              <p class="crash">DAVE <span class="slash">/</span></p>
+              <h3>The lifestyle</h3>
+              <p>Sunrise, linen, a bottle held like a newborn. Nobody wakes up like that. I wake up and put on a rectangle.</p>
             </div>
           </article>
-          <article class="mod reveal">
-            <div class="mod__flip">
-              <div class="mod__face">
-                <img src="assets/img/landing.jpg" alt="Dave in a superhero landing in an empty parking lot." width="800" height="1000">
-                <div class="veil">
-                  <span class="num">03</span>
+
+          <article class="cast__slide" data-cast="2" hidden>
+            <span class="cast__num" aria-hidden="true">03</span>
+            <figure class="cast__photo">
+              <div class="mod__flip">
+                <div class="mod__face">
+                  <img src="assets/img/landing.jpg" alt="Dave in a superhero landing in an empty parking lot." width="800" height="1000">
+                </div>
+                <div class="mod__back">
+                  <span class="num">True</span>
                   <h3>The rental</h3>
-                  <p>You buy 40×25 cm of fabric. I stand in the world wearing it. People look. That’s the whole magic trick. No rabbits. No “journey.”</p>
                 </div>
               </div>
-              <div class="mod__back">
-                <span class="num">True</span>
-                <h3>The rental</h3>
-              </div>
+            </figure>
+            <div class="cast__copy on-orange">
+              <p class="crash">RENT <span class="slash">/</span></p>
+              <h3>The rental</h3>
+              <p>You buy 40×25 cm of fabric. I stand in the world wearing it. People look. That’s the whole magic trick. No rabbits. No “journey.”</p>
             </div>
           </article>
+        </div>
+
+        <div class="cast__pager">
+          <button type="button" data-cast-prev aria-label="Previous character">&lt;</button>
+          <span data-cast-dots><i class="is-on"></i><i></i><i></i></span>
+          <button type="button" data-cast-next aria-label="Next character">&gt;</button>
         </div>
       </div>
     </section>
 
-    <section class="screen" id="rent">
+    <section class="screen screen--rent" id="rent">
+      <p class="ghost" aria-hidden="true">RENT /</p>
       <div class="cut cut--flood"></div>
       <div class="pack">
         <div class="row split">
           <div class="on-orange">
             <span class="idx">03</span>
-            <p style="letter-spacing:0.16em;text-transform:uppercase;font-size:0.72rem;margin:0 0 0.6rem">Rent, don’t endorse</p>
+            <p class="kicker">Rent, don’t endorse</p>
             <h2 class="subhead">I will not say I love your product. I will wear it.</h2>
             <p>This is not a testimonial. This is out-of-home that sweats. You get a character people remember — System1 and the IPA have a whole binder on why that works — and a man honest enough to admit the binder is why this paragraph exists.</p>
             <p>You do not get Dave’s opinion. Dave’s opinion is that the suit is warm and the placard is a job. That is not a brand value. That is humidity.</p>
@@ -159,19 +223,20 @@
       </div>
     </section>
 
-    <section class="screen" id="spec">
-      <p class="ghost" aria-hidden="true">SPEC</p>
+    <section class="screen screen--spec" id="spec">
+      <p class="ghost" aria-hidden="true">SPEC /</p>
+      <div class="cut cut--left"></div>
       <div class="pack">
         <div class="pack__head">
           <span class="idx">04</span>
           <h2>SPEC <span class="slash">/</span></h2>
-          <p style="letter-spacing:0.16em;text-transform:uppercase;font-size:0.72rem">The spec</p>
+          <p class="kicker">The spec</p>
           <p class="subhead">Two sides. One size. Zero vibes interpretation.</p>
           <p class="lede">Chest and back. 40×25 cm each. You send print-ready art. We print it. We do not “elevate the mark.” We put the mark on a man and send him outside.</p>
         </div>
         <div class="row split">
           <div class="reveal">
-            <p style="letter-spacing:0.16em;text-transform:uppercase;font-size:0.72rem">Live area</p>
+            <p class="kicker">Live area</p>
             <div class="box">40 × 25 cm</div>
             <p>Readable at two metres. If your lawyer needs six paragraphs, they need a landing page, not a sternum.</p>
           </div>
@@ -193,11 +258,12 @@
       </div>
     </section>
 
-    <section class="screen" id="trailer">
-      <p class="ghost" aria-hidden="true">PLAY</p>
+    <section class="screen screen--play" id="trailer">
+      <p class="ghost" aria-hidden="true">TRAILERS /</p>
+      <div class="cut cut--home"></div>
       <div class="pack">
         <div class="pack__head">
-          <p style="letter-spacing:0.16em;text-transform:uppercase;font-size:0.72rem">The trailer</p>
+          <p class="kicker">The trailer</p>
           <h2>PLAY <span class="slash">/</span></h2>
           <p class="subhead">A man. A parking lot. A business model.</p>
           <p>If the video 404s, that’s not a metaphor. Drop <code>assets/video/trailer.mp4</code> in and this frame stops looking so proud of itself. Until then: imagine purple lycra, gold arrows, and a camera that knows this is funny on purpose.</p>
@@ -209,24 +275,43 @@
               <source src="assets/video/trailer.mp4" type="video/mp4">
               Your browser sat this one out. The file lives at assets/video/trailer.mp4.
             </video>
+            <figcaption>The trailer</figcaption>
           </figure>
-          <div class="thumbs">
-            <img src="assets/img/landing.jpg" alt="">
-            <img src="assets/img/rooftop.jpg" alt="">
-            <img src="assets/img/square.jpg" alt="">
+          <div class="thumbs" data-thumbs>
+            <button type="button" class="thumb is-on">
+              <img src="assets/img/landing.jpg" alt="">
+              <span>
+                <b>The trailer</b>
+                <small>A man. A parking lot. A business model.</small>
+              </span>
+            </button>
+            <button type="button" class="thumb">
+              <img src="assets/img/rooftop.jpg" alt="">
+              <span>
+                <b>Field report</b>
+                <small>Places the suit has been seen standing around.</small>
+              </span>
+            </button>
+            <button type="button" class="thumb">
+              <img src="assets/img/square.jpg" alt="">
+              <span>
+                <b>The spec</b>
+                <small>Two sides. One size. Zero vibes interpretation.</small>
+              </span>
+            </button>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="screen" id="proof">
-      <p class="ghost" aria-hidden="true">PROOF</p>
+    <section class="screen screen--proof" id="proof">
+      <p class="ghost" aria-hidden="true">PROOF /</p>
       <div class="cut cut--left"></div>
       <div class="pack">
         <div class="pack__head">
           <span class="idx">05</span>
           <h2>PROOF <span class="slash">/</span></h2>
-          <p style="letter-spacing:0.16em;text-transform:uppercase;font-size:0.72rem">Proof / the binder</p>
+          <p class="kicker">Proof / the binder</p>
           <p class="subhead">Characters work. Almost nobody uses them.</p>
           <p class="lede">This is the bit where I get briefly serious, cite grown-ups, then go back to making fun of yoghurt. Stay with me. It’s why the prices aren’t a joke even when the suit is.</p>
         </div>
@@ -248,7 +333,7 @@
           </article>
         </div>
         <div class="rule reveal">
-          <p style="letter-spacing:0.16em;text-transform:uppercase;font-size:0.72rem">Meanwhile, in Japan</p>
+          <p class="kicker">Meanwhile, in Japan</p>
           <p><strong>Kumamon: ¥123.2bn</strong></p>
           <p>Bank of Japan estimate for the economic splash around Kumamoto’s bear in two years from 2011. A mascot. A prefecture. A number so large it should make your “we don’t do characters” slide sweat.</p>
           <p>And yet: only <b>4%</b> of US ads use a character device. You can join the 4%. Or you can keep buying media that looks like everyone else’s media. I’m a rectangle with legs either way.</p>
@@ -256,59 +341,70 @@
       </div>
     </section>
 
-    <section class="screen" id="how">
+    <section class="screen screen--how" id="how">
+      <p class="ghost" aria-hidden="true">HOW /</p>
+      <div class="cut cut--flood"></div>
       <div class="pack">
-        <div class="pack__head">
-          <p style="letter-spacing:0.16em;text-transform:uppercase;font-size:0.72rem">How it works</p>
+        <div class="pack__head on-orange">
+          <p class="kicker">How it works</p>
           <h2 class="subhead">Four steps. Then I’m outside.</h2>
         </div>
         <div class="row four">
-          <article class="reveal">
+          <article class="reveal on-orange">
             <span class="num">01</span>
             <h3>You book</h3>
             <p>Pick a package. Send dates, city, and the thing you want on the placard. The form at the bottom emails a human. Shocking, I know.</p>
           </article>
-          <article class="reveal">
+          <article class="reveal on-orange">
             <span class="num">02</span>
             <h3>You send art</h3>
             <p>Print-ready. 40×25 cm. We check it against the house rules. If it’s a hate crime or a novella, it comes back.</p>
           </article>
-          <article class="reveal">
+          <article class="reveal on-orange">
             <span class="num">03</span>
             <h3>We print</h3>
             <p>The rectangle becomes physical. No CGI chest. No “we’ll fix it in post.” Fabric. Ink. Arrows.</p>
           </article>
-          <article class="reveal">
+          <article class="reveal on-orange">
             <span class="num">04</span>
             <h3>I wear it</h3>
             <p>Field pictures go back to you. Depending on the package: stills, a clip, a week of me existing in public with your logo like a polite billboard.</p>
           </article>
         </div>
-        <p class="caption">5-day turnaround. Approved art in. First field files out. If your legal team needs a month, that’s not our 5 days — that’s your month.</p>
+        <p class="caption on-orange">5-day turnaround. Approved art in. First field files out. If your legal team needs a month, that’s not our 5 days — that’s your month.</p>
       </div>
     </section>
 
-    <section class="screen" id="field">
-      <p class="ghost" aria-hidden="true">FIELD</p>
+    <section class="screen screen--field" id="field">
+      <p class="ghost" aria-hidden="true">GALLERY /</p>
+      <div class="cut cut--about"></div>
       <div class="pack">
         <div class="pack__head">
           <h2>FIELD <span class="slash">/</span></h2>
-          <p style="letter-spacing:0.16em;text-transform:uppercase;font-size:0.72rem">Field report</p>
+          <p class="kicker">Field report</p>
           <p class="subhead">Places the suit has been seen standing around.</p>
           <p class="lede">Not case studies. Not “earned media from Brand X.” Just the costume in the world — rooftops, steam, family barbecues it was not invited to. Drop the files in and these panels stop blushing.</p>
         </div>
         <div class="gallery-hero">
-          <figure class="hero-shot">
-            <img src="assets/img/square.jpg" alt="Dave standing in a neon city square at night in the Captain Billboard suit." width="1600" height="1200">
+          <figure class="hero-shot poster">
+            <img src="assets/img/square.jpg" alt="Dave standing in a neon city square at night in the Captain Billboard suit." width="1600" height="1200" data-gallery-hero>
             <figcaption>Square — wet asphalt, dry humour</figcaption>
           </figure>
-          <div class="strip">
-            <figure><img src="assets/img/rooftop.jpg" alt="Dave on a rooftop"></figure>
-            <figure><img src="assets/img/desert.jpg" alt="Captain Billboard in a desert landscape."></figure>
-            <figure><img src="assets/img/subway.jpg" alt="Captain Billboard in a subway setting."></figure>
-            <figure><img src="assets/img/pool.jpg" alt="Captain Billboard by a pool."></figure>
-            <figure><img src="assets/img/statue.jpg" alt="Captain Billboard beside a statue."></figure>
-            <figure><img src="assets/img/family.jpg" alt="Captain Billboard in a family setting."></figure>
+          <div class="carousel" data-carousel>
+            <div class="carousel__track strip" data-track>
+              <figure class="is-on"><img src="assets/img/square.jpg" alt="Dave standing in a neon city square at night in the Captain Billboard suit."></figure>
+              <figure><img src="assets/img/rooftop.jpg" alt="Dave on a rooftop"></figure>
+              <figure><img src="assets/img/desert.jpg" alt="Captain Billboard in a desert landscape."></figure>
+              <figure><img src="assets/img/subway.jpg" alt="Captain Billboard in a subway setting."></figure>
+              <figure><img src="assets/img/pool.jpg" alt="Captain Billboard by a pool."></figure>
+              <figure><img src="assets/img/statue.jpg" alt="Captain Billboard beside a statue."></figure>
+              <figure><img src="assets/img/family.jpg" alt="Captain Billboard in a family setting."></figure>
+            </div>
+            <div class="carousel__nav">
+              <button type="button" data-prev aria-label="Previous stills">&lt;</button>
+              <div class="dots" data-dots></div>
+              <button type="button" data-next aria-label="Next stills">&gt;</button>
+            </div>
           </div>
         </div>
         <div class="mosaic">
@@ -325,76 +421,84 @@
       </div>
     </section>
 
-    <section class="screen" id="rates">
-      <p class="ghost" aria-hidden="true">RATE</p>
+    <section class="screen screen--rates" id="rates">
+      <p class="ghost" aria-hidden="true">EPISODE /</p>
+      <div class="cut cut--flood"></div>
       <div class="pack">
         <div class="pack__head">
           <h2>RATE <span class="slash">/</span></h2>
-          <p style="letter-spacing:0.16em;text-transform:uppercase;font-size:0.72rem">Rate card</p>
+          <p class="kicker">Rate card</p>
           <p class="subhead">Money, printed like a ticket stub.</p>
           <p class="lede">Four prices. Same rectangle. Different amounts of me in the world. Retainers and add-ons sit under the card. No surprise fifth price hiding in a tooltip. I checked.</p>
         </div>
-        <div class="row four">
-          <article class="episode reveal">
-            <img src="assets/img/desert.jpg" alt="">
-            <div class="episode__txt">
-              <p class="num">01</p>
-              <p style="letter-spacing:0.12em;text-transform:uppercase;font-size:0.68rem;margin:0">Walk-on</p>
-              <h3>The drop</h3>
-              <p class="price">€490</p>
-              <ul>
-                <li>One day in the field</li>
-                <li>Chest or back</li>
-                <li>Print included</li>
-                <li>Stills of the space being worn</li>
-              </ul>
-            </div>
-          </article>
-          <article class="episode featured reveal">
-            <img src="assets/img/hills.jpg" alt="">
-            <div class="episode__txt">
-              <p class="num">02</p>
-              <p style="letter-spacing:0.12em;text-transform:uppercase;font-size:0.68rem;margin:0">The one people book</p>
-              <h3>Field trip</h3>
-              <p class="price">€1.290</p>
-              <ul>
-                <li>Two to three days</li>
-                <li>Chest and back</li>
-                <li>Photo set + a short clip</li>
-                <li>The sensible middle. I said it. It’s true.</li>
-              </ul>
-            </div>
-          </article>
-          <article class="episode reveal">
-            <img src="assets/img/subway.jpg" alt="">
-            <div class="episode__txt">
-              <p class="num">03</p>
-              <p style="letter-spacing:0.12em;text-transform:uppercase;font-size:0.68rem;margin:0">A proper week</p>
-              <h3>The run</h3>
-              <p class="price">€2.900</p>
-              <ul>
-                <li>A week on the calendar</li>
-                <li>More than one spot</li>
-                <li>Stills + a cutdown</li>
-                <li>A kit you can post without crying</li>
-              </ul>
-            </div>
-          </article>
-          <article class="episode reveal">
-            <img src="assets/img/pool.jpg" alt="">
-            <div class="episode__txt">
-              <p class="num">04</p>
-              <p style="letter-spacing:0.12em;text-transform:uppercase;font-size:0.68rem;margin:0">If you’re serious</p>
-              <h3>The season</h3>
-              <p class="price">€6.900</p>
-              <ul>
-                <li>A month of dates</li>
-                <li>Priority on the calendar</li>
-                <li>The full content kit</li>
-                <li>The slide that says “always-on character”</li>
-              </ul>
-            </div>
-          </article>
+        <div class="carousel" data-carousel>
+          <div class="carousel__track row four" data-track>
+            <article class="episode reveal">
+              <img src="assets/img/desert.jpg" alt="">
+              <div class="episode__txt">
+                <p class="num">Episode 01</p>
+                <p class="kicker">Walk-on</p>
+                <h3>The drop</h3>
+                <p class="price">€490</p>
+                <ul>
+                  <li>One day in the field</li>
+                  <li>Chest or back</li>
+                  <li>Print included</li>
+                  <li>Stills of the space being worn</li>
+                </ul>
+              </div>
+            </article>
+            <article class="episode featured reveal">
+              <img src="assets/img/hills.jpg" alt="">
+              <div class="episode__txt">
+                <p class="num">Episode 02</p>
+                <p class="kicker">The one people book</p>
+                <h3>Field trip</h3>
+                <p class="price">€1.290</p>
+                <ul>
+                  <li>Two to three days</li>
+                  <li>Chest and back</li>
+                  <li>Photo set + a short clip</li>
+                  <li>The sensible middle. I said it. It’s true.</li>
+                </ul>
+              </div>
+            </article>
+            <article class="episode reveal">
+              <img src="assets/img/subway.jpg" alt="">
+              <div class="episode__txt">
+                <p class="num">Episode 03</p>
+                <p class="kicker">A proper week</p>
+                <h3>The run</h3>
+                <p class="price">€2.900</p>
+                <ul>
+                  <li>A week on the calendar</li>
+                  <li>More than one spot</li>
+                  <li>Stills + a cutdown</li>
+                  <li>A kit you can post without crying</li>
+                </ul>
+              </div>
+            </article>
+            <article class="episode reveal">
+              <img src="assets/img/pool.jpg" alt="">
+              <div class="episode__txt">
+                <p class="num">Episode 04</p>
+                <p class="kicker">If you’re serious</p>
+                <h3>The season</h3>
+                <p class="price">€6.900</p>
+                <ul>
+                  <li>A month of dates</li>
+                  <li>Priority on the calendar</li>
+                  <li>The full content kit</li>
+                  <li>The slide that says “always-on character”</li>
+                </ul>
+              </div>
+            </article>
+          </div>
+          <div class="carousel__nav">
+            <button type="button" data-prev aria-label="Previous packages">&lt;</button>
+            <div class="dots" data-dots></div>
+            <button type="button" data-next aria-label="Next packages">&gt;</button>
+          </div>
         </div>
         <div class="row split" style="margin-top:1.4rem">
           <article class="reveal">
@@ -409,12 +513,13 @@
       </div>
     </section>
 
-    <section class="screen" id="rules">
+    <section class="screen screen--rules" id="rules">
+      <p class="ghost" aria-hidden="true">RULES /</p>
       <div class="cut cut--flood"></div>
       <div class="pack">
         <div class="row split">
           <div class="on-orange">
-            <p style="letter-spacing:0.16em;text-transform:uppercase;font-size:0.72rem">House rules</p>
+            <p class="kicker">House rules</p>
             <h2 class="subhead">The list that keeps this funny instead of grim.</h2>
             <p>If your art fails a rule, we don’t print it. That is not a negotiation. That is how the suit stays a joke you can stand next to at a dinner.</p>
           </div>
@@ -436,10 +541,12 @@
       </div>
     </section>
 
-    <section class="screen" id="faq">
+    <section class="screen screen--faq" id="faq">
+      <p class="ghost" aria-hidden="true">FAQ /</p>
+      <div class="cut cut--left"></div>
       <div class="pack">
         <div class="pack__head">
-          <p style="letter-spacing:0.16em;text-transform:uppercase;font-size:0.72rem">FAQ</p>
+          <p class="kicker">FAQ</p>
           <h2 class="subhead">Questions you were going to ask anyway.</h2>
         </div>
         <div class="faq">
@@ -491,14 +598,14 @@
       </div>
     </section>
 
-    <section class="screen" id="book">
-      <p class="ghost" aria-hidden="true">BOOK</p>
+    <section class="screen screen--book" id="book">
+      <p class="ghost" aria-hidden="true">BOOK /</p>
       <div class="cut cut--about"></div>
       <div class="pack">
         <div class="row split">
           <div>
             <h2 class="crash">BOOK <span class="slash">/</span></h2>
-            <p style="letter-spacing:0.16em;text-transform:uppercase;font-size:0.72rem;margin:0.8rem 0">Booking</p>
+            <p class="kicker">Booking</p>
             <p class="subhead">Talk to a human. I’ll be the fabric.</p>
             <p>This form does not vanish into a growth stack. It opens your mail app addressed to <a href="mailto:book@captainbillboard.com">book@captainbillboard.com</a>. If that’s too intimate, you can also just write. We answer.</p>
             <p class="caption">If you’re a bot: congratulations on the literacy. Still no.</p>
@@ -561,14 +668,17 @@
   </main>
 
   <footer class="screen footer">
+    <p class="ghost" aria-hidden="true">THANK YOU /</p>
+    <div class="cut cut--home"></div>
     <div class="footer__grid">
       <div>
+        <p class="crash">THANK YOU <span class="slash">/</span></p>
         <img src="assets/img/logo.png" alt="Captain Billboard" width="180" height="80" data-fallback="hide">
         <h2>Captain Billboard</h2>
         <p>Dave rents 40×25 cm. He does not endorse products. He just wears paid space. A Maresmedia project that got out of the house.</p>
       </div>
       <div>
-        <p style="letter-spacing:0.16em;text-transform:uppercase;font-size:0.72rem">Jump</p>
+        <p class="kicker">Jump</p>
         <ul>
           <li><a href="#confession">Confession</a></li>
           <li><a href="#spec">Spec</a></li>
@@ -578,10 +688,13 @@
         </ul>
       </div>
       <div>
-        <p style="letter-spacing:0.16em;text-transform:uppercase;font-size:0.72rem">Write</p>
+        <p class="kicker">Write</p>
         <ul>
           <li><a href="mailto:book@captainbillboard.com">book@captainbillboard.com</a></li>
           <li><a href="legal.html">Impressum / Datenschutz</a></li>
+        </ul>
+        <ul class="social social--lg" aria-hidden="true">
+          <li>X</li><li>f</li><li>◎</li><li>▶</li>
         </ul>
       </div>
     </div>
