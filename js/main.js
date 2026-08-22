@@ -22,7 +22,7 @@
 
   document.querySelectorAll("img").forEach(function (img) {
     img.addEventListener("error", function () {
-      var figure = img.closest(".shot, .hero-frame, .panel, .brand");
+      var figure = img.closest(".shot, .hero-frame, .media-frame, .brand");
       if (img.dataset.fallback === "mark") {
         var mark = document.createElement("span");
         mark.className = "brand__mark";
@@ -41,7 +41,7 @@
       if (figure && figure.classList.contains("hero-frame")) {
         figure.classList.add("is-missing");
       }
-      if (figure && figure.classList.contains("panel")) {
+      if (figure && figure.classList.contains("media-frame")) {
         figure.classList.add("is-missing");
       }
     });
@@ -76,6 +76,28 @@
       var body = encodeURIComponent(lines.join("\n"));
       window.location.href = "mailto:book@captainbillboard.com?subject=" + subject + "&body=" + body;
     });
+  }
+
+  var links = document.querySelectorAll(".rail nav a[href^='#']");
+  var sections = [];
+  links.forEach(function (link) {
+    var id = link.getAttribute("href").slice(1);
+    var el = document.getElementById(id);
+    if (el) sections.push({ el: el, link: link });
+  });
+  function markRail() {
+    var y = window.scrollY + 120;
+    var current = sections[0];
+    sections.forEach(function (item) {
+      if (item.el.offsetTop <= y) current = item;
+    });
+    links.forEach(function (link) {
+      link.classList.toggle("is-here", current && link === current.link);
+    });
+  }
+  if (links.length) {
+    markRail();
+    window.addEventListener("scroll", markRail, { passive: true });
   }
 
   if (reduce) return;
@@ -133,38 +155,4 @@
     po.observe(proof);
   }
 
-  var layers = document.querySelectorAll("[data-parallax]");
-  if (layers.length && window.matchMedia("(pointer: fine)").matches) {
-    var ticking = false;
-    window.addEventListener(
-      "scroll",
-      function () {
-        if (ticking) return;
-        ticking = true;
-        requestAnimationFrame(function () {
-          var y = window.scrollY || 0;
-          layers.forEach(function (el) {
-            var amount = Number(el.getAttribute("data-parallax") || 8);
-            el.style.setProperty("--par", (y * amount) / 400 + "px");
-          });
-          ticking = false;
-        });
-      },
-      { passive: true }
-    );
-  }
-
-  var tag = document.getElementById("cursor-tag");
-  if (tag && window.matchMedia("(pointer: fine)").matches) {
-    tag.hidden = false;
-    tag.classList.add("is-on");
-    window.addEventListener(
-      "pointermove",
-      function (event) {
-        tag.style.left = event.clientX + "px";
-        tag.style.top = event.clientY + "px";
-      },
-      { passive: true }
-    );
-  }
 })();

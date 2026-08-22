@@ -22,7 +22,7 @@ Any static server is fine. `python3 -m http.server` is the one we expect.
 | --- | --- |
 | `index.html` | The site |
 | `legal.html` | Impressum / Datenschutz stubs (replace bracketed Maresmedia details) |
-| `css/styles.css` | Layout, type, comic chrome |
+| `css/styles.css` | Orange / cream / black slab system |
 | `js/main.js` | Reveals, counters, mailto body, image fallbacks, reduced-motion |
 | `assets/fonts/` | Self-hosted Anton, Barlow, JetBrains Mono (no Google Fonts) |
 | `assets/img/` | Image paths — drop files in, do not rename |
