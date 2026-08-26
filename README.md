@@ -1,6 +1,6 @@
 # Captain Billboard
 
-Marketing site for Dave — Captain Billboard. He rents 40×25 cm on chest and back. He does not endorse products. He just wears paid space.
+Marketing site for Dave — Captain Billboard. Dave is an AI character. He rents 40×25 cm on the placard, in the clip. He does not endorse products. He just wears paid space. Nothing is printed. Nobody goes into the field.
 
 Single static site. No framework. Booking is a `mailto:` to [book@captainbillboard.com](mailto:book@captainbillboard.com).
 
@@ -59,5 +59,5 @@ Images and the trailer may 404 until you copy them in. The markup already points
 ## Notes
 
 - Rate card stays €490 / €1.290 / €2.900 / €6.900 plus retainers and add-ons.
-- House speed is five days from approved art.
+- Client sends the logo. Clips are made with AI. 40×25 cm is the placard in-frame, not a print spec.
 - Legal pages are German placeholders. Fill the `[brackets]` before a public launch.
