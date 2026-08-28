@@ -5,8 +5,10 @@
   var year = document.getElementById("y");
   if (year) year.textContent = String(new Date().getFullYear());
 
+  /* --- media fallbacks --- */
+
   document.querySelectorAll("video").forEach(function (video) {
-    var frame = video.closest(".player, .trailer-frame");
+    var frame = video.closest(".player");
     var markMissing = function () {
       if (frame) frame.classList.add("is-missing");
     };
@@ -22,22 +24,12 @@
 
   document.querySelectorAll("img").forEach(function (img) {
     img.addEventListener("error", function () {
-      var figure = img.closest(".shot, .hero-shot, .hero-frame, .media-frame, .brand, .episode, .cast__photo, .thumb");
-      if (img.dataset.fallback === "mark") {
-        var mark = document.createElement("span");
-        mark.className = "brand__mark";
-        mark.setAttribute("aria-hidden", "true");
-        mark.textContent = "CB";
-        img.replaceWith(mark);
-        return;
-      }
-      if (img.dataset.fallback === "hide") {
-        img.remove();
-        return;
-      }
-      if (figure) figure.classList.add("is-missing");
+      var holder = img.closest(".shot, .hero__shot");
+      if (holder) holder.classList.add("is-missing");
     });
   });
+
+  /* --- booking mailto --- */
 
   var form = document.getElementById("booking-form");
   if (form) {
@@ -47,7 +39,8 @@
         var el = document.getElementById(id);
         return el ? el.value.trim() : "";
       };
-      if (!document.getElementById("consent").checked) return;
+      var consent = document.getElementById("consent");
+      if (consent && !consent.checked) return;
       var lines = [
         "Captain Billboard booking",
         "------------------------",
@@ -66,167 +59,105 @@
       ];
       var subject = encodeURIComponent("Booking: " + (value("company") || value("name") || "Captain Billboard"));
       var body = encodeURIComponent(lines.join("\n"));
-      window.location.href = "mailto:book@captainbillboard.com?subject=" + subject + "&body=" + body;
+      window.location.href = "mailto:booking@captainbillboard.com?subject=" + subject + "&body=" + body;
     });
   }
 
-  var burger = document.querySelector(".burger");
-  var drawer = document.getElementById("mobile-nav");
-  if (burger && drawer) {
-    burger.addEventListener("click", function () {
-      var open = burger.getAttribute("aria-expanded") === "true";
-      burger.setAttribute("aria-expanded", open ? "false" : "true");
-      if (open) drawer.setAttribute("hidden", "");
-      else drawer.removeAttribute("hidden");
+  /* --- menu --- */
+
+  var menuBtn = document.querySelector(".menu-btn");
+  var menu = document.getElementById("site-menu");
+  if (menuBtn && menu) {
+    var setMenu = function (open) {
+      menuBtn.setAttribute("aria-expanded", open ? "true" : "false");
+      menuBtn.textContent = open ? "Close" : "Menu";
+      if (open) menu.removeAttribute("hidden");
+      else menu.setAttribute("hidden", "");
+    };
+    menuBtn.addEventListener("click", function () {
+      setMenu(menuBtn.getAttribute("aria-expanded") !== "true");
     });
-    drawer.querySelectorAll("a").forEach(function (link) {
+    menu.querySelectorAll("a").forEach(function (link) {
       link.addEventListener("click", function () {
-        burger.setAttribute("aria-expanded", "false");
-        drawer.setAttribute("hidden", "");
+        setMenu(false);
       });
     });
+    document.addEventListener("keydown", function (event) {
+      if (event.key === "Escape" && menuBtn.getAttribute("aria-expanded") === "true") setMenu(false);
+    });
   }
 
-  var links = document.querySelectorAll(".rail nav a[href^='#']");
+  /* --- nav backdrop once past the hero fold --- */
+
+  var nav = document.querySelector(".nav");
+  if (nav) {
+    var markNav = function () {
+      nav.classList.toggle("is-stuck", window.scrollY > 24);
+    };
+    markNav();
+    window.addEventListener("scroll", markNav, { passive: true });
+  }
+
+  var menuLinks = document.querySelectorAll(".menu__links a[href^='#']");
   var sections = [];
-  links.forEach(function (link) {
-    var id = link.getAttribute("href").slice(1);
-    var el = document.getElementById(id);
+  menuLinks.forEach(function (link) {
+    var el = document.getElementById(link.getAttribute("href").slice(1));
     if (el) sections.push({ el: el, link: link });
   });
-  function markRail() {
-    var y = window.scrollY + 140;
+  function markMenu() {
+    var y = window.scrollY + 160;
     var current = sections[0];
     sections.forEach(function (item) {
       if (item.el.offsetTop <= y) current = item;
     });
-    links.forEach(function (link) {
+    menuLinks.forEach(function (link) {
       link.classList.toggle("is-here", current && link === current.link);
     });
   }
-  if (links.length) {
-    markRail();
-    window.addEventListener("scroll", markRail, { passive: true });
+  if (sections.length) {
+    markMenu();
+    window.addEventListener("scroll", markMenu, { passive: true });
   }
 
-  function setupCast(root) {
-    var slides = Array.prototype.slice.call(root.querySelectorAll(".cast__slide"));
-    var picks = Array.prototype.slice.call(root.querySelectorAll(".cast__picks [data-cast]"));
-    var dots = Array.prototype.slice.call(root.querySelectorAll("[data-cast-dots] i"));
-    var index = 0;
+  /* --- word split for the big statement --- */
 
-    function show(next) {
-      index = (next + slides.length) % slides.length;
-      slides.forEach(function (slide, i) {
-        var on = i === index;
-        slide.classList.toggle("is-on", on);
-        if (on) slide.removeAttribute("hidden");
-        else slide.setAttribute("hidden", "");
+  if (!reduce) {
+    document.querySelectorAll("[data-split]").forEach(function (node) {
+      var words = node.textContent.split(/\s+/).filter(Boolean);
+      node.textContent = "";
+      words.forEach(function (word, i) {
+        var wrap = document.createElement("span");
+        wrap.className = "w";
+        var inner = document.createElement("i");
+        inner.textContent = word;
+        inner.style.transitionDelay = Math.min(i * 16, 480) + "ms";
+        wrap.appendChild(inner);
+        node.appendChild(wrap);
+        node.appendChild(document.createTextNode(" "));
       });
-      picks.forEach(function (pick, i) {
-        pick.classList.toggle("is-on", i === index);
-        pick.setAttribute("aria-selected", i === index ? "true" : "false");
-      });
-      dots.forEach(function (dot, i) {
-        dot.classList.toggle("is-on", i === index);
-      });
-    }
-
-    picks.forEach(function (pick) {
-      pick.addEventListener("click", function () {
-        show(Number(pick.getAttribute("data-cast") || 0));
-      });
-    });
-    var prev = root.querySelector("[data-cast-prev]");
-    var next = root.querySelector("[data-cast-next]");
-    if (prev) prev.addEventListener("click", function () { show(index - 1); });
-    if (next) next.addEventListener("click", function () { show(index + 1); });
-  }
-
-  document.querySelectorAll("[data-cast]").forEach(setupCast);
-
-  function setupCarousel(root) {
-    var track = root.querySelector("[data-track]");
-    var dotsWrap = root.querySelector("[data-dots]");
-    if (!track) return;
-    var items = Array.prototype.slice.call(track.children);
-    if (!items.length) return;
-
-    function pageWidth() {
-      return track.clientWidth || 1;
-    }
-
-    function pages() {
-      var w = pageWidth();
-      var total = track.scrollWidth;
-      return Math.max(1, Math.ceil(total / w));
-    }
-
-    function current() {
-      return Math.round(track.scrollLeft / pageWidth());
-    }
-
-    function paintDots() {
-      if (!dotsWrap) return;
-      var n = pages();
-      dotsWrap.innerHTML = "";
-      for (var i = 0; i < n; i += 1) {
-        var dot = document.createElement("i");
-        if (i === current()) dot.className = "is-on";
-        dotsWrap.appendChild(dot);
-      }
-    }
-
-    function go(dir) {
-      track.scrollBy({ left: dir * pageWidth(), behavior: reduce ? "auto" : "smooth" });
-    }
-
-    var prev = root.querySelector("[data-prev]");
-    var next = root.querySelector("[data-next]");
-    if (prev) prev.addEventListener("click", function () { go(-1); });
-    if (next) next.addEventListener("click", function () { go(1); });
-    track.addEventListener("scroll", paintDots, { passive: true });
-    window.addEventListener("resize", paintDots);
-    paintDots();
-  }
-
-  document.querySelectorAll("[data-carousel]").forEach(setupCarousel);
-
-  var galleryHero = document.querySelector("[data-gallery-hero]");
-  if (galleryHero) {
-    document.querySelectorAll(".strip figure").forEach(function (figure) {
-      figure.addEventListener("click", function () {
-        var img = figure.querySelector("img");
-        if (!img) return;
-        galleryHero.src = img.src;
-        galleryHero.alt = img.alt;
-        document.querySelectorAll(".strip figure").forEach(function (node) {
-          node.classList.toggle("is-on", node === figure);
-        });
-        var caption = galleryHero.parentElement.querySelector("figcaption");
-        if (caption) caption.textContent = img.alt;
-      });
+      node.classList.add("reveal", "is-split");
     });
   }
 
-  var thumbs = document.querySelectorAll("[data-thumbs] .thumb");
-  thumbs.forEach(function (thumb) {
-    thumb.addEventListener("click", function () {
-      thumbs.forEach(function (node) {
-        node.classList.toggle("is-on", node === thumb);
-      });
-    });
-  });
-
-  if (reduce) {
-    document.querySelectorAll(".reveal").forEach(function (node) {
-      node.classList.add("is-in");
-    });
-    return;
-  }
+  /* --- reveal on scroll --- */
 
   var reveals = document.querySelectorAll(".reveal");
-  if ("IntersectionObserver" in window) {
+  if (reduce || !("IntersectionObserver" in window)) {
+    reveals.forEach(function (node) {
+      node.classList.add("is-in");
+    });
+  } else {
+    /* siblings rise in sequence rather than all at once */
+    reveals.forEach(function (node) {
+      if (!node.parentElement || node.classList.contains("is-split")) return;
+      var kin = Array.prototype.filter.call(node.parentElement.children, function (child) {
+        return child.classList.contains("reveal");
+      });
+      if (kin.length < 2) return;
+      var i = kin.indexOf(node);
+      if (i > 0) node.style.transitionDelay = Math.min(i * 70, 280) + "ms";
+    });
+
     var io = new IntersectionObserver(
       function (entries) {
         entries.forEach(function (entry) {
@@ -236,16 +167,75 @@
           }
         });
       },
-      { threshold: 0.16, rootMargin: "0px 0px -8% 0px" }
+      { threshold: 0.12, rootMargin: "0px 0px -8% 0px" }
     );
     reveals.forEach(function (node) {
       io.observe(node);
     });
-  } else {
-    reveals.forEach(function (node) {
-      node.classList.add("is-in");
-    });
   }
+
+  /* --- scroll-driven hero --- */
+
+  var hero = document.querySelector("[data-hero]");
+  var stage = document.querySelector("[data-hero-stage]");
+  if (hero && stage && !reduce) {
+    var ticking = false;
+    var paint = function () {
+      ticking = false;
+      var runway = hero.offsetHeight - window.innerHeight;
+      if (runway <= 0) return;
+      var p = (window.scrollY - hero.offsetTop) / runway;
+      p = Math.max(0, Math.min(1, p));
+      stage.style.setProperty("--p", p.toFixed(4));
+    };
+    var onScroll = function () {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(paint);
+    };
+    paint();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+  }
+
+  /* --- quote slider --- */
+
+  var quotes = document.querySelector("[data-quotes]");
+  if (quotes) {
+    var slides = Array.prototype.slice.call(quotes.querySelectorAll(".quote"));
+    var dotsWrap = quotes.querySelector("[data-q-dots]");
+    var index = 0;
+    var dots = [];
+
+    if (dotsWrap) {
+      slides.forEach(function (slide, i) {
+        var dot = document.createElement("i");
+        if (i === 0) dot.className = "is-on";
+        dotsWrap.appendChild(dot);
+        dots.push(dot);
+      });
+    }
+
+    var show = function (next) {
+      index = (next + slides.length) % slides.length;
+      slides.forEach(function (slide, i) {
+        var on = i === index;
+        slide.classList.toggle("is-on", on);
+        if (on) slide.removeAttribute("hidden");
+        else slide.setAttribute("hidden", "");
+      });
+      dots.forEach(function (dot, i) {
+        dot.classList.toggle("is-on", i === index);
+      });
+    };
+
+    var prev = quotes.querySelector("[data-q-prev]");
+    var next = quotes.querySelector("[data-q-next]");
+    if (prev) prev.addEventListener("click", function () { show(index - 1); });
+    if (next) next.addEventListener("click", function () { show(index + 1); });
+  }
+
+  /* --- stat counters --- */
 
   var counted = false;
   var stats = document.querySelectorAll("[data-count]");
@@ -254,13 +244,15 @@
     counted = true;
     stats.forEach(function (el) {
       var target = Number(el.getAttribute("data-count") || 0);
+      if (reduce) {
+        el.childNodes[0].textContent = String(target);
+        return;
+      }
       var start = performance.now();
-      var suffix = el.querySelector("small");
       function frame(now) {
-        var t = Math.min(1, (now - start) / 900);
+        var t = Math.min(1, (now - start) / 1000);
         var eased = 1 - Math.pow(1 - t, 3);
         el.childNodes[0].textContent = String(Math.round(target * eased));
-        if (suffix && !el.contains(suffix)) el.appendChild(suffix);
         if (t < 1) requestAnimationFrame(frame);
       }
       requestAnimationFrame(frame);
@@ -268,34 +260,52 @@
   }
 
   var proof = document.getElementById("proof");
-  if (proof && "IntersectionObserver" in window) {
-    var po = new IntersectionObserver(function (entries) {
-      if (entries.some(function (e) { return e.isIntersecting; })) {
-        runCounters();
-        po.disconnect();
-      }
-    }, { threshold: 0.25 });
-    po.observe(proof);
+  if (proof && stats.length) {
+    if (reduce || !("IntersectionObserver" in window)) {
+      runCounters();
+    } else {
+      var po = new IntersectionObserver(function (entries) {
+        if (entries.some(function (e) { return e.isIntersecting; })) {
+          runCounters();
+          po.disconnect();
+        }
+      }, { threshold: 0.25 });
+      po.observe(proof);
+    }
   }
 
-  var sticky = document.querySelector(".mobile-book");
-  var hideOn = ["rates", "book", "rules", "faq"].map(function (id) {
-    return document.getElementById(id);
-  }).filter(Boolean);
-  if (sticky && hideOn.length && "IntersectionObserver" in window) {
-    var visible = {};
-    var paintSticky = function () {
-      var on = Object.keys(visible).some(function (k) { return visible[k]; });
-      if (on) sticky.setAttribute("hidden", "");
-      else sticky.removeAttribute("hidden");
-      document.body.classList.toggle("book-in-view", on);
+  /* --- ad-space cursor: tiny gold plate, offset from the point --- */
+
+  var cursor = document.querySelector(".ad-cursor");
+  var coarse = window.matchMedia("(pointer: coarse)").matches;
+  if (cursor && !coarse) {
+    cursor.hidden = false;
+    var cx = 0;
+    var cy = 0;
+    var painted = false;
+    var overForm = false;
+    var isFormControl = function (node) {
+      if (!node || node.nodeType !== 1) return false;
+      var tag = node.tagName;
+      if (tag === "INPUT" || tag === "TEXTAREA" || tag === "SELECT" || tag === "OPTION") return true;
+      if (node.isContentEditable) return true;
+      return false;
     };
-    var so = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        visible[entry.target.id] = entry.isIntersecting;
-      });
-      paintSticky();
-    }, { threshold: 0, rootMargin: "0px 0px -70px 0px" });
-    hideOn.forEach(function (el) { so.observe(el); });
+    var paintCursor = function () {
+      painted = false;
+      cursor.style.transform = "translate3d(" + cx + "px," + cy + "px,0)";
+      cursor.classList.toggle("is-on", !overForm);
+    };
+    window.addEventListener("pointermove", function (event) {
+      cx = event.clientX;
+      cy = event.clientY;
+      overForm = isFormControl(event.target);
+      if (painted) return;
+      painted = true;
+      requestAnimationFrame(paintCursor);
+    }, { passive: true });
+    document.addEventListener("pointerleave", function () {
+      cursor.classList.remove("is-on");
+    });
   }
 })();
