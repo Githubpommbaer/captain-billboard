@@ -24,7 +24,7 @@
 
   document.querySelectorAll("img").forEach(function (img) {
     img.addEventListener("error", function () {
-      var holder = img.closest(".frame, .shot, .hero__shot");
+      var holder = img.closest(".shot, .hero__shot");
       if (holder) holder.classList.add("is-missing");
     });
   });

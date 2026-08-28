@@ -101,6 +101,7 @@ p + p,
 .stat p,
 .faq p,
 .split p,
+.prose p,
 .spec__notes p,
 .steps p,
 .talk__copy p {
@@ -442,7 +443,9 @@ p + p,
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  /* the wordmark rides low so the placard on his back stays readable */
+  justify-content: flex-end;
+  padding-bottom: clamp(1rem, 3.5vh, 2.2rem);
   overflow: hidden;
 }
 
@@ -458,7 +461,7 @@ p + p,
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: 58% 42%;
+  object-position: 74% 50%;
   /* moody grey behind the wordmark, then lifts into full colour as it leaves */
   filter: grayscale(calc(1 - var(--p))) brightness(calc(0.46 + var(--p) * 0.44)) contrast(1.08);
   transform: scale(calc(1 + var(--p) * 0.12));
@@ -479,9 +482,9 @@ p + p,
 .hero__type {
   position: relative;
   z-index: 2;
-  /* sits low enough to leave his back placard readable above the word */
-  padding-top: 5vh;
-  text-align: center;
+  align-self: stretch;
+  padding: 0 var(--pad);
+  text-align: left;
   /* the word rides up out of frame instead of dissolving into the photo */
   transform: translateY(calc(var(--p) * -52vh)) scale(calc(1 - var(--p) * 0.06));
   opacity: calc(1 - max(0, var(--p) - 0.9) * 10);
@@ -513,21 +516,21 @@ p + p,
 }
 
 .hero__foot {
-  position: absolute;
-  left: var(--pad);
-  right: var(--pad);
-  bottom: clamp(1rem, 3.5vh, 2.2rem);
+  position: relative;
   z-index: 3;
+  width: 100%;
+  margin-top: 1.1rem;
+  padding: 0 var(--pad);
   opacity: calc(1 - max(0, var(--p) - 0.3) * 2.6);
   transform: translateY(calc(var(--p) * 3vh));
 }
 
 /* The shot's own title, in Dave's voice, not a generic label. */
 .hero__credit {
-  max-width: 40rem;
+  max-width: 44rem;
   margin: 0 auto;
-  font-size: 0.8rem;
-  line-height: 1.5;
+  font-size: clamp(0.82rem, 1.3vw, 1rem);
+  line-height: 1.45;
   color: var(--grey);
   text-align: center;
   text-wrap: balance;
@@ -654,16 +657,12 @@ p + p,
   }
 
   .hero__giant {
-    font-size: 30vw;
+    font-size: 27vw;
   }
 
   /* portrait crops hard, so frame him rather than the empty sky */
   .hero__shot img {
     object-position: 79% 50%;
-  }
-
-  .hero__credit {
-    font-size: 0.72rem;
   }
 
   .shot figcaption {
@@ -844,20 +843,6 @@ p + p,
   border-top: 1px solid color-mix(in srgb, var(--grey) 18%, transparent);
 }
 
-.frame {
-  border-radius: 1rem;
-  overflow: hidden;
-  background: var(--ink-2);
-}
-
-.frame img {
-  width: 100%;
-  height: auto;
-  aspect-ratio: 4 / 3;
-  object-fit: cover;
-}
-
-.frame figcaption,
 .player figcaption {
   padding: 0.8rem 0.2rem 0;
   font-size: 0.82rem;
@@ -865,7 +850,6 @@ p + p,
   color: var(--mute);
 }
 
-.frame figcaption b,
 .player figcaption b {
   color: var(--lime);
   font-weight: 600;
@@ -1143,6 +1127,33 @@ h3 {
   font-size: 0.72rem;
   font-weight: 600;
   font-variant-numeric: tabular-nums;
+  color: var(--grey);
+}
+
+/* the placard close-up: a spec screen rather than a clip-report frame.
+   Its caption sits up top so it never lands on the placard's own words. */
+.shot--spec img {
+  object-position: 50% 62%;
+}
+
+.shot--spec::after {
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--ink) 88%, transparent) 0%,
+    color-mix(in srgb, var(--ink) 45%, transparent) 24%,
+    transparent 52%
+  );
+}
+
+.shot--spec figcaption {
+  top: 4.8rem;
+  bottom: auto;
+}
+
+.shot__note {
+  max-width: 46ch;
+  font-size: 0.9rem;
+  line-height: 1.5;
   color: var(--grey);
 }
 
@@ -1714,6 +1725,37 @@ code {
 }
 
 @media (min-width: 980px) {
+  /* wide screens have room to stand the wordmark left of him */
+  .hero__stage {
+    justify-content: center;
+    padding-bottom: 0;
+  }
+
+  .hero__shot img {
+    object-position: 56% 50%;
+  }
+
+  .hero__type {
+    align-self: flex-start;
+    width: min(62vw, 58rem);
+  }
+
+  .hero__giant {
+    font-size: min(19vw, 19rem);
+  }
+
+  .hero__serif {
+    font-size: min(4.4vw, 2.6rem);
+  }
+
+  .hero__foot {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: clamp(1rem, 3.5vh, 2.2rem);
+    margin-top: 0;
+  }
+
   .row {
     grid-template-columns: auto minmax(0, 1fr) auto;
     gap: 0.2rem 2.2rem;
@@ -1777,7 +1819,6 @@ code {
   opacity: 0;
 }
 
-.frame.is-missing,
 .shot.is-missing,
 .hero__shot.is-missing {
   background: var(--ink-2);
