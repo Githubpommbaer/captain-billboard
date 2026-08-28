@@ -534,29 +534,17 @@ p + p,
 
   .hero__type {
     align-self: flex-start;
-    width: min(42vw, 38rem);
-  }
-
-  .hero__shot::after {
-    background:
-      linear-gradient(90deg, color-mix(in srgb, var(--paper) 82%, transparent) 0%, color-mix(in srgb, var(--paper) 42%, transparent) 32%, transparent 52%),
-      linear-gradient(180deg, color-mix(in srgb, var(--ink) 22%, transparent) 0%, transparent 18%);
-  }
-
-  .hero__giant {
-    font-size: min(18vw, 18rem);
-  }
-
-  .hero__serif {
-    font-size: min(4.2vw, 2.5rem);
+    width: min(34vw, 30rem);
   }
 
   .hero__foot {
     position: absolute;
     left: 0;
     right: 0;
-    bottom: clamp(1rem, 3.5vh, 2.2rem);
+    bottom: 0;
     margin-top: 0;
+    background: linear-gradient(180deg, transparent 0%, var(--paper) 42%);
+    padding-bottom: 0.35rem;
   }
 
   .hero__shot img {
@@ -630,6 +618,35 @@ p + p,
   margin-top: 0.1em;
 }
 
+/* After the base type sizes so the aspect-ratio branches actually win. */
+@media (max-aspect-ratio: 5 / 4) {
+  .hero__giant {
+    font-size: 19vw;
+  }
+}
+
+@media (max-aspect-ratio: 5 / 4) and (max-height: 780px) {
+  .hero__giant {
+    font-size: 17vw;
+  }
+}
+
+@media (min-aspect-ratio: 5 / 4) {
+  .hero__giant {
+    font-size: min(13.2vw, 12rem);
+  }
+
+  .hero__serif {
+    font-size: min(3.2vw, 2rem);
+  }
+
+  .hero__shot::after {
+    background:
+      linear-gradient(90deg, var(--paper) 0%, color-mix(in srgb, var(--paper) 94%, transparent) 24%, color-mix(in srgb, var(--paper) 22%, transparent) 38%, transparent 50%),
+      linear-gradient(0deg, var(--paper) 0%, color-mix(in srgb, var(--paper) 90%, transparent) 16%, transparent 34%);
+  }
+}
+
 .hero__foot {
   position: relative;
   z-index: 3;
@@ -646,7 +663,7 @@ p + p,
   margin: 0 auto;
   font-size: clamp(0.82rem, 1.3vw, 1rem);
   line-height: 1.45;
-  color: var(--grey);
+  color: var(--ink);
   text-align: center;
   text-wrap: balance;
 }
@@ -673,7 +690,7 @@ p + p,
 .hero__who p {
   font-size: clamp(0.85rem, 1.2vw, 0.95rem);
   font-weight: 500;
-  color: var(--grey);
+  color: var(--ink);
 }
 
 .hero__who-light {
@@ -731,7 +748,7 @@ p + p,
   font-weight: 500;
   font-variant-numeric: lining-nums tabular-nums;
   line-height: 1;
-  color: var(--grey);
+  color: var(--ink);
   white-space: nowrap;
 }
 
