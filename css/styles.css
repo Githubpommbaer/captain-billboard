@@ -445,8 +445,108 @@ p + p,
   align-items: center;
   /* the wordmark rides low so the placard on his back stays readable */
   justify-content: flex-end;
-  padding-bottom: clamp(1rem, 3.5vh, 2.2rem);
+  padding-bottom: clamp(0.8rem, 3vh, 1.8rem);
   overflow: hidden;
+}
+
+/* Where the type may live depends on how much clear frame the crop leaves,
+   which tracks the viewport's aspect ratio rather than its width. */
+.hero__band {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+}
+
+/* portrait-ish: he fills the frame, so the type drops into an opaque margin
+   below him. The band has to stay short enough to clear his back placard. */
+@media (max-aspect-ratio: 5 / 4) {
+  .hero__band {
+    padding-top: 1.4rem;
+    background: linear-gradient(
+      180deg,
+      transparent 0%,
+      color-mix(in srgb, var(--ink) 80%, transparent) 16%,
+      var(--ink) 42%
+    );
+  }
+
+  .hero__giant {
+    font-size: 19vw;
+  }
+
+  .hero__serif {
+    font-size: 4.6vw;
+  }
+
+  .hero__credit {
+    font-size: 0.74rem;
+    line-height: 1.4;
+  }
+
+  .hero__foot {
+    margin-top: 0.8rem;
+  }
+
+  .hero__strip {
+    gap: 0.7rem;
+    padding-top: 0.7rem;
+  }
+}
+
+/* short phones have even less room under him */
+@media (max-aspect-ratio: 5 / 4) and (max-height: 780px) {
+  .hero__band {
+    padding-top: 0.9rem;
+  }
+
+  .hero__giant {
+    font-size: 17vw;
+  }
+
+  .hero__credit {
+    font-size: 0.7rem;
+  }
+
+  .chip__l {
+    display: none;
+  }
+}
+
+/* landscape-ish: he stands right of centre, so the type takes the left margin */
+@media (min-aspect-ratio: 5 / 4) {
+  .hero__stage {
+    justify-content: center;
+    padding-bottom: 0;
+  }
+
+  .hero__band {
+    display: contents;
+  }
+
+  .hero__type {
+    align-self: flex-start;
+    width: min(58vw, 56rem);
+  }
+
+  .hero__giant {
+    font-size: min(18vw, 18rem);
+  }
+
+  .hero__serif {
+    font-size: min(4.2vw, 2.5rem);
+  }
+
+  .hero__foot {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: clamp(1rem, 3.5vh, 2.2rem);
+    margin-top: 0;
+  }
+
+  .hero__shot img {
+    object-position: 56% 50%;
+  }
 }
 
 /* The shot owns the whole first screen; the type sits on top of it. */
@@ -461,7 +561,8 @@ p + p,
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: 74% 50%;
+  /* portrait crops hard, so frame him rather than the empty sky */
+  object-position: 79% 50%;
   /* moody grey behind the wordmark, then lifts into full colour as it leaves */
   filter: grayscale(calc(1 - var(--p))) brightness(calc(0.46 + var(--p) * 0.44)) contrast(1.08);
   transform: scale(calc(1 + var(--p) * 0.12));
@@ -498,7 +599,7 @@ p + p,
 }
 
 .hero__giant {
-  font-size: min(31vw, 30rem);
+  font-size: 22vw;
   font-weight: 900;
   line-height: 0.82;
   letter-spacing: -0.05em;
@@ -656,14 +757,6 @@ p + p,
     white-space: normal;
   }
 
-  .hero__giant {
-    font-size: 27vw;
-  }
-
-  /* portrait crops hard, so frame him rather than the empty sky */
-  .hero__shot img {
-    object-position: 79% 50%;
-  }
 
   .shot figcaption {
     gap: 0.55rem;
@@ -1005,10 +1098,11 @@ h3 {
 
 /* --- player --- */
 
+/* full-bleed like the shots, so no media on the page sits in a box */
 .player {
   position: relative;
-  margin-top: 2.2rem;
-  border-radius: 1rem;
+  width: 100vw;
+  margin: 2.4rem 0 0 calc(50% - 50vw);
   overflow: hidden;
   background: #000;
 }
@@ -1021,8 +1115,8 @@ h3 {
 
 .player figcaption {
   position: absolute;
-  left: 1rem;
-  bottom: 0.8rem;
+  left: var(--pad);
+  bottom: 1rem;
   padding: 0;
   color: var(--lime);
 }
@@ -1656,7 +1750,7 @@ code {
   }
 
   .hero__stage {
-    position: static;
+    position: relative;
     height: 100svh;
   }
 
@@ -1725,37 +1819,6 @@ code {
 }
 
 @media (min-width: 980px) {
-  /* wide screens have room to stand the wordmark left of him */
-  .hero__stage {
-    justify-content: center;
-    padding-bottom: 0;
-  }
-
-  .hero__shot img {
-    object-position: 56% 50%;
-  }
-
-  .hero__type {
-    align-self: flex-start;
-    width: min(62vw, 58rem);
-  }
-
-  .hero__giant {
-    font-size: min(19vw, 19rem);
-  }
-
-  .hero__serif {
-    font-size: min(4.4vw, 2.6rem);
-  }
-
-  .hero__foot {
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: clamp(1rem, 3.5vh, 2.2rem);
-    margin-top: 0;
-  }
-
   .row {
     grid-template-columns: auto minmax(0, 1fr) auto;
     gap: 0.2rem 2.2rem;
