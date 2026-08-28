@@ -344,15 +344,15 @@ p + p,
   align-items: center;
   line-height: 0;
   text-decoration: none;
+  background: #000;
+  border-radius: 0.28rem;
+  padding: 0.22rem 0.38rem;
 }
 
 .mark img {
   display: block;
   height: 36px;
   width: auto;
-  /* the PNG is cream + slash on a clear ground — black is the plate */
-  background: #000;
-  padding: 3px 5px;
 }
 
 .nav__end {
@@ -1629,8 +1629,6 @@ h3 {
   display: block;
   height: clamp(4.5rem, 14vw, 8.5rem);
   width: auto;
-  background: #000;
-  padding: 0.45rem 0.65rem;
 }
 
 .talk__bar {
