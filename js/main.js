@@ -87,6 +87,17 @@
     });
   }
 
+  /* --- nav backdrop once past the hero fold --- */
+
+  var nav = document.querySelector(".nav");
+  if (nav) {
+    var markNav = function () {
+      nav.classList.toggle("is-stuck", window.scrollY > 24);
+    };
+    markNav();
+    window.addEventListener("scroll", markNav, { passive: true });
+  }
+
   var menuLinks = document.querySelectorAll(".menu__links a[href^='#']");
   var sections = [];
   menuLinks.forEach(function (link) {
@@ -119,7 +130,7 @@
         wrap.className = "w";
         var inner = document.createElement("i");
         inner.textContent = word;
-        inner.style.transitionDelay = Math.min(i * 22, 700) + "ms";
+        inner.style.transitionDelay = Math.min(i * 16, 480) + "ms";
         wrap.appendChild(inner);
         node.appendChild(wrap);
         node.appendChild(document.createTextNode(" "));
