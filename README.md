@@ -22,7 +22,7 @@ Any static server is fine. `python3 -m http.server` is the one we expect.
 | --- | --- |
 | `index.html` | The site |
 | `legal.html` | Impressum / Datenschutz stubs (replace the bracketed operator details) |
-| `css/styles.css` | #171718 canvas, #e6ff5a lime flood, giant display type, numbered rows, lime footer panel |
+| `css/styles.css` | #F3F0E8 paper canvas, purple #7B46B8 + gold #E9B23C from the suit, giant display type, numbered rows, gold footer panel |
 | `js/main.js` | Scroll-driven hero, word reveals, quote slider, counters, mailto body, menu, reduced-motion |
 | `assets/fonts/` | Self-hosted Instrument Serif, Montserrat, JetBrains Mono (no Google Fonts) |
 | `assets/img/` | Image paths — drop files in, do not rename |
@@ -67,8 +67,8 @@ Images and the trailer may 404 until you copy them in. The markup already points
 
 ## Design language
 
-Editorial studio, dark and loud: `#171718` canvas, `#e6ff5a` acid lime used as a flood (hero
-wordmark, arrows, marquee band, featured rate card, whole closing panel), heavy Montserrat for
-lockups and Instrument Serif italic for pulls. The hero is scroll-driven — the giant word rides up
-while the oval portrait grows into a card. Everything degrades to a static, fully visible layout
+Light studio, loud in Dave’s colours: `#F3F0E8` paper canvas, purple `#7B46B8` / plum `#3A1568`
+for type, gold `#E9B23C` for plates (marquee, spec square, pills, closing panel). Heavy Montserrat
+for lockups and Instrument Serif italic for pulls. The hero is scroll-driven — the giant word rides
+up while the LA overlook stays full-bleed. Everything degrades to a static, fully visible layout
 under `prefers-reduced-motion`.
