@@ -11,8 +11,8 @@
   --grey: #3d3350;
   --mute: #5c5270;
   --live: #7b46b8;
-  --sans: "Montserrat", "Segoe UI", sans-serif;
-  --serif: "Instrument Serif", "Times New Roman", serif;
+  --display: "Anton", Impact, sans-serif;
+  --sans: "Barlow", "Segoe UI", sans-serif;
   --mono: "JetBrains Mono", ui-monospace, monospace;
   --pad: clamp(1rem, 4vw, 3rem);
   --wide: 84rem;
@@ -129,9 +129,8 @@ p + p,
 }
 
 .display {
-  font-family: var(--serif);
+  font-family: var(--display);
   font-size: clamp(2.2rem, 6.6vw, 5rem);
-  font-style: italic;
   font-weight: 400;
   line-height: 1.02;
   letter-spacing: -0.015em;
@@ -142,9 +141,8 @@ p + p,
 }
 
 .pull {
-  font-family: var(--serif);
+  font-family: var(--display);
   font-size: clamp(2.4rem, 8vw, 6.5rem);
-  font-style: italic;
   font-weight: 400;
   line-height: 1.08;
   letter-spacing: -0.02em;
@@ -342,27 +340,16 @@ p + p,
 }
 
 .mark {
-  font-size: clamp(0.95rem, 2.4vw, 1.25rem);
-  font-weight: 900;
-  letter-spacing: -0.03em;
-  line-height: 1.15;
-  color: var(--plum);
+  display: flex;
+  align-items: center;
+  line-height: 0;
   text-decoration: none;
 }
 
-.mark__dot {
-  color: var(--purple);
-}
-
-/* One capsule per i — the tittle is the top of the stem, not a flying dot. */
-.mark__i {
-  display: inline-block;
-  width: 0.15em;
-  height: 0.78em;
-  margin: 0 0.045em 0 0.03em;
-  background: currentColor;
-  border-radius: 999px;
-  vertical-align: -0.02em;
+.mark img {
+  display: block;
+  height: 32px;
+  width: auto;
 }
 
 .nav__end {
@@ -420,9 +407,8 @@ p + p,
 }
 
 .menu__links a {
-  font-family: var(--serif);
+  font-family: var(--display);
   font-size: clamp(1.7rem, 6vw, 3.2rem);
-  font-style: italic;
   line-height: 1.12;
   color: var(--plum);
   text-decoration: none;
@@ -612,17 +598,17 @@ p + p,
 }
 
 .hero__giant {
+  font-family: var(--display);
   font-size: 22vw;
-  font-weight: 900;
+  font-weight: 400;
   line-height: 0.88;
-  letter-spacing: -0.05em;
+  letter-spacing: -0.02em;
   color: var(--plum);
 }
 
 .hero__serif {
-  font-family: var(--serif);
+  font-family: var(--display);
   font-size: min(5.6vw, 2.9rem);
-  font-style: italic;
   line-height: 1.08;
   letter-spacing: 0.01em;
   color: var(--purple);
@@ -921,9 +907,8 @@ p + p,
 }
 
 .row__title {
-  font-family: var(--serif);
+  font-family: var(--display);
   font-size: clamp(2rem, 6.4vw, 5rem);
-  font-style: italic;
   line-height: 1.05;
   color: var(--purple);
   transition: color 0.3s var(--ease);
@@ -987,9 +972,8 @@ p + p,
 }
 
 .player__title {
-  font-family: var(--serif);
+  font-family: var(--display);
   font-size: clamp(1.7rem, 4.4vw, 3.4rem);
-  font-style: italic;
   font-weight: 400;
   line-height: 1.15;
   letter-spacing: -0.015em;
@@ -1130,9 +1114,8 @@ h3 {
 }
 
 .rule__n {
-  font-family: var(--serif);
+  font-family: var(--display);
   font-size: clamp(2rem, 6vw, 3.6rem);
-  font-style: italic;
   line-height: 1;
   color: var(--purple);
   margin: 0.3rem 0 1rem;
@@ -1170,7 +1153,7 @@ h3 {
   margin: 2.4rem 0 0 calc(50% - 50vw);
   overflow: hidden;
   background: #16092a;
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 2560 / 1080;
 }
 
 .player video {
@@ -1185,8 +1168,7 @@ h3 {
   inset: 0;
   display: grid;
   place-items: center;
-  font-family: var(--serif);
-  font-style: italic;
+  font-family: var(--display);
   font-size: clamp(1.8rem, 5vw, 3.2rem);
   color: var(--gold);
 }
@@ -1263,9 +1245,8 @@ h3 {
 }
 
 .shot__title {
-  font-family: var(--serif);
+  font-family: var(--display);
   font-size: clamp(1.5rem, 4.2vw, 3.4rem);
-  font-style: italic;
   font-weight: 400;
   line-height: 1.06;
   letter-spacing: -0.015em;
@@ -1333,16 +1314,16 @@ h3 {
 }
 
 .m-sans {
+  font-family: var(--display);
   font-size: clamp(2.4rem, 8vw, 6rem);
-  font-weight: 900;
+  font-weight: 400;
   line-height: 1.12;
-  letter-spacing: -0.04em;
+  letter-spacing: -0.02em;
 }
 
 .m-serif {
-  font-family: var(--serif);
+  font-family: var(--display);
   font-size: clamp(2.2rem, 7.4vw, 5.6rem);
-  font-style: italic;
   line-height: 1.12;
 }
 
@@ -1376,9 +1357,8 @@ h3 {
 }
 
 .quote p {
-  font-family: var(--serif);
+  font-family: var(--display);
   font-size: clamp(1.6rem, 4.4vw, 3.2rem);
-  font-style: italic;
   font-weight: 400;
   line-height: 1.28;
   color: var(--plum);
@@ -1438,9 +1418,8 @@ h3 {
 }
 
 .rate__price {
-  font-family: var(--serif);
+  font-family: var(--display);
   font-size: clamp(2.6rem, 6.5vw, 4rem);
-  font-style: italic;
   line-height: 1.08;
   color: var(--plum);
   margin: 0.3rem 0 1rem;
@@ -1638,15 +1617,15 @@ h3 {
   outline-color: var(--ink);
 }
 
-/* One line, room for the i-dots. Tight line-height used to fling them off. */
 .talk__mark {
   margin: clamp(2.5rem, 6vw, 4rem) 0 0.6rem;
-  font-size: clamp(2.4rem, 7.2vw, 5.8rem);
-  font-weight: 900;
-  line-height: 1.18;
-  letter-spacing: -0.03em;
-  color: var(--plum);
-  overflow: visible;
+  line-height: 0;
+}
+
+.talk__mark img {
+  display: block;
+  height: clamp(4.5rem, 14vw, 8.5rem);
+  width: auto;
 }
 
 .talk__bar {
@@ -1740,9 +1719,8 @@ code {
 }
 
 .legal-page h1 {
-  font-family: var(--serif);
+  font-family: var(--display);
   font-size: clamp(2.6rem, 9vw, 5rem);
-  font-style: italic;
   font-weight: 400;
   line-height: 1.08;
   color: var(--plum);
@@ -1756,9 +1734,8 @@ code {
 }
 
 .legal-block h2 {
-  font-family: var(--serif);
+  font-family: var(--display);
   font-size: 1.9rem;
-  font-style: italic;
   font-weight: 400;
   color: var(--plum);
   margin-bottom: 0.7rem;
