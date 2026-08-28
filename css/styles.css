@@ -1709,9 +1709,10 @@ code {
   margin-bottom: 0.7rem;
 }
 
-/* lime links only work on the dark canvas */
-.legal-page p a,
-.statement p a {
+/* Lime links only work on the dark canvas, and never on a pill, which
+   carries its own lime plate and keeps the ink label from .pill. */
+.legal-page p a:not(.pill),
+.statement p a:not(.pill) {
   color: var(--lime);
 }
 
