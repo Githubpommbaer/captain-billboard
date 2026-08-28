@@ -1623,11 +1623,15 @@ h3 {
 .talk__mark {
   margin: clamp(2.5rem, 6vw, 4rem) 0 0.6rem;
   line-height: 0;
+  display: inline-block;
+  background: #000;
+  border-radius: 0.35rem;
+  padding: 0.5rem 0.7rem;
 }
 
 .talk__mark img {
   display: block;
-  height: clamp(4.5rem, 14vw, 8.5rem);
+  height: clamp(3.8rem, 12vw, 7.2rem);
   width: auto;
 }
 
