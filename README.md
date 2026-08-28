@@ -22,8 +22,8 @@ Any static server is fine. `python3 -m http.server` is the one we expect.
 | --- | --- |
 | `index.html` | The site |
 | `legal.html` | Impressum / Datenschutz stubs (replace bracketed Maresmedia details) |
-| `css/styles.css` | Paper studio: lots of air, serif display, acid accent, numbered blocks |
-| `js/main.js` | Reveals, counters, mailto body, menu, image fallbacks, reduced-motion |
+| `css/styles.css` | #171718 canvas, #e6ff5a lime flood, giant display type, numbered rows, lime footer panel |
+| `js/main.js` | Scroll-driven hero, word reveals, quote slider, counters, mailto body, menu, reduced-motion |
 | `assets/fonts/` | Self-hosted Instrument Serif, Montserrat, JetBrains Mono (no Google Fonts) |
 | `assets/img/` | Image paths — drop files in, do not rename |
 | `assets/video/trailer.mp4` | Trailer path |

@@ -5,6 +5,8 @@
   var year = document.getElementById("y");
   if (year) year.textContent = String(new Date().getFullYear());
 
+  /* --- media fallbacks --- */
+
   document.querySelectorAll("video").forEach(function (video) {
     var frame = video.closest(".player");
     var markMissing = function () {
@@ -22,10 +24,12 @@
 
   document.querySelectorAll("img").forEach(function (img) {
     img.addEventListener("error", function () {
-      var figure = img.closest(".shot, .hero-frame, .service__shot, .work, .player");
-      if (figure) figure.classList.add("is-missing");
+      var holder = img.closest(".shot, .frame, .work, .row__thumb, .hero__pill, .m-pill");
+      if (holder) holder.classList.add("is-missing");
     });
   });
+
+  /* --- booking mailto --- */
 
   var form = document.getElementById("booking-form");
   if (form) {
@@ -59,51 +63,79 @@
     });
   }
 
-  var burger = document.querySelector(".nav__menu");
-  var drawer = document.getElementById("site-menu");
-  if (burger && drawer) {
-    burger.addEventListener("click", function () {
-      var open = burger.getAttribute("aria-expanded") === "true";
-      burger.setAttribute("aria-expanded", open ? "false" : "true");
-      if (open) drawer.setAttribute("hidden", "");
-      else drawer.removeAttribute("hidden");
+  /* --- menu --- */
+
+  var menuBtn = document.querySelector(".menu-btn");
+  var menu = document.getElementById("site-menu");
+  if (menuBtn && menu) {
+    var setMenu = function (open) {
+      menuBtn.setAttribute("aria-expanded", open ? "true" : "false");
+      menuBtn.textContent = open ? "Close" : "Menu";
+      if (open) menu.removeAttribute("hidden");
+      else menu.setAttribute("hidden", "");
+    };
+    menuBtn.addEventListener("click", function () {
+      setMenu(menuBtn.getAttribute("aria-expanded") !== "true");
     });
-    drawer.querySelectorAll("a").forEach(function (link) {
+    menu.querySelectorAll("a").forEach(function (link) {
       link.addEventListener("click", function () {
-        burger.setAttribute("aria-expanded", "false");
-        drawer.setAttribute("hidden", "");
+        setMenu(false);
       });
+    });
+    document.addEventListener("keydown", function (event) {
+      if (event.key === "Escape" && menuBtn.getAttribute("aria-expanded") === "true") setMenu(false);
     });
   }
 
-  var links = document.querySelectorAll(".menu a[href^='#']");
+  var menuLinks = document.querySelectorAll(".menu__links a[href^='#']");
   var sections = [];
-  links.forEach(function (link) {
-    var id = link.getAttribute("href").slice(1);
-    var el = document.getElementById(id);
+  menuLinks.forEach(function (link) {
+    var el = document.getElementById(link.getAttribute("href").slice(1));
     if (el) sections.push({ el: el, link: link });
   });
-  function markNav() {
-    var y = window.scrollY + 140;
+  function markMenu() {
+    var y = window.scrollY + 160;
     var current = sections[0];
     sections.forEach(function (item) {
       if (item.el.offsetTop <= y) current = item;
     });
-    links.forEach(function (link) {
+    menuLinks.forEach(function (link) {
       link.classList.toggle("is-here", current && link === current.link);
     });
   }
-  if (links.length) {
-    markNav();
-    window.addEventListener("scroll", markNav, { passive: true });
+  if (sections.length) {
+    markMenu();
+    window.addEventListener("scroll", markMenu, { passive: true });
   }
 
-  if (reduce) {
-    document.querySelectorAll(".reveal").forEach(function (node) {
+  /* --- word split for the big statement --- */
+
+  if (!reduce) {
+    document.querySelectorAll("[data-split]").forEach(function (node) {
+      var words = node.textContent.split(/\s+/).filter(Boolean);
+      node.textContent = "";
+      words.forEach(function (word, i) {
+        var wrap = document.createElement("span");
+        wrap.className = "w";
+        var inner = document.createElement("i");
+        inner.textContent = word;
+        inner.style.transitionDelay = Math.min(i * 22, 700) + "ms";
+        wrap.appendChild(inner);
+        node.appendChild(wrap);
+        node.appendChild(document.createTextNode(" "));
+      });
+      node.classList.add("reveal", "is-split");
+    });
+  }
+
+  /* --- reveal on scroll --- */
+
+  var reveals = document.querySelectorAll(".reveal");
+  if (reduce || !("IntersectionObserver" in window)) {
+    reveals.forEach(function (node) {
       node.classList.add("is-in");
     });
-  } else if ("IntersectionObserver" in window) {
-    var reveals = document.querySelectorAll(".reveal");
+  } else {
     var io = new IntersectionObserver(
       function (entries) {
         entries.forEach(function (entry) {
@@ -113,16 +145,75 @@
           }
         });
       },
-      { threshold: 0.14, rootMargin: "0px 0px -8% 0px" }
+      { threshold: 0.12, rootMargin: "0px 0px -8% 0px" }
     );
     reveals.forEach(function (node) {
       io.observe(node);
     });
-  } else {
-    document.querySelectorAll(".reveal").forEach(function (node) {
-      node.classList.add("is-in");
-    });
   }
+
+  /* --- scroll-driven hero --- */
+
+  var hero = document.querySelector("[data-hero]");
+  var stage = document.querySelector("[data-hero-stage]");
+  if (hero && stage && !reduce) {
+    var ticking = false;
+    var paint = function () {
+      ticking = false;
+      var runway = hero.offsetHeight - window.innerHeight;
+      if (runway <= 0) return;
+      var p = (window.scrollY - hero.offsetTop) / runway;
+      p = Math.max(0, Math.min(1, p));
+      stage.style.setProperty("--p", p.toFixed(4));
+    };
+    var onScroll = function () {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(paint);
+    };
+    paint();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+  }
+
+  /* --- quote slider --- */
+
+  var quotes = document.querySelector("[data-quotes]");
+  if (quotes) {
+    var slides = Array.prototype.slice.call(quotes.querySelectorAll(".quote"));
+    var dotsWrap = quotes.querySelector("[data-q-dots]");
+    var index = 0;
+    var dots = [];
+
+    if (dotsWrap) {
+      slides.forEach(function (slide, i) {
+        var dot = document.createElement("i");
+        if (i === 0) dot.className = "is-on";
+        dotsWrap.appendChild(dot);
+        dots.push(dot);
+      });
+    }
+
+    var show = function (next) {
+      index = (next + slides.length) % slides.length;
+      slides.forEach(function (slide, i) {
+        var on = i === index;
+        slide.classList.toggle("is-on", on);
+        if (on) slide.removeAttribute("hidden");
+        else slide.setAttribute("hidden", "");
+      });
+      dots.forEach(function (dot, i) {
+        dot.classList.toggle("is-on", i === index);
+      });
+    };
+
+    var prev = quotes.querySelector("[data-q-prev]");
+    var next = quotes.querySelector("[data-q-next]");
+    if (prev) prev.addEventListener("click", function () { show(index - 1); });
+    if (next) next.addEventListener("click", function () { show(index + 1); });
+  }
+
+  /* --- stat counters --- */
 
   var counted = false;
   var stats = document.querySelectorAll("[data-count]");
@@ -131,13 +222,15 @@
     counted = true;
     stats.forEach(function (el) {
       var target = Number(el.getAttribute("data-count") || 0);
+      if (reduce) {
+        el.childNodes[0].textContent = String(target);
+        return;
+      }
       var start = performance.now();
-      var suffix = el.querySelector("span");
       function frame(now) {
-        var t = Math.min(1, (now - start) / 900);
+        var t = Math.min(1, (now - start) / 1000);
         var eased = 1 - Math.pow(1 - t, 3);
         el.childNodes[0].textContent = String(Math.round(target * eased));
-        if (suffix && !el.contains(suffix)) el.appendChild(suffix);
         if (t < 1) requestAnimationFrame(frame);
       }
       requestAnimationFrame(frame);
@@ -146,9 +239,9 @@
 
   var proof = document.getElementById("proof");
   if (proof && stats.length) {
-    if (reduce) {
+    if (reduce || !("IntersectionObserver" in window)) {
       runCounters();
-    } else if ("IntersectionObserver" in window) {
+    } else {
       var po = new IntersectionObserver(function (entries) {
         if (entries.some(function (e) { return e.isIntersecting; })) {
           runCounters();
