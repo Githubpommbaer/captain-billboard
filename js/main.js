@@ -274,23 +274,32 @@
     }
   }
 
-  /* --- ad-space cursor: pointer stays, placard rides beside it --- */
+  /* --- ad-space cursor: tiny gold plate, offset from the point --- */
 
   var cursor = document.querySelector(".ad-cursor");
   var coarse = window.matchMedia("(pointer: coarse)").matches;
-  if (cursor && !coarse && !reduce) {
+  if (cursor && !coarse) {
     cursor.hidden = false;
     var cx = 0;
     var cy = 0;
     var painted = false;
+    var overForm = false;
+    var isFormControl = function (node) {
+      if (!node || node.nodeType !== 1) return false;
+      var tag = node.tagName;
+      if (tag === "INPUT" || tag === "TEXTAREA" || tag === "SELECT" || tag === "OPTION") return true;
+      if (node.isContentEditable) return true;
+      return false;
+    };
     var paintCursor = function () {
       painted = false;
       cursor.style.transform = "translate3d(" + cx + "px," + cy + "px,0)";
+      cursor.classList.toggle("is-on", !overForm);
     };
     window.addEventListener("pointermove", function (event) {
       cx = event.clientX;
       cy = event.clientY;
-      cursor.classList.add("is-on");
+      overForm = isFormControl(event.target);
       if (painted) return;
       painted = true;
       requestAnimationFrame(paintCursor);

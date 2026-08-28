@@ -2,14 +2,14 @@
   color-scheme: light;
   scrollbar-color: var(--purple) var(--paper);
   --paper: #fff8e0;
-  --paper-2: #ffe566;
-  --ink: #16092a;
-  --ink-2: #2a1448;
-  --plum: #4b00c8;
-  --purple: #7a00e6;
-  --gold: #ffd100;
-  --grey: #2a0a4a;
-  --mute: #4a1a8a;
+  --paper-2: #ffe14a;
+  --ink: #0d0418;
+  --ink-2: #1a0833;
+  --plum: #5c00e0;
+  --purple: #8f12ff;
+  --gold: #ffdc00;
+  --grey: #14051f;
+  --mute: #5410a8;
   --live: #ed1c24;
   --display: "Anton", Impact, sans-serif;
   --sans: "Barlow", "Segoe UI", sans-serif;
@@ -197,7 +197,7 @@ p + p,
   width: 1.85rem;
   height: 1.85rem;
   border-radius: 50%;
-  background: var(--ink);
+  background: #000;
   color: var(--gold);
   transition: transform 0.4s var(--ease);
 }
@@ -212,8 +212,8 @@ p + p,
   height: 2.75rem;
   border: 0;
   border-radius: 50%;
-  background: var(--gold);
-  color: var(--ink);
+  background: #000;
+  color: var(--gold);
   cursor: pointer;
   transition: transform 0.45s var(--ease), background 0.3s var(--ease);
 }
@@ -230,8 +230,8 @@ p + p,
 }
 
 .arrow-btn--line:hover {
-  background: var(--gold);
-  color: var(--ink);
+  background: #000;
+  color: var(--gold);
 }
 
 .arrow-btn--back svg {
@@ -246,8 +246,8 @@ p + p,
   padding: 0.4rem 0.55rem 0.4rem 1rem;
   border: 0;
   border-radius: 999px;
-  background: var(--gold);
-  color: var(--ink);
+  background: #000;
+  color: var(--gold);
   font-family: var(--sans);
   font-size: 0.86rem;
   font-weight: 700;
@@ -257,8 +257,14 @@ p + p,
 }
 
 .pill:hover {
-  background: var(--plum);
-  color: var(--paper);
+  background: var(--gold);
+  color: #000;
+}
+
+.pill:hover .arrow {
+  background: #000;
+  color: var(--gold);
+  transform: translateX(3px);
 }
 
 .pill--lg {
@@ -269,24 +275,21 @@ p + p,
 
 .pill--gold {
   background: var(--gold);
+  color: #000;
 }
 
 .pill--gold .arrow {
-  background: var(--ink);
+  background: #000;
   color: var(--gold);
 }
 
 .pill--ink {
-  background: var(--ink);
-  color: var(--paper);
+  background: #000;
+  color: var(--gold);
 }
 
 .pill--ink:hover {
-  background: #000;
-}
-
-.pill:hover .arrow {
-  transform: translateX(3px);
+  background: #161616;
 }
 
 .pill:active,
@@ -1243,8 +1246,8 @@ h3 {
   gap: 0.4rem;
   padding: 0.28rem 0.7rem;
   border-radius: 999px;
-  border: 1px solid color-mix(in srgb, var(--gold) 55%, transparent);
-  background: color-mix(in srgb, var(--ink) 55%, transparent);
+  border: 1px solid #000;
+  background: #000;
   color: var(--gold);
   font-size: 0.7rem;
   font-weight: 600;
@@ -1690,8 +1693,8 @@ h3 {
   font: inherit;
   font-size: 1rem;
   font-weight: 400;
-  color: var(--paper);
-  background: var(--ink);
+  color: var(--gold);
+  background: #000;
   border: 0;
   border-radius: 0.5rem;
   padding: 0.7rem 0.75rem;
@@ -1982,7 +1985,6 @@ code {
   transform: translate3d(-240px, -240px, 0);
   will-change: transform;
   opacity: 0;
-  transition: opacity 0.18s var(--ease);
 }
 
 .ad-cursor.is-on {
@@ -1991,20 +1993,19 @@ code {
 
 .ad-cursor__tag {
   display: inline-block;
-  margin: 16px 0 0 20px;
-  padding: 0.38rem 0.58rem 0.32rem;
-  background: #fff;
+  margin: 12px 0 0 14px;
+  padding: 0.16rem 0.3rem 0.12rem;
+  background: var(--gold);
   color: var(--ink);
-  border: 2.5px solid var(--ink);
-  box-shadow: 3px 3px 0 var(--plum);
+  border: 1.5px solid #000;
   font-family: var(--display);
-  font-size: 0.84rem;
-  letter-spacing: 0.07em;
+  font-size: 0.62rem;
+  letter-spacing: 0.03em;
   line-height: 1;
   white-space: nowrap;
 }
 
-@media (pointer: coarse), (prefers-reduced-motion: reduce) {
+@media (pointer: coarse) {
   .ad-cursor {
     display: none;
   }
