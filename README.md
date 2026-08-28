@@ -22,9 +22,9 @@ Any static server is fine. `python3 -m http.server` is the one we expect.
 | --- | --- |
 | `index.html` | The site |
 | `legal.html` | Impressum / Datenschutz stubs (replace bracketed Maresmedia details) |
-| `css/styles.css` | Loki-concept screens: near-black canvas, orange diagonals, cream slash titles |
-| `js/main.js` | Reveals, counters, mailto body, carousels, image fallbacks, reduced-motion |
-| `assets/fonts/` | Self-hosted Black Han Sans, Anton, Barlow, JetBrains Mono (no Google Fonts) |
+| `css/styles.css` | Paper studio: lots of air, serif display, acid accent, numbered blocks |
+| `js/main.js` | Reveals, counters, mailto body, menu, image fallbacks, reduced-motion |
+| `assets/fonts/` | Self-hosted Instrument Serif, Montserrat, JetBrains Mono (no Google Fonts) |
 | `assets/img/` | Image paths — drop files in, do not rename |
 | `assets/video/trailer.mp4` | Trailer path |
 
