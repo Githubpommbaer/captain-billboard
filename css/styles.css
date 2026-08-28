@@ -1,6 +1,6 @@
-@import url("../assets/fonts/fonts.css");
-
 :root {
+  color-scheme: dark;
+  scrollbar-color: #3d3d3a var(--ink);
   --ink: #171718;
   --ink-2: #252828;
   --lime: #e6ff5a;
@@ -24,7 +24,17 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 4.5rem;
+  /* gentle snapping: the full-screen shots catch, the rest of the page doesn't */
+  scroll-snap-type: y proximity;
+}
+
+[id] {
+  scroll-margin-top: 4.5rem;
+}
+
+::selection {
+  background: var(--lime);
+  color: var(--ink);
 }
 
 body {
@@ -124,6 +134,7 @@ p + p,
   color: var(--lime);
   max-width: 20ch;
   margin-bottom: 1.3rem;
+  text-wrap: balance;
 }
 
 .pull {
@@ -135,6 +146,7 @@ p + p,
   letter-spacing: -0.02em;
   color: var(--lime);
   max-width: 18ch;
+  text-wrap: balance;
 }
 
 .pull--center {
@@ -153,6 +165,10 @@ p + p,
   width: min(100% - var(--pad) * 2, var(--wide));
   margin: 0 auto;
   padding: clamp(4rem, 11vw, 8rem) 0;
+}
+
+.block--tight {
+  padding: clamp(1.5rem, 4vw, 2.5rem) 0 0;
 }
 
 /* --- arrows + pills --- */
@@ -268,6 +284,11 @@ p + p,
 
 .pill:hover .arrow {
   transform: translateX(3px);
+}
+
+.pill:active,
+.arrow-btn:active {
+  transform: scale(0.97);
 }
 
 .pill__stack {
@@ -425,41 +446,41 @@ p + p,
   overflow: hidden;
 }
 
-/* Matches the portrait's height so nothing below it lands on the photo. */
-.hero__lockup {
-  position: relative;
-  display: grid;
-  place-items: center;
-  width: 100%;
-  min-height: min(66svh, 44rem);
-}
-
-/* The portrait owns the first screen: full-stage oval, never a thumbnail. */
-.hero__pill {
+/* The shot owns the whole first screen; the type sits on top of it. */
+.hero__shot {
   position: absolute;
-  left: 50%;
-  top: 50%;
-  z-index: 1;
-  width: min(92vw, 78rem);
-  height: min(66svh, 44rem);
+  inset: 0;
+  z-index: 0;
   overflow: hidden;
-  /* a true oval at rest, easing into a full-bleed card as the page moves */
-  border-radius: calc(50% - var(--p) * 47%);
-  transform: translate(-50%, -50%) scale(calc(1 + var(--p) * 0.22));
 }
 
-.hero__pill img {
+.hero__shot img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: 50% 36%;
-  /* moody behind the wordmark, then lifts into the light as it leaves */
-  filter: grayscale(1) brightness(calc(0.5 + var(--p) * 0.34)) contrast(1.12);
+  object-position: 58% 42%;
+  /* moody grey behind the wordmark, then lifts into full colour as it leaves */
+  filter: grayscale(calc(1 - var(--p))) brightness(calc(0.46 + var(--p) * 0.44)) contrast(1.08);
+  transform: scale(calc(1 + var(--p) * 0.12));
+}
+
+/* keeps the lime legible over sky and pavement */
+.hero__shot::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, color-mix(in srgb, var(--ink) 72%, transparent) 0%, transparent 26%),
+    linear-gradient(0deg, color-mix(in srgb, var(--ink) 88%, transparent) 0%, transparent 42%),
+    radial-gradient(120% 80% at 50% 45%, color-mix(in srgb, var(--ink) 45%, transparent) 0%, transparent 70%);
+  opacity: calc(1 - var(--p) * 0.55);
 }
 
 .hero__type {
   position: relative;
   z-index: 2;
+  /* sits low enough to leave his back placard readable above the word */
+  padding-top: 5vh;
   text-align: center;
   /* the word rides up out of frame instead of dissolving into the photo */
   transform: translateY(calc(var(--p) * -52vh)) scale(calc(1 - var(--p) * 0.06));
@@ -474,10 +495,10 @@ p + p,
 }
 
 .hero__giant {
-  font-size: min(25vw, 24rem);
+  font-size: min(31vw, 30rem);
   font-weight: 900;
   line-height: 0.82;
-  letter-spacing: -0.045em;
+  letter-spacing: -0.05em;
   color: var(--lime);
 }
 
@@ -491,21 +512,25 @@ p + p,
   margin-top: 0.1em;
 }
 
-/* Reads as the portrait's own caption, so it needs a plate over the photo. */
-.hero__credit {
+.hero__foot {
   position: absolute;
-  left: 50%;
-  bottom: 5%;
+  left: var(--pad);
+  right: var(--pad);
+  bottom: clamp(1rem, 3.5vh, 2.2rem);
   z-index: 3;
-  transform: translateX(-50%);
-  max-width: min(92vw, 40rem);
-  padding: 0.5rem 1.1rem;
-  border-radius: 1.15rem;
-  background: var(--ink);
-  font-size: 0.78rem;
+  opacity: calc(1 - max(0, var(--p) - 0.3) * 2.6);
+  transform: translateY(calc(var(--p) * 3vh));
+}
+
+/* The shot's own title, in Dave's voice, not a generic label. */
+.hero__credit {
+  max-width: 40rem;
+  margin: 0 auto;
+  font-size: 0.8rem;
+  line-height: 1.5;
   color: var(--grey);
   text-align: center;
-  opacity: calc(1 - max(0, var(--p) - 0.3) * 3);
+  text-wrap: balance;
 }
 
 .hero__credit b {
@@ -515,15 +540,12 @@ p + p,
 
 .hero__strip {
   position: relative;
-  z-index: 3;
-  width: min(100% - var(--pad) * 2, 52rem);
-  margin: clamp(1.2rem, 4vh, 2.4rem) auto 0;
+  width: min(100%, 52rem);
+  margin: clamp(0.8rem, 2.5vh, 1.4rem) auto 0;
   display: grid;
   gap: 1rem;
   padding-top: 0.9rem;
   border-top: 1px solid color-mix(in srgb, var(--lime) 55%, transparent);
-  opacity: calc(1 - max(0, var(--p) - 0.35) * 2.6);
-  transform: translateY(calc(var(--p) * 3vh));
 }
 
 .hero__who {
@@ -589,6 +611,7 @@ p + p,
 .chip__n {
   font-size: clamp(1.15rem, 2.2vw, 1.55rem);
   font-weight: 500;
+  font-variant-numeric: lining-nums tabular-nums;
   line-height: 1;
   color: var(--grey);
   white-space: nowrap;
@@ -634,16 +657,17 @@ p + p,
     font-size: 30vw;
   }
 
-  /* the reference stands the portrait upright on small screens */
-  .hero__pill,
-  .hero__lockup {
-    height: min(52svh, 26rem);
-    min-height: min(52svh, 26rem);
+  /* portrait crops hard, so frame him rather than the empty sky */
+  .hero__shot img {
+    object-position: 79% 50%;
   }
 
   .hero__credit {
-    bottom: 3%;
-    font-size: 0.7rem;
+    font-size: 0.72rem;
+  }
+
+  .shot figcaption {
+    gap: 0.55rem;
   }
 
   .nav .pill {
@@ -941,6 +965,7 @@ h3 {
 .stat__n {
   font-size: clamp(4.5rem, 13vw, 8rem);
   font-weight: 800;
+  font-variant-numeric: lining-nums tabular-nums;
   line-height: 0.82;
   letter-spacing: -0.05em;
   color: var(--lime);
@@ -1030,86 +1055,70 @@ h3 {
   color: var(--lime);
 }
 
-/* --- paper panel (clip report) --- */
+/* --- clip report: one full-screen shot at a time --- */
 
-.panel {
-  width: min(100% - var(--pad) * 2, 92rem);
-  margin: 0 auto;
-  padding: clamp(1.6rem, 4vw, 3rem) clamp(1.1rem, 3vw, 2.6rem) clamp(2.4rem, 5vw, 3.4rem);
-  background: var(--paper);
-  color: var(--ink);
-  border-radius: 1.25rem;
+.reel {
+  display: block;
 }
 
-.panel .eyebrow,
-.panel .kicker {
-  color: var(--ink);
-  font-weight: 700;
-}
-
-.panel .note {
-  color: #5f5f57;
-}
-
-.panel__head {
-  margin-bottom: 1.4rem;
-}
-
-.panel__title {
-  font-size: clamp(1.25rem, 2.2vw, 1.6rem);
-  font-weight: 800;
-  letter-spacing: -0.02em;
-  color: var(--ink);
-}
-
-.works {
-  display: grid;
-  gap: 1rem;
-}
-
-.work {
+.shot {
   position: relative;
-  border-radius: 1rem;
+  height: 100svh;
   overflow: hidden;
-  background: var(--ink);
-  min-height: 17rem;
+  scroll-snap-align: start;
+  scroll-margin-top: 0;
+  background: var(--ink-2);
 }
 
-.work img {
+.shot img {
   width: 100%;
   height: 100%;
-  min-height: 17rem;
   object-fit: cover;
-  transition: transform 0.8s var(--ease), filter 0.5s var(--ease);
 }
 
-.work:hover img {
-  transform: scale(1.05);
-}
-
-.work__tags {
+.shot::after {
+  content: "";
   position: absolute;
-  top: 0.9rem;
-  left: 0.9rem;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    0deg,
+    color-mix(in srgb, var(--ink) 82%, transparent) 0%,
+    color-mix(in srgb, var(--ink) 38%, transparent) 20%,
+    transparent 44%
+  );
+}
+
+.shot figcaption {
+  position: absolute;
+  left: var(--pad);
+  right: var(--pad);
+  bottom: clamp(1.4rem, 5vh, 3rem);
   z-index: 2;
+  display: grid;
+  gap: 0.7rem;
+}
+
+.shot__tags {
   display: flex;
   flex-wrap: wrap;
   gap: 0.35rem;
 }
 
-.work__tags span {
+.shot__tags span {
   display: inline-flex;
   align-items: center;
-  gap: 0.35rem;
-  padding: 0.25rem 0.6rem;
+  gap: 0.4rem;
+  padding: 0.28rem 0.7rem;
   border-radius: 999px;
-  background: color-mix(in srgb, var(--ink) 62%, transparent);
+  border: 1px solid color-mix(in srgb, var(--lime) 45%, transparent);
+  background: color-mix(in srgb, var(--ink) 55%, transparent);
   color: var(--lime);
-  font-size: 0.68rem;
+  font-size: 0.7rem;
   font-weight: 600;
 }
 
-.work__tags span::before {
+.shot__tags span::before {
   content: "";
   width: 5px;
   height: 5px;
@@ -1117,34 +1126,24 @@ h3 {
   background: var(--live);
 }
 
-.work__bar {
-  position: absolute;
-  left: 0.7rem;
-  right: 4.4rem;
-  bottom: 0.7rem;
-  z-index: 2;
-  padding: 0.55rem 1rem;
-  border-radius: 1.15rem;
-  background: var(--ink);
-  transition: background 0.3s var(--ease);
-}
-
-.work__bar p {
-  font-size: 0.85rem;
-  font-weight: 600;
-  line-height: 1.3;
+.shot__title {
+  font-family: var(--serif);
+  font-size: clamp(1.5rem, 4.2vw, 3.4rem);
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.06;
+  letter-spacing: -0.015em;
   color: var(--lime);
+  max-width: 26ch;
+  margin: 0;
+  text-wrap: balance;
 }
 
-.work > .arrow-btn {
-  position: absolute;
-  right: 0.7rem;
-  bottom: 0.7rem;
-  z-index: 2;
-}
-
-.work:hover > .arrow-btn {
-  transform: translate(3px, -3px);
+.shot__idx {
+  font-size: 0.72rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  color: var(--grey);
 }
 
 /* --- marquee --- */
@@ -1162,7 +1161,12 @@ h3 {
   align-items: center;
   gap: clamp(1.5rem, 4vw, 3.5rem);
   width: max-content;
+  will-change: transform;
   animation: drift 26s linear infinite;
+}
+
+.marquee:hover .marquee__track {
+  animation-play-state: paused;
 }
 
 .m-sans {
@@ -1633,55 +1637,30 @@ code {
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+    scroll-snap-type: none;
   }
 
   .hero {
-    height: auto;
+    height: 100svh;
   }
 
   .hero__stage {
     position: static;
-    height: auto;
-    min-height: 0;
-    padding: 6rem 0 2rem;
+    height: 100svh;
   }
 
-  .hero__lockup {
-    min-height: 0;
-    display: block;
-  }
-
-  .hero__pill {
-    position: relative;
-    left: auto;
-    top: auto;
-    width: min(100%, 52rem);
-    height: min(56svh, 34rem);
-    margin: 0 auto 1.2rem;
-    border-radius: 50%;
+  .hero__shot img {
+    filter: grayscale(0.15) brightness(0.62) contrast(1.05);
     transform: none;
   }
 
-  .hero__type,
-  .hero__strip,
-  .hero__credit {
-    position: static;
-    transform: none;
+  .hero__foot {
     opacity: 1;
-  }
-
-  .hero__credit {
-    display: inline-block;
-    margin-bottom: 1.5rem;
-  }
-
-  .hero__strip {
-    margin-top: 2.5rem;
+    transform: none;
   }
 
   .reveal,
   .marquee__track,
-  .work img,
   .arrow,
   .arrow-btn,
   .row__num i,
@@ -1705,7 +1684,6 @@ code {
   .spec,
   .stats,
   .steps,
-  .works,
   .talk__top,
   .talk__body {
     grid-template-columns: 1fr 1fr;
@@ -1785,11 +1763,6 @@ code {
     gap: 1.6rem;
   }
 
-  .work,
-  .work img {
-    min-height: 25rem;
-  }
-
   .talk__body {
     grid-template-columns: 0.85fr 1.15fr;
     gap: 3rem;
@@ -1805,7 +1778,7 @@ code {
 }
 
 .frame.is-missing,
-.work.is-missing,
-.hero__pill.is-missing {
+.shot.is-missing,
+.hero__shot.is-missing {
   background: var(--ink-2);
 }

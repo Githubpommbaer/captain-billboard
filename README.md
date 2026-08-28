@@ -61,6 +61,8 @@ Images and the trailer may 404 until you copy them in. The markup already points
 - Rate card stays €490 / €1.290 / €2.900 / €6.900 plus retainers and add-ons.
 - Client sends the logo. Clips are made with AI. 25×25 cm is the placard in-frame, chest and back, not a print spec.
 - Every image carries its own caption. Images run large or full-bleed — no thumbnails.
+- The clip report is a run of full-viewport shots with gentle scroll snapping, one per screen, not a grid.
+- Hero shot is `hills.jpg` (Dave over the LA skyline, empty back placard), full-bleed behind the wordmark.
 - Legal pages are German placeholders. Fill the `[brackets]` before a public launch.
 
 ## Design language

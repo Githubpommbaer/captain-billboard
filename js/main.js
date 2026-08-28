@@ -24,7 +24,7 @@
 
   document.querySelectorAll("img").forEach(function (img) {
     img.addEventListener("error", function () {
-      var holder = img.closest(".frame, .work, .hero__pill");
+      var holder = img.closest(".frame, .shot, .hero__shot");
       if (holder) holder.classList.add("is-missing");
     });
   });
@@ -147,6 +147,17 @@
       node.classList.add("is-in");
     });
   } else {
+    /* siblings rise in sequence rather than all at once */
+    reveals.forEach(function (node) {
+      if (!node.parentElement || node.classList.contains("is-split")) return;
+      var kin = Array.prototype.filter.call(node.parentElement.children, function (child) {
+        return child.classList.contains("reveal");
+      });
+      if (kin.length < 2) return;
+      var i = kin.indexOf(node);
+      if (i > 0) node.style.transitionDelay = Math.min(i * 70, 280) + "ms";
+    });
+
     var io = new IntersectionObserver(
       function (entries) {
         entries.forEach(function (entry) {
