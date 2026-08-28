@@ -130,10 +130,23 @@ p + p,
   font-family: var(--serif);
   font-size: clamp(2.4rem, 8vw, 6.5rem);
   font-style: italic;
+  font-weight: 400;
   line-height: 0.98;
   letter-spacing: -0.02em;
   color: var(--lime);
   max-width: 18ch;
+}
+
+.pull--center {
+  max-width: none;
+  text-align: center;
+  font-size: clamp(2.1rem, 5vw, 4.2rem);
+}
+
+.pull-band {
+  width: min(100% - var(--pad) * 2, var(--wide));
+  margin: 0 auto;
+  padding: clamp(3.5rem, 9vw, 6.5rem) 0 clamp(2rem, 5vw, 3rem);
 }
 
 .block {
@@ -405,20 +418,29 @@ p + p,
   top: 0;
   height: 100vh;
   height: 100svh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.hero__lockup {
+  position: relative;
   display: grid;
   place-items: center;
-  overflow: hidden;
 }
 
 .hero__pill {
   position: absolute;
   left: 50%;
-  top: 46%;
+  top: 50%;
   z-index: 1;
-  width: min(70vw, 46rem);
-  aspect-ratio: 16 / 10;
+  width: min(46vw, 36rem);
+  aspect-ratio: 1.4;
   overflow: hidden;
-  border-radius: calc(999px - var(--p) * 950px);
+  /* a true oval at rest, easing into a card as the page moves */
+  border-radius: calc(50% - var(--p) * 47%);
   transform: translate(-50%, -50%) scale(calc(1 + var(--p) * 0.45));
 }
 
@@ -448,7 +470,7 @@ p + p,
 }
 
 .hero__giant {
-  font-size: min(30vw, 21rem);
+  font-size: min(25vw, 24rem);
   font-weight: 900;
   line-height: 0.82;
   letter-spacing: -0.045em;
@@ -457,30 +479,33 @@ p + p,
 
 .hero__serif {
   font-family: var(--serif);
-  font-size: min(9vw, 5rem);
+  font-size: min(5.6vw, 2.9rem);
   font-style: italic;
   line-height: 1;
-  letter-spacing: -0.01em;
+  letter-spacing: 0.01em;
   color: var(--lime);
-  margin-top: -0.15em;
+  margin-top: 0.1em;
 }
 
 .hero__strip {
-  position: absolute;
-  left: var(--pad);
-  right: var(--pad);
-  bottom: clamp(1.2rem, 4vh, 2.6rem);
+  position: relative;
   z-index: 3;
+  width: min(100% - var(--pad) * 2, 46rem);
+  margin: clamp(2.5rem, 7vh, 4.5rem) auto 0;
   display: grid;
-  gap: 1.2rem;
-  padding-top: 1rem;
-  border-top: 1px solid color-mix(in srgb, var(--lime) 45%, transparent);
-  opacity: calc(1 - max(0, var(--p) - 0.45) * 2.4);
+  gap: 1rem;
+  padding-top: 0.9rem;
+  border-top: 1px solid color-mix(in srgb, var(--lime) 55%, transparent);
+  opacity: calc(1 - max(0, var(--p) - 0.35) * 2.6);
   transform: translateY(calc(var(--p) * 3vh));
 }
 
+.hero__who {
+  text-align: center;
+}
+
 .hero__who p {
-  font-size: clamp(0.92rem, 1.5vw, 1.05rem);
+  font-size: clamp(0.85rem, 1.2vw, 0.95rem);
   font-weight: 500;
   color: var(--grey);
 }
@@ -495,7 +520,7 @@ p + p,
   display: grid;
   grid-template-columns: repeat(3, auto);
   gap: 1rem;
-  justify-content: start;
+  justify-content: center;
 }
 
 .chip {
@@ -536,60 +561,61 @@ p + p,
 }
 
 .chip__n {
-  font-size: clamp(1.3rem, 3vw, 1.9rem);
+  font-size: clamp(1.15rem, 2.2vw, 1.55rem);
   font-weight: 500;
   line-height: 1;
   color: var(--grey);
+  white-space: nowrap;
 }
 
 .chip__n span {
-  font-size: 0.42em;
+  font-size: 0.45em;
   font-weight: 400;
   margin-left: 0.15em;
+  vertical-align: 0.35em;
 }
 
 .chip__l {
-  margin-top: 0.3rem;
-  font-size: 0.68rem;
+  margin-top: 0.35rem;
+  font-size: 0.62rem;
   color: var(--mute);
+  white-space: nowrap;
 }
 
 @media (max-width: 639px) {
   .chips {
-    grid-template-columns: 1fr;
-    gap: 0;
+    gap: 0.5rem;
   }
 
   .chip {
-    padding: 0.5rem 0;
-    border-top: 1px solid color-mix(in srgb, var(--lime) 25%, transparent);
-  }
-
-  .chip:first-child {
-    border-top: 0;
+    padding-right: 0.5rem;
   }
 
   .chip + .chip {
-    padding-left: 0;
+    padding-left: 0.5rem;
   }
 
-  .chip + .chip::before {
-    display: none;
-  }
-
-  .chip > div {
-    display: flex;
-    align-items: baseline;
-    gap: 0.6rem;
+  .chip__n {
+    font-size: 1.15rem;
   }
 
   .chip__l {
-    margin-top: 0;
+    font-size: 0.55rem;
+    white-space: normal;
   }
 
+  .hero__giant {
+    font-size: 30vw;
+  }
+
+  /* the reference stands the portrait upright on small screens */
   .hero__pill {
-    width: 80vw;
-    aspect-ratio: 4 / 3;
+    width: 46vw;
+    aspect-ratio: 0.46;
+  }
+
+  .nav .pill {
+    display: none;
   }
 }
 
@@ -706,11 +732,34 @@ p + p,
 
 .row__title {
   font-family: var(--serif);
-  font-size: clamp(1.9rem, 6vw, 4.2rem);
+  font-size: clamp(2rem, 6.4vw, 5rem);
   font-style: italic;
   line-height: 1.05;
   color: var(--lime);
   transition: color 0.3s var(--ease);
+}
+
+.row__arrow {
+  display: inline-grid;
+  place-items: center;
+  width: 2rem;
+  color: var(--lime);
+  transition: transform 0.45s var(--ease);
+}
+
+.row__arrow svg {
+  width: 1.55rem;
+  height: 1.55rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.row:hover .row__arrow,
+.row:focus-visible .row__arrow {
+  transform: translateX(6px);
 }
 
 .row__sub {
@@ -735,13 +784,9 @@ p + p,
   object-fit: cover;
 }
 
-.row .arrow-btn {
+.row .row__arrow {
   grid-row: 1;
   grid-column: 3;
-}
-
-.row:hover .arrow-btn {
-  transform: translate(4px, -4px);
 }
 
 /* --- split / frames / lists --- */
@@ -780,14 +825,15 @@ p + p,
   color: var(--mute);
 }
 
+/* Didone stays reserved for lime pulls; working headings are sans. */
 h3 {
-  font-family: var(--serif);
-  font-size: 1.7rem;
-  font-style: italic;
-  font-weight: 400;
-  line-height: 1.1;
+  font-family: var(--sans);
+  font-size: 1.12rem;
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
   color: var(--paper);
-  margin-bottom: 0.4rem;
+  margin-bottom: 0.5rem;
 }
 
 .ticks {
@@ -860,9 +906,9 @@ h3 {
   background: var(--lime);
   color: var(--ink);
   border-radius: 0.6rem;
-  font-family: var(--serif);
-  font-size: clamp(1.7rem, 4.5vw, 2.4rem);
-  font-style: italic;
+  font-size: clamp(1.5rem, 4vw, 2.1rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
 }
 
 .spec__notes {
@@ -984,13 +1030,15 @@ h3 {
   color: #5f5f57;
 }
 
-.display--ink {
-  color: var(--ink);
+.panel__head {
+  margin-bottom: 1.4rem;
 }
 
-.panel__head {
-  max-width: 46rem;
-  margin-bottom: 2rem;
+.panel__title {
+  font-size: clamp(1.25rem, 2.2vw, 1.6rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--ink);
 }
 
 .works {
@@ -1261,23 +1309,24 @@ h3 {
 }
 
 .rate--on {
-  background: var(--lime);
-  color: var(--ink);
-  border-top-color: transparent;
-  border-radius: 1rem;
+  background: var(--ink-2);
+  border-top-color: var(--lime);
+  border-radius: 0 0 1rem 1rem;
   padding: 1.4rem 1.2rem 1.2rem;
+  margin-top: -0.1rem;
 }
 
-.rate--on .rate__num,
-.rate--on .kicker,
-.rate--on .rate__price,
-.rate--on h3 {
+.rate--on .kicker {
+  display: inline-block;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  background: var(--lime);
   color: var(--ink);
+  font-weight: 600;
 }
 
 .rate--on li {
-  color: #2c2c25;
-  border-bottom-color: color-mix(in srgb, var(--ink) 18%, transparent);
+  border-bottom-color: color-mix(in srgb, var(--grey) 20%, transparent);
 }
 
 /* --- rules + faq --- */
@@ -1359,17 +1408,16 @@ h3 {
 }
 
 .talk__title {
-  font-size: clamp(2.6rem, 9vw, 5.5rem);
+  font-size: clamp(1.7rem, 3.4vw, 2.5rem);
   font-weight: 800;
-  line-height: 0.9;
-  letter-spacing: -0.04em;
+  line-height: 1;
+  letter-spacing: -0.03em;
 }
 
 .talk__sub {
-  font-family: var(--serif);
-  font-size: clamp(1.5rem, 4vw, 2.4rem);
-  font-style: italic;
-  margin: 0.3rem 0 1.5rem;
+  font-size: clamp(0.95rem, 1.6vw, 1.15rem);
+  font-weight: 500;
+  margin: 0.4rem 0 1.4rem;
 }
 
 .talk__side .kicker,
@@ -1404,11 +1452,10 @@ h3 {
 }
 
 .talk__copy h2 {
-  font-family: var(--serif);
-  font-size: clamp(1.8rem, 4.6vw, 2.8rem);
-  font-style: italic;
-  font-weight: 400;
-  line-height: 1.05;
+  font-size: clamp(1.35rem, 2.6vw, 1.9rem);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
   margin-bottom: 0.9rem;
 }
 
@@ -1421,19 +1468,18 @@ h3 {
   font-weight: 600;
 }
 
-.talk__thanks {
-  font-family: var(--serif);
-  font-size: clamp(1.6rem, 4vw, 2.6rem);
-  font-style: italic;
-  margin-top: clamp(2.5rem, 6vw, 4rem);
+/* The lockup fills the card and runs off its edge, as on the reference. */
+.talk__mark {
+  margin: clamp(2.5rem, 6vw, 4rem) 0 0.6rem;
+  font-size: min(19vw, 19rem);
+  font-weight: 900;
+  line-height: 0.8;
+  letter-spacing: -0.055em;
+  white-space: nowrap;
 }
 
-.talk__mark {
-  font-size: min(8.7vw, 7.4rem);
-  font-weight: 900;
-  line-height: 0.88;
-  letter-spacing: -0.05em;
-  margin: 0.2rem 0 0.8rem;
+.talk__mark span {
+  display: block;
 }
 
 .talk__bar {
@@ -1673,6 +1719,11 @@ code {
   .hero__strip {
     grid-template-columns: 1fr auto;
     align-items: end;
+    gap: 1.5rem;
+  }
+
+  .hero__who {
+    text-align: left;
   }
 
   .mosaic {
@@ -1739,7 +1790,7 @@ code {
     transform: translateY(-50%) scale(1);
   }
 
-  .row .arrow-btn {
+  .row .row__arrow {
     grid-column: 3;
     grid-row: 1 / span 2;
     align-self: center;

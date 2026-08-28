@@ -45,14 +45,16 @@
   <main id="main">
     <section class="hero" id="top" data-hero>
       <div class="hero__stage" data-hero-stage>
-        <figure class="hero__pill" data-hero-pill>
-          <img src="assets/img/landing.jpg" alt="Dave, Captain Billboard, in a purple-and-gold suit doing a superhero landing in an empty parking lot. The chest placard reads AD SPACE AVAILABLE." width="1200" height="1500">
-        </figure>
+        <div class="hero__lockup">
+          <figure class="hero__pill" data-hero-pill>
+            <img src="assets/img/landing.jpg" alt="Dave, Captain Billboard, in a purple-and-gold suit doing a superhero landing in an empty parking lot. The chest placard reads AD SPACE AVAILABLE." width="1200" height="1500">
+          </figure>
 
-        <div class="hero__type" data-hero-type>
-          <p class="hero__tag">Yes, this is a website selling chest ads</p>
-          <h1 class="hero__giant">RENT</h1>
-          <p class="hero__serif">the chest.</p>
+          <div class="hero__type" data-hero-type>
+            <p class="hero__tag">Yes, this is a website selling chest ads</p>
+            <h1 class="hero__giant">RENT</h1>
+            <p class="hero__serif">the chest.</p>
+          </div>
         </div>
 
         <div class="hero__strip" data-hero-strip>
@@ -65,19 +67,19 @@
               <span class="chip__live" aria-hidden="true"></span>
               <div>
                 <p class="chip__n">40×25<span>cm</span></p>
-                <p class="chip__l">Chest, in the frame</p>
+                <p class="chip__l">Chest, in frame</p>
               </div>
             </div>
             <div class="chip">
               <div>
                 <p class="chip__n">0<span>opinions</span></p>
-                <p class="chip__l">He wears. He doesn’t gush.</p>
+                <p class="chip__l">He wears, never gushes</p>
               </div>
             </div>
             <div class="chip">
               <div>
                 <p class="chip__n">0<span>scandals</span></p>
-                <p class="chip__l">Nobody leaves the hard drive</p>
+                <p class="chip__l">Nobody leaves the drive</p>
               </div>
             </div>
           </div>
@@ -111,14 +113,14 @@
           <span class="row__title">Rent, don’t endorse</span>
           <span class="row__sub">He wears paid space. He does not join your brand family.</span>
           <span class="row__thumb"><img src="assets/img/placard.jpg" alt="" width="1200" height="900"></span>
-          <span class="arrow-btn arrow-btn--sm" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h13M12 5.5 18.5 12 12 18.5"/></svg></span>
+          <span class="row__arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 12h15M12 5 19 12 12 19"/></svg></span>
         </a>
         <a class="row reveal" href="#spec">
           <span class="row__num" aria-hidden="true"><i>02</i><i>02</i></span>
           <span class="row__title">Wear it in the clip</span>
           <span class="row__sub">Logo in. Clips out. Nobody prints a thing.</span>
           <span class="row__thumb"><img src="assets/img/rooftop.jpg" alt="" width="1600" height="1200"></span>
-          <span class="arrow-btn arrow-btn--sm" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h13M12 5.5 18.5 12 12 18.5"/></svg></span>
+          <span class="row__arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 12h15M12 5 19 12 12 19"/></svg></span>
         </a>
       </div>
 
@@ -275,12 +277,16 @@
       <p class="note reveal">Logo in. Clips out. If your legal team needs a month, that’s your month, not a house speed we invented.</p>
     </section>
 
+    <section class="pull-band">
+      <p class="eyebrow reveal">Clip report</p>
+      <h2 class="display reveal">Places the suit has been rendered standing around.</h2>
+      <p class="measure reveal">Not case studies. Not “earned media from Brand X.” Just the costume in the frame — rooftops, steam, family barbecues it was not invited to. Drop the files in and these panels stop blushing.</p>
+    </section>
+
     <section class="panel" id="field">
       <div class="panel__inner">
         <div class="panel__head">
-          <p class="eyebrow">Clip report</p>
-          <h2 class="display display--ink">Places the suit has been rendered standing around.</h2>
-          <p class="measure">Not case studies. Not “earned media from Brand X.” Just the costume in the frame — rooftops, steam, family barbecues it was not invited to. Drop the files in and these panels stop blushing.</p>
+          <h2 class="panel__title">Feature clips</h2>
         </div>
 
         <div class="works">
@@ -364,7 +370,7 @@
     </div>
 
     <section class="block" id="words">
-      <p class="eyebrow reveal">Kind words</p>
+      <h2 class="pull pull--center reveal">Kind words</h2>
       <div class="quotes" data-quotes>
         <div class="quotes__stage">
           <blockquote class="quote is-on">
@@ -536,6 +542,8 @@
       </div>
     </section>
 
+    <p class="pull pull--center reveal">Thank you.</p>
+
     <section class="talk" id="book">
       <div class="talk__top">
         <div class="talk__lead">
@@ -623,8 +631,7 @@
         </form>
       </div>
 
-      <p class="talk__thanks">Thank you.</p>
-      <p class="talk__mark" aria-hidden="true">captain billboard.</p>
+      <p class="talk__mark" aria-hidden="true"><span>captain</span><span>billboard.</span></p>
       <div class="talk__bar">
         <span>© <span id="y"></span> Maresmedia • Dave is an AI character. He rents 40×25 cm on the placard. He does not endorse products. He just wears paid space.</span>
         <span>English copy. German legal stubs. No Google Fonts were harmed.</span>
