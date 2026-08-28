@@ -61,3 +61,11 @@ Images and the trailer may 404 until you copy them in. The markup already points
 - Rate card stays €490 / €1.290 / €2.900 / €6.900 plus retainers and add-ons.
 - Client sends the logo. Clips are made with AI. 40×25 cm is the placard in-frame, not a print spec.
 - Legal pages are German placeholders. Fill the `[brackets]` before a public launch.
+
+## Design language
+
+Editorial studio, dark and loud: `#171718` canvas, `#e6ff5a` acid lime used as a flood (hero
+wordmark, arrows, marquee band, featured rate card, whole closing panel), heavy Montserrat for
+lockups and Instrument Serif italic for pulls. The hero is scroll-driven — the giant word rides up
+while the oval portrait grows into a card. Everything degrades to a static, fully visible layout
+under `prefers-reduced-motion`.

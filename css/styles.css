@@ -293,7 +293,7 @@ p + p,
 }
 
 .nav.is-stuck {
-  background: color-mix(in srgb, var(--ink) 90%, transparent);
+  background: color-mix(in srgb, var(--ink) 95%, transparent);
   backdrop-filter: blur(14px);
 }
 
