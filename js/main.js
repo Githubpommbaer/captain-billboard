@@ -273,4 +273,30 @@
       po.observe(proof);
     }
   }
+
+  /* --- ad-space cursor: pointer stays, placard rides beside it --- */
+
+  var cursor = document.querySelector(".ad-cursor");
+  var coarse = window.matchMedia("(pointer: coarse)").matches;
+  if (cursor && !coarse && !reduce) {
+    cursor.hidden = false;
+    var cx = 0;
+    var cy = 0;
+    var painted = false;
+    var paintCursor = function () {
+      painted = false;
+      cursor.style.transform = "translate3d(" + cx + "px," + cy + "px,0)";
+    };
+    window.addEventListener("pointermove", function (event) {
+      cx = event.clientX;
+      cy = event.clientY;
+      cursor.classList.add("is-on");
+      if (painted) return;
+      painted = true;
+      requestAnimationFrame(paintCursor);
+    }, { passive: true });
+    document.addEventListener("pointerleave", function () {
+      cursor.classList.remove("is-on");
+    });
+  }
 })();

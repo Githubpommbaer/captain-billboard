@@ -1,16 +1,16 @@
 :root {
   color-scheme: light;
   scrollbar-color: var(--purple) var(--paper);
-  --paper: #f3f0e8;
-  --paper-2: #e9e3d4;
+  --paper: #fff8e0;
+  --paper-2: #ffe566;
   --ink: #16092a;
   --ink-2: #2a1448;
-  --plum: #3a1568;
-  --purple: #7b46b8;
-  --gold: #e9b23c;
-  --grey: #3d3350;
-  --mute: #5c5270;
-  --live: #7b46b8;
+  --plum: #4b00c8;
+  --purple: #7a00e6;
+  --gold: #ffd100;
+  --grey: #2a0a4a;
+  --mute: #4a1a8a;
+  --live: #ed1c24;
   --display: "Anton", Impact, sans-serif;
   --sans: "Barlow", "Segoe UI", sans-serif;
   --mono: "JetBrains Mono", ui-monospace, monospace;
@@ -330,7 +330,7 @@ p + p,
 }
 
 .nav.is-stuck {
-  background: color-mix(in srgb, var(--paper) 94%, transparent);
+  background: color-mix(in srgb, var(--gold) 90%, transparent);
   backdrop-filter: blur(14px);
 }
 
@@ -381,7 +381,7 @@ p + p,
   position: fixed;
   inset: 0;
   z-index: 55;
-  background: var(--paper);
+  background: var(--gold);
   overflow-y: auto;
   animation: menu-in 0.45s var(--ease);
 }
@@ -1041,7 +1041,11 @@ h3 {
 .lie {
   padding: 1.4rem;
   border-radius: 1rem;
-  background: var(--paper-2);
+  background: var(--gold);
+}
+
+.lie h3 {
+  color: var(--plum);
 }
 
 .lie__tag {
@@ -1079,10 +1083,11 @@ h3 {
   aspect-ratio: 1;
   margin: 1rem 0;
   background: var(--gold);
-  color: var(--ink);
+  color: var(--plum);
   border-radius: 0.6rem;
-  font-size: clamp(1.5rem, 4vw, 2.1rem);
-  font-weight: 800;
+  font-family: var(--display);
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 400;
   letter-spacing: -0.02em;
 }
 
@@ -1305,7 +1310,7 @@ h3 {
   margin: clamp(3rem, 8vw, 5rem) 0;
   padding: 0.7rem 0;
   background: var(--gold);
-  color: var(--ink);
+  color: var(--plum);
   overflow: hidden;
 }
 
@@ -1404,7 +1409,7 @@ h3 {
 }
 
 .quotes__dots i.is-on {
-  background: var(--gold);
+  background: var(--plum);
 }
 
 .quotes + .note {
@@ -1415,15 +1420,21 @@ h3 {
 /* --- rates --- */
 
 .rate {
-  padding: 1.4rem 0 0.6rem;
-  border-top: 1px solid var(--purple);
+  padding: 1.4rem 1.2rem 1.2rem;
+  background: var(--gold);
+  border-radius: 1rem;
+  color: var(--ink);
 }
 
 .rate__num {
   font-size: 0.78rem;
   font-weight: 700;
-  color: var(--purple);
+  color: var(--plum);
   margin-bottom: 0.7rem;
+}
+
+.rate h3 {
+  color: var(--plum);
 }
 
 .rate__price {
@@ -1441,30 +1452,34 @@ h3 {
 
 .rate li {
   padding: 0.4rem 0;
-  border-bottom: 1px solid color-mix(in srgb, var(--grey) 14%, transparent);
+  border-bottom: 1px solid color-mix(in srgb, var(--plum) 22%, transparent);
   font-size: 0.95rem;
-  color: var(--mute);
+  color: var(--ink-2);
 }
 
 .rate--on {
-  background: var(--paper-2);
-  border-top-color: var(--gold);
-  border-radius: 0 0 1rem 1rem;
-  padding: 1.4rem 1.2rem 1.2rem;
-  margin-top: -0.1rem;
+  background: var(--plum);
+  color: var(--gold);
+}
+
+.rate--on .rate__num,
+.rate--on h3,
+.rate--on .rate__price {
+  color: var(--gold);
 }
 
 .rate--on .kicker {
   display: inline-block;
   padding: 0.2rem 0.6rem;
   border-radius: 999px;
-  background: var(--gold);
-  color: var(--ink);
+  background: var(--live);
+  color: #fff;
   font-weight: 600;
 }
 
 .rate--on li {
-  border-bottom-color: color-mix(in srgb, var(--grey) 20%, transparent);
+  color: var(--paper);
+  border-bottom-color: color-mix(in srgb, var(--gold) 28%, transparent);
 }
 
 /* --- rules + faq --- */
@@ -1546,10 +1561,12 @@ h3 {
 }
 
 .talk__title {
-  font-size: clamp(1.7rem, 3.4vw, 2.5rem);
-  font-weight: 800;
-  line-height: 1;
-  letter-spacing: -0.03em;
+  font-family: var(--display);
+  font-size: clamp(2.6rem, 7vw, 5rem);
+  font-weight: 400;
+  line-height: 0.92;
+  letter-spacing: -0.02em;
+  color: var(--plum);
 }
 
 .talk__sub {
@@ -1590,11 +1607,13 @@ h3 {
 }
 
 .talk__copy h2 {
-  font-size: clamp(1.35rem, 2.6vw, 1.9rem);
-  font-weight: 800;
-  line-height: 1.1;
+  font-family: var(--display);
+  font-size: clamp(1.9rem, 4vw, 3rem);
+  font-weight: 400;
+  line-height: 1.08;
   letter-spacing: -0.02em;
   margin-bottom: 0.9rem;
+  color: var(--plum);
 }
 
 .talk__copy p,
@@ -1681,7 +1700,7 @@ h3 {
 
 .form input::placeholder,
 .form textarea::placeholder {
-  color: #7d7d74;
+  color: #c4a6ff;
 }
 
 .form textarea {
@@ -1950,4 +1969,43 @@ code {
 .shot.is-missing,
 .hero__shot.is-missing {
   background: var(--ink-2);
+}
+
+/* --- ad-space cursor follower --- */
+
+.ad-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10000;
+  pointer-events: none;
+  transform: translate3d(-240px, -240px, 0);
+  will-change: transform;
+  opacity: 0;
+  transition: opacity 0.18s var(--ease);
+}
+
+.ad-cursor.is-on {
+  opacity: 1;
+}
+
+.ad-cursor__tag {
+  display: inline-block;
+  margin: 16px 0 0 20px;
+  padding: 0.38rem 0.58rem 0.32rem;
+  background: var(--gold);
+  color: var(--plum);
+  border: 2.5px solid var(--ink);
+  box-shadow: 3px 3px 0 var(--plum);
+  font-family: var(--display);
+  font-size: 0.84rem;
+  letter-spacing: 0.07em;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+@media (pointer: coarse), (prefers-reduced-motion: reduce) {
+  .ad-cursor {
+    display: none;
+  }
 }
