@@ -1556,8 +1556,28 @@ h3 {
   color: #2c2c25;
 }
 
+/* Anything on the lime plate takes ink — lime on lime is a hole in the
+   sentence. Pills keep their own colours, so they are not touched here. */
+.talk__copy p a,
+.talk .consent a,
+.talk__copy p a:visited,
+.talk .consent a:visited,
+.talk__copy p a:hover,
+.talk .consent a:hover,
+.talk__copy p a:focus-visible,
+.talk .consent a:focus-visible {
+  color: var(--ink);
+}
+
 .talk__copy a {
   font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+}
+
+/* the lime focus ring would disappear against the plate as well */
+.talk :focus-visible {
+  outline-color: var(--ink);
 }
 
 /* The lockup fills the card and runs off its edge, as on the reference. */
@@ -1689,8 +1709,8 @@ code {
   margin-bottom: 0.7rem;
 }
 
+/* lime links only work on the dark canvas */
 .legal-page p a,
-.talk__copy p a,
 .statement p a {
   color: var(--lime);
 }
