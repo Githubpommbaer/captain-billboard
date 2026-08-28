@@ -1993,8 +1993,8 @@ code {
   display: inline-block;
   margin: 16px 0 0 20px;
   padding: 0.38rem 0.58rem 0.32rem;
-  background: var(--gold);
-  color: var(--plum);
+  background: #fff;
+  color: var(--ink);
   border: 2.5px solid var(--ink);
   box-shadow: 3px 3px 0 var(--plum);
   font-family: var(--display);
