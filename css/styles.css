@@ -425,23 +425,27 @@ p + p,
   overflow: hidden;
 }
 
+/* Matches the portrait's height so nothing below it lands on the photo. */
 .hero__lockup {
   position: relative;
   display: grid;
   place-items: center;
+  width: 100%;
+  min-height: min(66svh, 44rem);
 }
 
+/* The portrait owns the first screen: full-stage oval, never a thumbnail. */
 .hero__pill {
   position: absolute;
   left: 50%;
   top: 50%;
   z-index: 1;
-  width: min(46vw, 36rem);
-  aspect-ratio: 1.4;
+  width: min(92vw, 78rem);
+  height: min(66svh, 44rem);
   overflow: hidden;
-  /* a true oval at rest, easing into a card as the page moves */
+  /* a true oval at rest, easing into a full-bleed card as the page moves */
   border-radius: calc(50% - var(--p) * 47%);
-  transform: translate(-50%, -50%) scale(calc(1 + var(--p) * 0.45));
+  transform: translate(-50%, -50%) scale(calc(1 + var(--p) * 0.22));
 }
 
 .hero__pill img {
@@ -487,11 +491,33 @@ p + p,
   margin-top: 0.1em;
 }
 
+/* Reads as the portrait's own caption, so it needs a plate over the photo. */
+.hero__credit {
+  position: absolute;
+  left: 50%;
+  bottom: 5%;
+  z-index: 3;
+  transform: translateX(-50%);
+  max-width: min(92vw, 40rem);
+  padding: 0.5rem 1.1rem;
+  border-radius: 1.15rem;
+  background: var(--ink);
+  font-size: 0.78rem;
+  color: var(--grey);
+  text-align: center;
+  opacity: calc(1 - max(0, var(--p) - 0.3) * 3);
+}
+
+.hero__credit b {
+  color: var(--lime);
+  font-weight: 600;
+}
+
 .hero__strip {
   position: relative;
   z-index: 3;
-  width: min(100% - var(--pad) * 2, 46rem);
-  margin: clamp(2.5rem, 7vh, 4.5rem) auto 0;
+  width: min(100% - var(--pad) * 2, 52rem);
+  margin: clamp(1.2rem, 4vh, 2.4rem) auto 0;
   display: grid;
   gap: 1rem;
   padding-top: 0.9rem;
@@ -609,9 +635,15 @@ p + p,
   }
 
   /* the reference stands the portrait upright on small screens */
-  .hero__pill {
-    width: 46vw;
-    aspect-ratio: 0.46;
+  .hero__pill,
+  .hero__lockup {
+    height: min(52svh, 26rem);
+    min-height: min(52svh, 26rem);
+  }
+
+  .hero__credit {
+    bottom: 3%;
+    font-size: 0.7rem;
   }
 
   .nav .pill {
@@ -768,22 +800,6 @@ p + p,
   font-size: 0.92rem;
 }
 
-.row__thumb {
-  grid-column: 1 / -1;
-  grid-row: 3;
-  display: block;
-  margin-top: 0.9rem;
-  border-radius: 0.8rem;
-  overflow: hidden;
-  max-height: 9rem;
-}
-
-.row__thumb img {
-  width: 100%;
-  height: 9rem;
-  object-fit: cover;
-}
-
 .row .row__arrow {
   grid-row: 1;
   grid-column: 3;
@@ -818,11 +834,17 @@ p + p,
 }
 
 .frame figcaption,
-.player figcaption,
-.shot figcaption {
+.player figcaption {
   padding: 0.8rem 0.2rem 0;
   font-size: 0.82rem;
+  line-height: 1.45;
   color: var(--mute);
+}
+
+.frame figcaption b,
+.player figcaption b {
+  color: var(--lime);
+  font-weight: 600;
 }
 
 /* Didone stays reserved for lime pulls; working headings are sans. */
@@ -901,7 +923,7 @@ h3 {
   display: grid;
   place-items: center;
   width: min(100%, 19rem);
-  aspect-ratio: 40 / 25;
+  aspect-ratio: 1;
   margin: 1rem 0;
   background: var(--lime);
   color: var(--ink);
@@ -1025,8 +1047,7 @@ h3 {
   font-weight: 700;
 }
 
-.panel .note,
-.panel .shot figcaption {
+.panel .note {
   color: #5f5f57;
 }
 
@@ -1103,7 +1124,7 @@ h3 {
   bottom: 0.7rem;
   z-index: 2;
   padding: 0.55rem 1rem;
-  border-radius: 999px;
+  border-radius: 1.15rem;
   background: var(--ink);
   transition: background 0.3s var(--ease);
 }
@@ -1111,10 +1132,8 @@ h3 {
 .work__bar p {
   font-size: 0.85rem;
   font-weight: 600;
+  line-height: 1.3;
   color: var(--lime);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 
 .work > .arrow-btn {
@@ -1126,27 +1145,6 @@ h3 {
 
 .work:hover > .arrow-btn {
   transform: translate(3px, -3px);
-}
-
-.mosaic {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0.7rem;
-  margin-top: 1rem;
-}
-
-.shot img {
-  width: 100%;
-  height: auto;
-  aspect-ratio: 4 / 3;
-  object-fit: cover;
-  border-radius: 0.7rem;
-  background: #ddd8cc;
-}
-
-.shot figcaption {
-  padding: 0.4rem 0.2rem 0;
-  font-size: 0.72rem;
 }
 
 /* --- marquee --- */
@@ -1179,21 +1177,6 @@ h3 {
   font-size: clamp(2.2rem, 7.4vw, 5.6rem);
   font-style: italic;
   line-height: 1;
-}
-
-.m-pill {
-  display: block;
-  width: clamp(6rem, 14vw, 12rem);
-  height: clamp(3rem, 7vw, 5rem);
-  border-radius: 999px;
-  overflow: hidden;
-  flex-shrink: 0;
-}
-
-.m-pill img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
 }
 
 @keyframes drift {
@@ -1663,21 +1646,33 @@ code {
     padding: 6rem 0 2rem;
   }
 
+  .hero__lockup {
+    min-height: 0;
+    display: block;
+  }
+
   .hero__pill {
     position: relative;
     left: auto;
     top: auto;
-    width: min(100%, 46rem);
-    margin: 0 auto 2rem;
-    border-radius: 999px;
+    width: min(100%, 52rem);
+    height: min(56svh, 34rem);
+    margin: 0 auto 1.2rem;
+    border-radius: 50%;
     transform: none;
   }
 
   .hero__type,
-  .hero__strip {
+  .hero__strip,
+  .hero__credit {
     position: static;
     transform: none;
     opacity: 1;
+  }
+
+  .hero__credit {
+    display: inline-block;
+    margin-bottom: 1.5rem;
   }
 
   .hero__strip {
@@ -1726,10 +1721,6 @@ code {
     text-align: left;
   }
 
-  .mosaic {
-    grid-template-columns: repeat(4, 1fr);
-  }
-
   .lies {
     grid-template-columns: repeat(3, 1fr);
   }
@@ -1765,29 +1756,6 @@ code {
   .row__sub {
     grid-column: 2;
     grid-row: 2;
-  }
-
-  .row__thumb {
-    position: absolute;
-    right: 5.5rem;
-    top: 50%;
-    z-index: 2;
-    width: 13rem;
-    max-height: 8rem;
-    margin: 0;
-    opacity: 0;
-    transform: translateY(-50%) scale(0.96);
-    transition: opacity 0.5s var(--ease), transform 0.5s var(--ease);
-  }
-
-  .row__thumb img {
-    height: 8rem;
-  }
-
-  .row:hover .row__thumb,
-  .row:focus-visible .row__thumb {
-    opacity: 1;
-    transform: translateY(-50%) scale(1);
   }
 
   .row .row__arrow {
@@ -1837,9 +1805,7 @@ code {
 }
 
 .frame.is-missing,
-.shot.is-missing,
 .work.is-missing,
-.row__thumb.is-missing,
 .hero__pill.is-missing {
   background: var(--ink-2);
 }

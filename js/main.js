@@ -24,7 +24,7 @@
 
   document.querySelectorAll("img").forEach(function (img) {
     img.addEventListener("error", function () {
-      var holder = img.closest(".shot, .frame, .work, .row__thumb, .hero__pill, .m-pill");
+      var holder = img.closest(".frame, .work, .hero__pill");
       if (holder) holder.classList.add("is-missing");
     });
   });
