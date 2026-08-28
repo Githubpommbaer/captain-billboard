@@ -17,6 +17,7 @@
   --pad: clamp(1rem, 4vw, 3rem);
   --wide: 84rem;
   --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --nav-clear: 6.75rem;
 }
 
 *,
@@ -32,7 +33,7 @@ html {
 }
 
 [id] {
-  scroll-margin-top: 4.5rem;
+  scroll-margin-top: var(--nav-clear);
 }
 
 ::selection {
@@ -333,8 +334,8 @@ p + p,
 }
 
 .nav.is-stuck {
-  background: color-mix(in srgb, var(--gold) 90%, transparent);
-  backdrop-filter: blur(14px);
+  background: var(--paper);
+  border-bottom: 2px solid #000;
 }
 
 .nav.is-stuck .mark,
@@ -991,6 +992,17 @@ p + p,
 
 #trailer {
   text-align: center;
+  scroll-margin-top: var(--nav-clear);
+  padding-top: clamp(5.75rem, 12vw, 9rem);
+}
+
+#rates,
+#book {
+  scroll-margin-top: var(--nav-clear);
+}
+
+#rates {
+  padding-top: clamp(5.75rem, 12vw, 9rem);
 }
 
 #trailer .measure,
@@ -1551,7 +1563,7 @@ h3 {
 .talk {
   width: min(100% - var(--pad) * 2, 92rem);
   margin: 0 auto clamp(1rem, 3vw, 2rem);
-  padding: clamp(2rem, 5vw, 3.5rem) clamp(1.2rem, 3.5vw, 3rem) clamp(1.5rem, 3vw, 2rem);
+  padding: clamp(5.75rem, 10vw, 7.25rem) clamp(1.2rem, 3.5vw, 3rem) clamp(1.5rem, 3vw, 2rem);
   background: var(--gold);
   color: var(--ink);
   border-radius: 1.25rem;
