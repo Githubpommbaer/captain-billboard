@@ -348,8 +348,11 @@ p + p,
 
 .mark img {
   display: block;
-  height: 32px;
+  height: 36px;
   width: auto;
+  /* the PNG is cream + slash on a clear ground — black is the plate */
+  background: #000;
+  padding: 3px 5px;
 }
 
 .nav__end {
@@ -1626,6 +1629,8 @@ h3 {
   display: block;
   height: clamp(4.5rem, 14vw, 8.5rem);
   width: auto;
+  background: #000;
+  padding: 0.45rem 0.65rem;
 }
 
 .talk__bar {
