@@ -2,7 +2,7 @@
 
 Marketing site for Dave — Captain Billboard. Dave is an AI character. He rents 25×25 cm on the placard, chest and back, in the clip. He does not endorse products. He just wears paid space. Nothing is printed. Nobody goes into the field.
 
-Single static site. No framework. Booking is a `mailto:` to [book@captainbillboard.com](mailto:book@captainbillboard.com).
+Single static site. No framework. Booking is a `mailto:` to [booking@captainbillboard.com](mailto:booking@captainbillboard.com).
 
 ## Run locally
 
@@ -21,7 +21,7 @@ Any static server is fine. `python3 -m http.server` is the one we expect.
 | Path | What |
 | --- | --- |
 | `index.html` | The site |
-| `legal.html` | Impressum / Datenschutz stubs (replace bracketed Maresmedia details) |
+| `legal.html` | Impressum / Datenschutz stubs (replace the bracketed operator details) |
 | `css/styles.css` | #171718 canvas, #e6ff5a lime flood, giant display type, numbered rows, lime footer panel |
 | `js/main.js` | Scroll-driven hero, word reveals, quote slider, counters, mailto body, menu, reduced-motion |
 | `assets/fonts/` | Self-hosted Instrument Serif, Montserrat, JetBrains Mono (no Google Fonts) |

@@ -59,7 +59,7 @@
       ];
       var subject = encodeURIComponent("Booking: " + (value("company") || value("name") || "Captain Billboard"));
       var body = encodeURIComponent(lines.join("\n"));
-      window.location.href = "mailto:book@captainbillboard.com?subject=" + subject + "&body=" + body;
+      window.location.href = "mailto:booking@captainbillboard.com?subject=" + subject + "&body=" + body;
     });
   }
 
