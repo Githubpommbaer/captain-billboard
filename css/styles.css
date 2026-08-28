@@ -1157,7 +1157,7 @@ h3 {
   margin: 2.4rem 0 0 calc(50% - 50vw);
   overflow: hidden;
   background: #16092a;
-  aspect-ratio: 21 / 9;
+  aspect-ratio: 2560 / 1080;
   height: auto;
 }
 
