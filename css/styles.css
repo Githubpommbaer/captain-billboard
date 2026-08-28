@@ -354,6 +354,17 @@ p + p,
   color: var(--purple);
 }
 
+/* One capsule per i — the tittle is the top of the stem, not a flying dot. */
+.mark__i {
+  display: inline-block;
+  width: 0.15em;
+  height: 0.78em;
+  margin: 0 0.045em 0 0.03em;
+  background: currentColor;
+  border-radius: 999px;
+  vertical-align: -0.02em;
+}
+
 .nav__end {
   display: flex;
   align-items: center;
@@ -1158,12 +1169,13 @@ h3 {
   width: 100vw;
   margin: 2.4rem 0 0 calc(50% - 50vw);
   overflow: hidden;
-  background: #000;
+  background: #16092a;
+  aspect-ratio: 16 / 9;
 }
 
 .player video {
   width: 100%;
-  aspect-ratio: 16 / 9;
+  height: 100%;
   object-fit: cover;
 }
 
