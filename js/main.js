@@ -274,7 +274,7 @@
     }
   }
 
-  /* --- ad-space cursor: tiny gold plate, offset from the point --- */
+  /* --- ad-space cursor: tiny lime plate, offset from the point --- */
 
   var cursor = document.querySelector(".ad-cursor");
   var coarse = window.matchMedia("(pointer: coarse)").matches;

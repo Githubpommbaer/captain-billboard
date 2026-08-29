@@ -1,16 +1,13 @@
 :root {
-  color-scheme: light;
-  scrollbar-color: var(--purple) var(--paper);
-  --paper: #fff8e0;
-  --paper-2: #ffe14a;
-  --ink: #0d0418;
-  --ink-2: #1a0833;
-  --plum: #5c00e0;
-  --purple: #8f12ff;
-  --gold: #ffdc00;
-  --grey: #14051f;
-  --mute: #5410a8;
-  --live: #ed1c24;
+  color-scheme: dark;
+  scrollbar-color: #3d3d3a var(--ink);
+  --ink: #171718;
+  --ink-2: #252828;
+  --lime: #e6ff5a;
+  --grey: #d3d2c9;
+  --mute: #8f8f86;
+  --paper: #f5f8f7;
+  --live: #ff5053;
   --display: "Anton", Impact, sans-serif;
   --sans: "Barlow", "Segoe UI", sans-serif;
   --mono: "JetBrains Mono", ui-monospace, monospace;
@@ -37,14 +34,14 @@ html {
 }
 
 ::selection {
-  background: var(--gold);
+  background: var(--lime);
   color: var(--ink);
 }
 
 body {
   margin: 0;
-  background: var(--paper);
-  color: var(--ink);
+  background: var(--ink);
+  color: var(--grey);
   font-family: var(--sans);
   font-size: 1.02rem;
   font-weight: 400;
@@ -64,7 +61,7 @@ a {
 }
 
 :focus-visible {
-  outline: 2px solid var(--purple);
+  outline: 2px solid var(--lime);
   outline-offset: 3px;
 }
 
@@ -89,7 +86,7 @@ p + p,
   left: 1rem;
   top: -4rem;
   z-index: 90;
-  background: var(--gold);
+  background: var(--lime);
   color: var(--ink);
   padding: 0.55rem 0.85rem;
   font-size: 0.85rem;
@@ -121,7 +118,7 @@ p + p,
 .kicker {
   font-size: 0.8rem;
   font-weight: 500;
-  color: var(--purple);
+  color: var(--lime);
   margin-bottom: 1rem;
 }
 
@@ -135,7 +132,7 @@ p + p,
   font-weight: 400;
   line-height: 1.02;
   letter-spacing: -0.015em;
-  color: var(--plum);
+  color: var(--lime);
   max-width: 20ch;
   margin-bottom: 1.3rem;
   text-wrap: balance;
@@ -147,7 +144,7 @@ p + p,
   font-weight: 400;
   line-height: 1.08;
   letter-spacing: -0.02em;
-  color: var(--plum);
+  color: var(--lime);
   max-width: 18ch;
   text-wrap: balance;
 }
@@ -198,13 +195,13 @@ p + p,
   width: 1.85rem;
   height: 1.85rem;
   border-radius: 50%;
-  background: #000;
-  color: var(--gold);
+  background: var(--ink);
+  color: var(--lime);
   transition: transform 0.4s var(--ease);
 }
 
-.arrow--gold {
-  background: var(--gold);
+.arrow--lime {
+  background: var(--lime);
   color: var(--ink);
 }
 
@@ -213,8 +210,8 @@ p + p,
   height: 2.75rem;
   border: 0;
   border-radius: 50%;
-  background: #000;
-  color: var(--gold);
+  background: var(--lime);
+  color: var(--ink);
   cursor: pointer;
   transition: transform 0.45s var(--ease), background 0.3s var(--ease);
 }
@@ -226,13 +223,13 @@ p + p,
 
 .arrow-btn--line {
   background: transparent;
-  color: var(--plum);
-  border: 1.5px solid var(--plum);
+  color: var(--lime);
+  border: 1.5px solid var(--lime);
 }
 
 .arrow-btn--line:hover {
-  background: #000;
-  color: var(--gold);
+  background: var(--lime);
+  color: var(--ink);
 }
 
 .arrow-btn--back svg {
@@ -247,8 +244,8 @@ p + p,
   padding: 0.4rem 0.55rem 0.4rem 1rem;
   border: 0;
   border-radius: 999px;
-  background: #000;
-  color: var(--gold);
+  background: var(--lime);
+  color: var(--ink);
   font-family: var(--sans);
   font-size: 0.86rem;
   font-weight: 700;
@@ -258,13 +255,13 @@ p + p,
 }
 
 .pill:hover {
-  background: var(--gold);
-  color: #000;
+  background: var(--grey);
+  color: var(--ink);
 }
 
 .pill:hover .arrow {
-  background: #000;
-  color: var(--gold);
+  background: var(--ink);
+  color: var(--lime);
   transform: translateX(3px);
 }
 
@@ -274,23 +271,23 @@ p + p,
   font-size: 0.98rem;
 }
 
-.pill--gold {
-  background: var(--gold);
-  color: #000;
+.pill--lime {
+  background: var(--lime);
+  color: var(--ink);
 }
 
-.pill--gold .arrow {
-  background: #000;
-  color: var(--gold);
+.pill--lime .arrow {
+  background: var(--ink);
+  color: var(--lime);
 }
 
 .pill--ink {
-  background: #000;
-  color: var(--gold);
+  background: var(--ink);
+  color: var(--paper);
 }
 
 .pill--ink:hover {
-  background: #161616;
+  background: #000;
 }
 
 .pill:active,
@@ -307,13 +304,17 @@ p + p,
 .pill__b {
   font-weight: 400;
   font-size: 0.85em;
-  color: var(--gold);
+  color: var(--ink);
+}
+
+.pill--ink .pill__b {
+  color: var(--lime);
 }
 
 .text-link {
   font-size: 0.92rem;
   font-weight: 600;
-  color: var(--purple);
+  color: var(--lime);
   text-underline-offset: 0.25em;
 }
 
@@ -334,13 +335,13 @@ p + p,
 }
 
 .nav.is-stuck {
-  background: #fff;
-  border-bottom: 3px solid #000;
+  background: var(--ink-2);
+  border-bottom: 1px solid color-mix(in srgb, var(--lime) 28%, transparent);
 }
 
 .nav.is-stuck .mark,
 .nav.is-stuck .menu-btn {
-  color: var(--plum);
+  color: var(--grey);
 }
 
 .mark {
@@ -348,7 +349,7 @@ p + p,
   align-items: center;
   line-height: 0;
   text-decoration: none;
-  background: #000;
+  background: var(--ink-2);
   border-radius: 0.28rem;
   padding: 0.22rem 0.38rem;
 }
@@ -369,7 +370,7 @@ p + p,
   appearance: none;
   border: 0;
   background: none;
-  color: var(--plum);
+  color: var(--paper);
   font: inherit;
   font-size: 0.92rem;
   font-weight: 600;
@@ -378,14 +379,14 @@ p + p,
 }
 
 .menu-btn[aria-expanded="true"] {
-  color: var(--purple);
+  color: var(--lime);
 }
 
 .menu {
   position: fixed;
   inset: 0;
   z-index: 55;
-  background: var(--gold);
+  background: var(--ink);
   overflow-y: auto;
   animation: menu-in 0.45s var(--ease);
 }
@@ -417,21 +418,21 @@ p + p,
   font-family: var(--display);
   font-size: clamp(1.7rem, 6vw, 3.2rem);
   line-height: 1.12;
-  color: var(--plum);
+  color: var(--lime);
   text-decoration: none;
   transition: color 0.25s var(--ease), transform 0.35s var(--ease);
 }
 
 .menu__links a:hover,
 .menu__links a.is-here {
-  color: var(--purple);
+  color: var(--paper);
   transform: translateX(0.5rem);
 }
 
 .menu__mail {
   font-size: 1.05rem;
   font-weight: 600;
-  color: var(--purple);
+  color: var(--lime);
 }
 
 .menu__foot p {
@@ -456,7 +457,7 @@ p + p,
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* the wordmark rides low so the placard on his back stays readable */
+  /* type rides low so the placard on his back stays readable */
   justify-content: flex-end;
   padding-bottom: clamp(0.8rem, 3vh, 1.8rem);
   overflow: hidden;
@@ -470,25 +471,30 @@ p + p,
   width: 100%;
 }
 
-/* portrait-ish: he fills the frame, so the type drops into a paper margin
-   below him. The band has to stay short enough to clear his back placard. */
+/* portrait-ish: he fills the frame. Type sits in a short dark band at the
+   bottom — never a cream wash, never on the back placard. */
 @media (max-aspect-ratio: 5 / 4) {
+  .hero__stage {
+    padding-bottom: 0;
+  }
+
   .hero__band {
-    padding-top: 1.4rem;
+    padding-top: 0.9rem;
     background: linear-gradient(
       180deg,
       transparent 0%,
-      color-mix(in srgb, var(--paper) 80%, transparent) 16%,
-      var(--paper) 42%
+      color-mix(in srgb, var(--ink) 55%, transparent) 18%,
+      color-mix(in srgb, var(--ink) 92%, transparent) 62%,
+      var(--ink) 88%
     );
   }
 
   .hero__giant {
-    font-size: 19vw;
+    font-size: 15vw;
   }
 
   .hero__serif {
-    font-size: 4.6vw;
+    font-size: 4vw;
   }
 
   .hero__credit {
@@ -497,7 +503,7 @@ p + p,
   }
 
   .hero__foot {
-    margin-top: 0.8rem;
+    margin-top: 0.7rem;
   }
 
   .hero__strip {
@@ -509,11 +515,11 @@ p + p,
 /* short phones have even less room under him */
 @media (max-aspect-ratio: 5 / 4) and (max-height: 780px) {
   .hero__band {
-    padding-top: 0.9rem;
+    padding-top: 0.55rem;
   }
 
   .hero__giant {
-    font-size: 17vw;
+    font-size: 13vw;
   }
 
   .hero__credit {
@@ -525,10 +531,12 @@ p + p,
   }
 }
 
-/* landscape-ish: he stands right of centre, so the type takes the left margin */
+/* landscape-ish: he stands right of centre, so the type takes the LEFT sky.
+   RENT stays narrow so it never covers Dave or the placard. */
 @media (min-aspect-ratio: 5 / 4) {
   .hero__stage {
-    justify-content: center;
+    justify-content: flex-start;
+    padding-top: clamp(5.75rem, 11vh, 8rem);
     padding-bottom: 0;
   }
 
@@ -538,7 +546,7 @@ p + p,
 
   .hero__type {
     align-self: flex-start;
-    width: min(34vw, 30rem);
+    width: min(32vw, 22rem);
   }
 
   .hero__foot {
@@ -547,12 +555,12 @@ p + p,
     right: 0;
     bottom: 0;
     margin-top: 0;
-    background: linear-gradient(180deg, transparent 0%, var(--paper) 42%);
+    background: linear-gradient(180deg, transparent 0%, color-mix(in srgb, var(--ink) 72%, transparent) 78%);
     padding-bottom: 0.35rem;
   }
 
   .hero__shot img {
-    object-position: 56% 50%;
+    object-position: 68% 50%;
   }
 }
 
@@ -570,20 +578,18 @@ p + p,
   object-fit: cover;
   /* portrait crops hard, so frame him rather than the empty sky */
   object-position: 79% 50%;
-  /* colour first; a light paper wash carries the type, not a dark cave */
-  filter: saturate(1.06) contrast(1.04) brightness(calc(0.92 + var(--p) * 0.08));
+  filter: saturate(1.04) contrast(1.06) brightness(calc(0.88 + var(--p) * 0.1));
   transform: scale(calc(1 + var(--p) * 0.08));
 }
 
-/* paper wash so plum type reads, without burying Dave or the placard */
+/* No cream wash. A left-only ink veil in landscape so lime type reads
+   against sky, leaving Dave and the placard in the clear. */
 .hero__shot::after {
   content: "";
   position: absolute;
   inset: 0;
-  background:
-    linear-gradient(180deg, color-mix(in srgb, var(--paper) 55%, transparent) 0%, transparent 28%),
-    linear-gradient(0deg, color-mix(in srgb, var(--paper) 70%, transparent) 0%, transparent 36%);
-  opacity: calc(1 - var(--p) * 0.7);
+  pointer-events: none;
+  background: none;
 }
 
 .hero__type {
@@ -600,54 +606,59 @@ p + p,
 .hero__tag {
   font-size: 0.78rem;
   font-weight: 500;
-  color: var(--plum);
+  color: var(--grey);
   margin-bottom: 0.6rem;
 }
 
 .hero__giant {
   font-family: var(--display);
-  font-size: 22vw;
+  font-size: 18vw;
   font-weight: 400;
   line-height: 0.88;
   letter-spacing: -0.02em;
-  color: var(--plum);
+  color: var(--lime);
+  text-shadow: 0 0.06em 0.4em color-mix(in srgb, var(--ink) 65%, transparent);
 }
 
 .hero__serif {
   font-family: var(--display);
-  font-size: min(5.6vw, 2.9rem);
+  font-size: min(5.2vw, 2.4rem);
   line-height: 1.08;
   letter-spacing: 0.01em;
-  color: var(--purple);
+  color: var(--grey);
   margin-top: 0.1em;
+  text-shadow: 0 0.08em 0.35em color-mix(in srgb, var(--ink) 70%, transparent);
 }
 
 /* After the base type sizes so the aspect-ratio branches actually win. */
 @media (max-aspect-ratio: 5 / 4) {
   .hero__giant {
-    font-size: 19vw;
+    font-size: 15vw;
   }
 }
 
 @media (max-aspect-ratio: 5 / 4) and (max-height: 780px) {
   .hero__giant {
-    font-size: 17vw;
+    font-size: 13vw;
   }
 }
 
 @media (min-aspect-ratio: 5 / 4) {
   .hero__giant {
-    font-size: min(13.2vw, 12rem);
+    font-size: min(9.4vw, 7.4rem);
   }
 
   .hero__serif {
-    font-size: min(3.2vw, 2rem);
+    font-size: min(2.4vw, 1.55rem);
   }
 
   .hero__shot::after {
-    background:
-      linear-gradient(90deg, var(--paper) 0%, color-mix(in srgb, var(--paper) 94%, transparent) 24%, color-mix(in srgb, var(--paper) 22%, transparent) 38%, transparent 50%),
-      linear-gradient(0deg, var(--paper) 0%, color-mix(in srgb, var(--paper) 90%, transparent) 16%, transparent 34%);
+    background: linear-gradient(
+      90deg,
+      color-mix(in srgb, var(--ink) 46%, transparent) 0%,
+      color-mix(in srgb, var(--ink) 16%, transparent) 20%,
+      transparent 36%
+    );
   }
 }
 
@@ -667,13 +678,13 @@ p + p,
   margin: 0 auto;
   font-size: clamp(0.82rem, 1.3vw, 1rem);
   line-height: 1.45;
-  color: var(--ink);
+  color: var(--grey);
   text-align: center;
   text-wrap: balance;
 }
 
 .hero__credit b {
-  color: var(--plum);
+  color: var(--lime);
   font-weight: 600;
 }
 
@@ -684,7 +695,7 @@ p + p,
   display: grid;
   gap: 1rem;
   padding-top: 0.9rem;
-  border-top: 1px solid color-mix(in srgb, var(--purple) 55%, transparent);
+  border-top: 1px solid color-mix(in srgb, var(--lime) 55%, transparent);
 }
 
 .hero__who {
@@ -694,7 +705,7 @@ p + p,
 .hero__who p {
   font-size: clamp(0.85rem, 1.2vw, 0.95rem);
   font-weight: 500;
-  color: var(--ink);
+  color: var(--grey);
 }
 
 .hero__who-light {
@@ -729,7 +740,7 @@ p + p,
   top: 0.1rem;
   bottom: 0.1rem;
   width: 1px;
-  background: color-mix(in srgb, var(--purple) 40%, transparent);
+  background: color-mix(in srgb, var(--lime) 40%, transparent);
 }
 
 .chip__live {
@@ -752,7 +763,7 @@ p + p,
   font-weight: 500;
   font-variant-numeric: lining-nums tabular-nums;
   line-height: 1;
-  color: var(--ink);
+  color: var(--grey);
   white-space: nowrap;
 }
 
@@ -815,7 +826,7 @@ p + p,
   font-size: clamp(1.25rem, 2.9vw, 2.35rem);
   font-weight: 500;
   line-height: 1.25;
-  color: var(--plum);
+  color: var(--grey);
 }
 
 .statement .note {
@@ -843,7 +854,7 @@ p + p,
   font-size: 1.6rem;
   font-weight: 700;
   line-height: 1;
-  color: var(--ink);
+  color: var(--paper);
 }
 
 .meta span {
@@ -884,7 +895,7 @@ p + p,
   bottom: -1px;
   height: 1px;
   width: 0;
-  background: var(--purple);
+  background: var(--lime);
   transition: width 0.6s var(--ease);
 }
 
@@ -900,7 +911,7 @@ p + p,
   font-size: 0.95rem;
   font-weight: 700;
   line-height: 1;
-  color: var(--purple);
+  color: var(--lime);
 }
 
 .row__num i {
@@ -917,7 +928,7 @@ p + p,
   font-family: var(--display);
   font-size: clamp(2rem, 6.4vw, 5rem);
   line-height: 1.05;
-  color: var(--purple);
+  color: var(--lime);
   transition: color 0.3s var(--ease);
 }
 
@@ -925,7 +936,7 @@ p + p,
   display: inline-grid;
   place-items: center;
   width: 2rem;
-  color: var(--purple);
+  color: var(--lime);
   transition: transform 0.45s var(--ease);
 }
 
@@ -984,7 +995,7 @@ p + p,
   font-weight: 400;
   line-height: 1.15;
   letter-spacing: -0.015em;
-  color: var(--plum);
+  color: var(--lime);
   max-width: 22ch;
   margin: 2.2rem auto 1.1rem;
   text-wrap: balance;
@@ -1015,14 +1026,14 @@ p + p,
   margin-top: 0;
 }
 
-/* Didone stays reserved for plum pulls; working headings are sans. */
+/* Lime stays reserved for pulls and key type; working headings are sans. */
 h3 {
   font-family: var(--sans);
   font-size: 1.12rem;
   font-weight: 700;
   line-height: 1.25;
   letter-spacing: -0.01em;
-  color: var(--ink);
+  color: var(--paper);
   margin-bottom: 0.5rem;
 }
 
@@ -1042,7 +1053,7 @@ h3 {
   content: "→";
   position: absolute;
   left: 0;
-  color: var(--purple);
+  color: var(--lime);
 }
 
 /* --- lies --- */
@@ -1056,11 +1067,11 @@ h3 {
 .lie {
   padding: 1.4rem;
   border-radius: 1rem;
-  background: var(--gold);
+  background: var(--ink-2);
 }
 
 .lie h3 {
-  color: var(--plum);
+  color: var(--paper);
 }
 
 .lie__tag {
@@ -1075,8 +1086,8 @@ h3 {
 }
 
 .lie--true .lie__tag {
-  background: var(--gold);
-  border-color: var(--gold);
+  background: var(--lime);
+  border-color: var(--lime);
   color: var(--ink);
 }
 
@@ -1097,8 +1108,8 @@ h3 {
   width: min(100%, 19rem);
   aspect-ratio: 1;
   margin: 1rem 0;
-  background: var(--gold);
-  color: var(--plum);
+  background: var(--lime);
+  color: var(--ink);
   border-radius: 0.6rem;
   font-family: var(--display);
   font-size: clamp(2rem, 5vw, 3.2rem);
@@ -1117,7 +1128,7 @@ h3 {
   font-variant-numeric: lining-nums tabular-nums;
   line-height: 0.92;
   letter-spacing: -0.05em;
-  color: var(--plum);
+  color: var(--lime);
 }
 
 .stat__n span {
@@ -1133,20 +1144,20 @@ h3 {
 .rule {
   margin-top: 3rem;
   padding-top: 1.8rem;
-  border-top: 1px solid var(--purple);
+  border-top: 1px solid var(--lime);
 }
 
 .rule__n {
   font-family: var(--display);
   font-size: clamp(2rem, 6vw, 3.6rem);
   line-height: 1;
-  color: var(--purple);
+  color: var(--lime);
   margin: 0.3rem 0 1rem;
 }
 
 .rule b,
 .statement b {
-  color: var(--purple);
+  color: var(--lime);
 }
 
 .steps {
@@ -1164,7 +1175,7 @@ h3 {
   margin-bottom: 0.5rem;
   font-size: 0.8rem;
   font-weight: 700;
-  color: var(--purple);
+  color: var(--lime);
 }
 
 /* --- player --- */
@@ -1176,7 +1187,7 @@ h3 {
   width: 100vw;
   margin: 2.4rem 0 0 calc(50% - 50vw);
   overflow: hidden;
-  background: #16092a;
+  background: #000;
   aspect-ratio: 2560 / 1080;
   height: auto;
 }
@@ -1199,7 +1210,7 @@ h3 {
   place-items: center;
   font-family: var(--display);
   font-size: clamp(1.8rem, 5vw, 3.2rem);
-  color: var(--gold);
+  color: var(--lime);
 }
 
 /* --- clip report: one full-screen shot at a time --- */
@@ -1258,9 +1269,9 @@ h3 {
   gap: 0.4rem;
   padding: 0.28rem 0.7rem;
   border-radius: 999px;
-  border: 1px solid #000;
-  background: #000;
-  color: var(--gold);
+  border: 1px solid color-mix(in srgb, var(--lime) 45%, transparent);
+  background: color-mix(in srgb, var(--ink) 55%, transparent);
+  color: var(--lime);
   font-size: 0.7rem;
   font-weight: 600;
 }
@@ -1279,7 +1290,7 @@ h3 {
   font-weight: 400;
   line-height: 1.06;
   letter-spacing: -0.015em;
-  color: var(--gold);
+  color: var(--lime);
   max-width: 26ch;
   margin: 0;
   text-wrap: balance;
@@ -1289,7 +1300,7 @@ h3 {
   font-size: 0.72rem;
   font-weight: 600;
   font-variant-numeric: tabular-nums;
-  color: var(--gold);
+  color: var(--grey);
 }
 
 /* the placard close-up: a spec screen rather than a clip-report frame.
@@ -1324,8 +1335,8 @@ h3 {
 .marquee {
   margin: clamp(3rem, 8vw, 5rem) 0;
   padding: 0.7rem 0;
-  background: var(--gold);
-  color: var(--plum);
+  background: var(--lime);
+  color: var(--ink);
   overflow: hidden;
 }
 
@@ -1390,7 +1401,7 @@ h3 {
   font-size: clamp(1.6rem, 4.4vw, 3.2rem);
   font-weight: 400;
   line-height: 1.28;
-  color: var(--plum);
+  color: var(--lime);
   max-width: 34ch;
   margin: 0 auto;
 }
@@ -1419,12 +1430,12 @@ h3 {
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background: color-mix(in srgb, var(--purple) 30%, transparent);
+  background: color-mix(in srgb, var(--lime) 30%, transparent);
   transition: background 0.3s var(--ease);
 }
 
 .quotes__dots i.is-on {
-  background: var(--plum);
+  background: var(--lime);
 }
 
 .quotes + .note {
@@ -1436,27 +1447,27 @@ h3 {
 
 .rate {
   padding: 1.4rem 1.2rem 1.2rem;
-  background: var(--gold);
+  background: var(--ink-2);
   border-radius: 1rem;
-  color: var(--ink);
+  color: var(--grey);
 }
 
 .rate__num {
   font-size: 0.78rem;
   font-weight: 700;
-  color: var(--plum);
+  color: var(--lime);
   margin-bottom: 0.7rem;
 }
 
 .rate h3 {
-  color: var(--plum);
+  color: var(--paper);
 }
 
 .rate__price {
   font-family: var(--display);
   font-size: clamp(2.6rem, 6.5vw, 4rem);
   line-height: 1.08;
-  color: var(--plum);
+  color: var(--lime);
   margin: 0.3rem 0 1rem;
 }
 
@@ -1467,34 +1478,34 @@ h3 {
 
 .rate li {
   padding: 0.4rem 0;
-  border-bottom: 1px solid color-mix(in srgb, var(--plum) 22%, transparent);
+  border-bottom: 1px solid color-mix(in srgb, var(--grey) 14%, transparent);
   font-size: 0.95rem;
-  color: var(--ink-2);
+  color: var(--mute);
 }
 
 .rate--on {
-  background: var(--plum);
-  color: var(--gold);
+  background: var(--lime);
+  color: var(--ink);
 }
 
 .rate--on .rate__num,
 .rate--on h3,
 .rate--on .rate__price {
-  color: var(--gold);
+  color: var(--ink);
 }
 
 .rate--on .kicker {
   display: inline-block;
   padding: 0.2rem 0.6rem;
   border-radius: 999px;
-  background: var(--live);
-  color: #fff;
+  background: var(--ink);
+  color: var(--lime);
   font-weight: 600;
 }
 
 .rate--on li {
-  color: var(--paper);
-  border-bottom-color: color-mix(in srgb, var(--gold) 28%, transparent);
+  color: var(--ink);
+  border-bottom-color: color-mix(in srgb, var(--ink) 22%, transparent);
 }
 
 /* --- rules + faq --- */
@@ -1515,7 +1526,7 @@ h3 {
 .rules span {
   font-size: 0.82rem;
   font-weight: 700;
-  color: var(--purple);
+  color: var(--lime);
 }
 
 .faq {
@@ -1534,7 +1545,7 @@ h3 {
   cursor: pointer;
   padding: 1rem 0;
   font-weight: 600;
-  color: var(--ink);
+  color: var(--paper);
   list-style: none;
 }
 
@@ -1544,7 +1555,7 @@ h3 {
 
 .faq summary::after {
   content: "+";
-  color: var(--purple);
+  color: var(--lime);
   font-size: 1.3rem;
   line-height: 1;
   transition: transform 0.35s var(--ease);
@@ -1564,8 +1575,8 @@ h3 {
   width: min(100% - var(--pad) * 2, 92rem);
   margin: 0 auto clamp(1rem, 3vw, 2rem);
   padding: clamp(5.75rem, 10vw, 7.25rem) clamp(1.2rem, 3.5vw, 3rem) clamp(1.5rem, 3vw, 2rem);
-  background: var(--gold);
-  color: var(--ink);
+  background: var(--ink-2);
+  color: var(--grey);
   border-radius: 1.25rem;
   overflow: hidden;
 }
@@ -1581,7 +1592,7 @@ h3 {
   font-weight: 400;
   line-height: 0.92;
   letter-spacing: -0.02em;
-  color: var(--plum);
+  color: var(--lime);
 }
 
 .talk__sub {
@@ -1592,7 +1603,7 @@ h3 {
 
 .talk__side .kicker,
 .talk__side a {
-  color: var(--ink);
+  color: var(--grey);
 }
 
 .talk__side ul {
@@ -1618,7 +1629,7 @@ h3 {
   gap: 2rem;
   margin-top: clamp(2.5rem, 6vw, 4rem);
   padding-top: clamp(1.5rem, 4vw, 2.5rem);
-  border-top: 1px solid color-mix(in srgb, var(--ink) 25%, transparent);
+  border-top: 1px solid color-mix(in srgb, var(--grey) 18%, transparent);
 }
 
 .talk__copy h2 {
@@ -1628,16 +1639,15 @@ h3 {
   line-height: 1.08;
   letter-spacing: -0.02em;
   margin-bottom: 0.9rem;
-  color: var(--plum);
+  color: var(--lime);
 }
 
 .talk__copy p,
 .talk__copy .note {
-  color: var(--ink);
+  color: var(--grey);
 }
 
-/* Anything on the gold plate takes ink — gold on gold is a hole in the
-   sentence. Pills keep their own colours, so they are not touched here. */
+/* Links on the dark plate take lime. Pills keep their own ink-on-lime. */
 .talk__copy p a,
 .talk .consent a,
 .talk__copy p a:visited,
@@ -1646,7 +1656,7 @@ h3 {
 .talk .consent a:hover,
 .talk__copy p a:focus-visible,
 .talk .consent a:focus-visible {
-  color: var(--ink);
+  color: var(--lime);
 }
 
 .talk__copy a {
@@ -1655,16 +1665,15 @@ h3 {
   text-underline-offset: 0.18em;
 }
 
-/* a gold focus ring would disappear against the plate as well */
 .talk :focus-visible {
-  outline-color: var(--ink);
+  outline-color: var(--lime);
 }
 
 .talk__mark {
   margin: clamp(2.5rem, 6vw, 4rem) 0 0.6rem;
   line-height: 0;
   display: inline-block;
-  background: #000;
+  background: var(--ink);
   border-radius: 0.35rem;
   padding: 0.5rem 0.7rem;
 }
@@ -1679,9 +1688,9 @@ h3 {
   display: grid;
   gap: 0.4rem;
   padding-top: 1rem;
-  border-top: 1px solid color-mix(in srgb, var(--ink) 25%, transparent);
+  border-top: 1px solid color-mix(in srgb, var(--grey) 18%, transparent);
   font-size: 0.72rem;
-  color: var(--ink);
+  color: var(--mute);
 }
 
 /* --- form --- */
@@ -1696,7 +1705,7 @@ h3 {
   gap: 0.3rem;
   font-size: 0.72rem;
   font-weight: 700;
-  color: var(--ink);
+  color: var(--grey);
 }
 
 .form input,
@@ -1705,8 +1714,8 @@ h3 {
   font: inherit;
   font-size: 1rem;
   font-weight: 400;
-  color: var(--gold);
-  background: #000;
+  color: var(--paper);
+  background: var(--ink);
   border: 0;
   border-radius: 0.5rem;
   padding: 0.7rem 0.75rem;
@@ -1715,7 +1724,7 @@ h3 {
 
 .form input::placeholder,
 .form textarea::placeholder {
-  color: #c4a6ff;
+  color: #7d7d74;
 }
 
 .form textarea {
@@ -1743,7 +1752,7 @@ h3 {
 
 .form-note {
   font-size: 0.82rem;
-  color: var(--ink);
+  color: var(--mute);
   margin: 0;
 }
 
@@ -1754,7 +1763,7 @@ h3 {
 code {
   font-family: var(--mono);
   font-size: 0.86em;
-  color: var(--purple);
+  color: var(--lime);
 }
 
 /* --- legal --- */
@@ -1770,28 +1779,28 @@ code {
   font-size: clamp(2.6rem, 9vw, 5rem);
   font-weight: 400;
   line-height: 1.08;
-  color: var(--plum);
+  color: var(--lime);
   margin: 0.4rem 0 1.2rem;
 }
 
 .legal-block {
   margin-top: 2rem;
   padding-top: 1.4rem;
-  border-top: 1px solid var(--purple);
+  border-top: 1px solid var(--lime);
 }
 
 .legal-block h2 {
   font-family: var(--display);
   font-size: 1.9rem;
   font-weight: 400;
-  color: var(--plum);
+  color: var(--lime);
   margin-bottom: 0.7rem;
 }
 
-/* Purple links on paper. Pills keep their own gold plate and ink label. */
+/* Lime links on the dark canvas. Pills keep their own lime plate and ink label. */
 .legal-page p a:not(.pill),
 .statement p a:not(.pill) {
-  color: var(--purple);
+  color: var(--lime);
 }
 
 .legal-bar {
@@ -2007,9 +2016,9 @@ code {
   display: inline-block;
   margin: 12px 0 0 14px;
   padding: 0.16rem 0.3rem 0.12rem;
-  background: var(--gold);
+  background: var(--lime);
   color: var(--ink);
-  border: 1.5px solid #000;
+  border: 1.5px solid var(--ink);
   font-family: var(--display);
   font-size: 0.62rem;
   letter-spacing: 0.03em;
