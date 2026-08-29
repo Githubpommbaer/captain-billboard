@@ -6,8 +6,8 @@
   --lime: #e6ff5a;
   --grey: #d3d2c9;
   --mute: #8f8f86;
-  --paper: #f5f8f7;
-  --live: #ff5053;
+  --paper: #d3d2c9;
+  --live: #e6ff5a;
   --display: "Anton", Impact, sans-serif;
   --sans: "Barlow", "Segoe UI", sans-serif;
   --mono: "JetBrains Mono", ui-monospace, monospace;
@@ -349,9 +349,9 @@ p + p,
   align-items: center;
   line-height: 0;
   text-decoration: none;
-  background: var(--ink-2);
+  background: #000;
   border-radius: 0.28rem;
-  padding: 0.22rem 0.38rem;
+  padding: 0.28rem 0.42rem;
 }
 
 .mark img {
@@ -456,94 +456,14 @@ p + p,
   height: 100svh;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  /* type rides low so the placard on his back stays readable */
-  justify-content: flex-end;
-  padding-bottom: clamp(0.8rem, 3vh, 1.8rem);
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding-top: clamp(5.5rem, 11vh, 7.5rem);
+  padding-bottom: 0;
   overflow: hidden;
 }
 
-/* Where the type may live depends on how much clear frame the crop leaves,
-   which tracks the viewport's aspect ratio rather than its width. */
-.hero__band {
-  position: relative;
-  z-index: 2;
-  width: 100%;
-}
-
-/* portrait-ish: type lives in the sky under the nav so the full-bleed
-   shot — and the placard — stay clear. No cream wash. */
-@media (max-aspect-ratio: 5 / 4) {
-  .hero__stage {
-    justify-content: flex-start;
-    padding-top: clamp(5.2rem, 12vh, 6.8rem);
-    padding-bottom: 0;
-  }
-
-  .hero__band {
-    padding-top: 0;
-    background: none;
-  }
-
-  .hero__type {
-    width: min(62vw, 14rem);
-  }
-
-  .hero__giant {
-    font-size: 14vw;
-  }
-
-  .hero__serif {
-    font-size: 4.2vw;
-  }
-
-  .hero__credit {
-    font-size: 0.74rem;
-    line-height: 1.4;
-  }
-
-  .hero__strip {
-    gap: 0.55rem;
-    padding-top: 0.55rem;
-  }
-}
-
-/* short phones: keep RENT small and drop chip labels */
-@media (max-aspect-ratio: 5 / 4) and (max-height: 780px) {
-  .hero__giant {
-    font-size: 18vw;
-  }
-
-  .hero__credit {
-    font-size: 0.68rem;
-  }
-
-  .chip__l {
-    display: none;
-  }
-}
-
-/* landscape-ish: he stands right of centre, so the type takes the LEFT sky.
-   RENT stays narrow so it never covers Dave or the placard.
-   Position/object-position overrides live after the base rules so they win. */
-@media (min-aspect-ratio: 5 / 4) {
-  .hero__stage {
-    justify-content: flex-start;
-    padding-top: clamp(5.75rem, 11vh, 8rem);
-    padding-bottom: 0;
-  }
-
-  .hero__band {
-    display: contents;
-  }
-
-  .hero__type {
-    align-self: flex-start;
-    width: min(28vw, 18rem);
-  }
-}
-
-/* The shot owns the whole first screen; the type sits on top of it. */
+/* The shot owns the whole first screen. No cream wash. No paper column. */
 .hero__shot {
   position: absolute;
   inset: 0;
@@ -555,29 +475,21 @@ p + p,
   width: 100%;
   height: 100%;
   object-fit: cover;
-  /* portrait crops hard, so frame him rather than the empty sky */
-  object-position: 79% 50%;
-  filter: saturate(1.04) contrast(1.06) brightness(calc(0.88 + var(--p) * 0.1));
+  object-position: 70% 50%;
+  filter: saturate(1.04) contrast(1.06) brightness(calc(0.9 + var(--p) * 0.08));
   transform: scale(calc(1 + var(--p) * 0.08));
 }
 
-/* No cream wash. A left-only ink veil in landscape so lime type reads
-   against sky, leaving Dave and the placard in the clear. */
 .hero__shot::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background: none;
+  content: none;
 }
 
 .hero__type {
   position: relative;
   z-index: 2;
-  align-self: stretch;
+  width: min(30vw, 16rem);
   padding: 0 var(--pad);
   text-align: left;
-  /* the word rides up out of frame instead of dissolving into the photo */
   transform: translateY(calc(var(--p) * -52vh)) scale(calc(1 - var(--p) * 0.06));
   opacity: calc(1 - max(0, var(--p) - 0.9) * 10);
 }
@@ -586,118 +498,56 @@ p + p,
   font-size: 0.78rem;
   font-weight: 500;
   color: var(--grey);
-  margin-bottom: 0.6rem;
+  margin-bottom: 0.45rem;
+  text-shadow: 0 1px 8px var(--ink);
 }
 
 .hero__giant {
   font-family: var(--display);
-  font-size: 18vw;
+  font-size: min(8vw, 6rem);
   font-weight: 400;
   line-height: 0.88;
   letter-spacing: -0.02em;
   color: var(--lime);
-  text-shadow: 0 0.06em 0.4em color-mix(in srgb, var(--ink) 65%, transparent);
+  text-shadow: 0 0.05em 0.28em var(--ink);
 }
 
 .hero__serif {
   font-family: var(--display);
-  font-size: min(5.2vw, 2.4rem);
+  font-size: min(2vw, 1.35rem);
   line-height: 1.08;
   letter-spacing: 0.01em;
   color: var(--grey);
   margin-top: 0.1em;
-  text-shadow: 0 0.08em 0.35em color-mix(in srgb, var(--ink) 70%, transparent);
+  text-shadow: 0 1px 8px var(--ink);
 }
 
+/* Credit + stats sit on a #171718 plate at the bottom, never on the sky
+   and never across the back placard. */
 .hero__foot {
-  position: relative;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
   z-index: 3;
   width: 100%;
-  margin-top: 1.1rem;
-  padding: 0 var(--pad);
-  opacity: calc(1 - max(0, var(--p) - 0.3) * 2.6);
-  transform: translateY(calc(var(--p) * 3vh));
+  max-width: none;
+  margin: 0;
+  padding: 0.85rem var(--pad) 1.05rem;
+  background: var(--ink);
+  border-top: 1px solid color-mix(in srgb, var(--lime) 22%, transparent);
+  opacity: calc(1 - max(0, var(--p) - 0.35) * 2.8);
+  transform: none;
 }
 
-@media (max-aspect-ratio: 5 / 4) {
-  .hero__giant {
-    font-size: 14vw;
-  }
-
-  .hero__shot img {
-    /* sky for the word; Dave stays lower-right so RENT never covers him */
-    object-position: 90% 10%;
-  }
-
-  .hero__shot::after {
-    background: linear-gradient(180deg, color-mix(in srgb, var(--ink) 35%, transparent) 0%, transparent 22%);
-  }
-
-  .hero__foot {
-    display: none;
-  }
-}
-
-@media (max-aspect-ratio: 5 / 4) and (max-height: 780px) {
-  .hero__giant {
-    font-size: 14vw;
-  }
-}
-
-@media (min-aspect-ratio: 5 / 4) {
-  .hero__giant {
-    font-size: min(8.2vw, 6.4rem);
-  }
-
-  .hero__serif {
-    font-size: min(2.1vw, 1.35rem);
-  }
-
-  .hero__shot img {
-    object-position: 72% 50%;
-  }
-
-  .hero__shot::after {
-    background: none;
-  }
-
-  .hero__foot {
-    position: absolute;
-    left: 0;
-    right: auto;
-    bottom: 0;
-    width: min(42vw, 28rem);
-    margin-top: 0;
-    background: none;
-    padding-bottom: 1.2rem;
-  }
-
-  .hero__credit,
-  .hero__who {
-    text-align: left;
-    margin-left: 0;
-    margin-right: 0;
-  }
-
-  .hero__strip {
-    width: 100%;
-    margin-left: 0;
-    margin-right: 0;
-  }
-
-  .chips {
-    justify-content: start;
-  }
-}
-
-/* The shot's own title, in Dave's voice, not a generic label. */
 .hero__credit {
-  max-width: 44rem;
-  margin: 0 auto;
-  font-size: clamp(0.82rem, 1.3vw, 1rem);
-  line-height: 1.45;
+  max-width: 42rem;
+  margin: 0;
+  font-size: clamp(0.92rem, 1.4vw, 1.08rem);
+  font-weight: 500;
+  line-height: 1.4;
   color: var(--grey);
-  text-align: center;
+  text-align: left;
   text-wrap: balance;
 }
 
@@ -708,16 +558,16 @@ p + p,
 
 .hero__strip {
   position: relative;
-  width: min(100%, 52rem);
-  margin: clamp(0.8rem, 2.5vh, 1.4rem) auto 0;
+  width: min(100%, 36rem);
+  margin: 0.7rem 0 0;
   display: grid;
-  gap: 1rem;
-  padding-top: 0.9rem;
-  border-top: 1px solid color-mix(in srgb, var(--lime) 55%, transparent);
+  gap: 0.75rem;
+  padding-top: 0.7rem;
+  border-top: 1px solid color-mix(in srgb, var(--lime) 28%, transparent);
 }
 
 .hero__who {
-  text-align: center;
+  text-align: left;
 }
 
 .hero__who p {
@@ -735,17 +585,72 @@ p + p,
 .chips {
   display: grid;
   grid-template-columns: repeat(3, auto);
-  gap: 1rem;
-  justify-content: center;
+  gap: 0.85rem;
+  justify-content: start;
 }
 
-@media (min-aspect-ratio: 5 / 4) {
-  .chips {
-    justify-content: start;
+@media (max-aspect-ratio: 5 / 4) {
+  .hero__shot img {
+    object-position: 78% 48%;
+  }
+
+  .hero__type {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    max-width: none;
+    padding: 0.7rem var(--pad) 7.4rem;
+    transform: none;
+    opacity: 1;
+    z-index: 4;
+  }
+
+  .hero__giant {
+    font-size: 16vw;
+    text-shadow: none;
+  }
+
+  .hero__serif {
+    font-size: 4.6vw;
+    text-shadow: none;
+  }
+
+  .hero__tag {
+    text-shadow: none;
+  }
+
+  .hero__foot {
+    padding-top: 5.6rem;
+  }
+
+  .hero__credit {
+    font-size: 0.82rem;
   }
 
   .hero__strip {
-    grid-template-columns: 1fr;
+    gap: 0.5rem;
+    padding-top: 0.5rem;
+    margin-top: 0.55rem;
+  }
+
+  .chips {
+    display: none;
+  }
+}
+
+@media (max-aspect-ratio: 5 / 4) and (max-height: 780px) {
+  .hero__giant {
+    font-size: 12vw;
+  }
+
+  .hero__credit {
+    font-size: 0.72rem;
+  }
+
+  .chip__l {
+    display: none;
   }
 }
 
@@ -1701,7 +1606,7 @@ h3 {
   margin: clamp(2.5rem, 6vw, 4rem) 0 0.6rem;
   line-height: 0;
   display: inline-block;
-  background: var(--ink);
+  background: #000;
   border-radius: 0.35rem;
   padding: 0.5rem 0.7rem;
 }
