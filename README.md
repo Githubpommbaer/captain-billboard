@@ -22,7 +22,7 @@ Any static server is fine. `python3 -m http.server` is the one we expect.
 | --- | --- |
 | `index.html` | The site |
 | `legal.html` | Impressum / Datenschutz stubs (replace the bracketed operator details) |
-| `css/styles.css` | #F3F0E8 paper canvas, purple #7B46B8 + gold #E9B23C from the suit, giant display type, numbered rows, gold footer panel |
+| `css/styles.css` | #171718 dark-gray canvas, one lime accent #e6ff5a, body #d3d2c9, plates #252828 |
 | `js/main.js` | Scroll-driven hero, word reveals, quote slider, counters, mailto body, menu, reduced-motion |
 | `assets/fonts/` | Self-hosted Anton (display), Barlow (body), JetBrains Mono (no Google Fonts) |
 | `assets/img/` | Image paths — drop files in, do not rename |
@@ -67,8 +67,10 @@ Images and the trailer may 404 until you copy them in. The markup already points
 
 ## Design language
 
-Light studio, loud in Dave’s colours: `#F3F0E8` paper canvas, purple `#7B46B8` / plum `#3A1568`
-for type, gold `#E9B23C` for plates (marquee, spec square, pills, closing panel). Anton for
-display (RENT, pulls, prices) and Barlow for body. The header and footer use `assets/img/logo.png`
-as-is. The hero is scroll-driven — the giant word rides up while the LA overlook stays full-bleed.
-Everything degrades to a static, fully visible layout under `prefers-reduced-motion`.
+Dark studio, one light accent: `#171718` canvas, `#d3d2c9` body, `#252828` plates, lime `#e6ff5a`
+used sparingly on pulls, pills, the cursor plate, and key type. No purple, no gold, no beige
+paper as the page background. Anton for display (RENT, pulls, prices) and Barlow for body.
+The header and footer use `assets/img/logo.png` on a dark plate. The hero is scroll-driven —
+the giant word rides up while the LA overlook stays full-bleed, with type kept off Dave and
+the back placard. Everything degrades to a static, fully visible layout under
+`prefers-reduced-motion`.
