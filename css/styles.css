@@ -14,8 +14,7 @@
   --pad: clamp(1rem, 4vw, 3rem);
   --wide: 84rem;
   --ease: cubic-bezier(0.16, 1, 0.3, 1);
-  --nav-clear: 8.5rem;
-  --plate-shadow: 0 14px 36px rgba(0, 0, 0, 0.5), 0 3px 10px rgba(0, 0, 0, 0.36);
+  --nav-clear: 6.25rem;
 }
 
 *,
@@ -340,38 +339,33 @@ p + p,
   border-bottom: 1px solid color-mix(in srgb, var(--lime) 28%, transparent);
 }
 
-.nav.is-stuck .mark,
 .nav.is-stuck .menu-btn {
   color: var(--grey);
 }
 
-.mark {
-  position: relative;
-  isolation: isolate;
-  display: flex;
-  align-items: center;
-  line-height: 0;
+.mark,
+.talk__mark {
+  font-family: var(--sans);
+  font-weight: 700;
+  letter-spacing: -0.045em;
+  line-height: 1;
+  color: #fff;
   text-decoration: none;
-  color: var(--ink);
-  padding: 0.78rem 0.95rem 0.68rem 0.88rem;
+  text-transform: none;
 }
 
-.mark::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  background: var(--lime);
-  transform: skewX(-16deg);
-  box-shadow: 8px 10px 0 #000;
+.mark {
+  display: inline-block;
+  font-size: clamp(1.2rem, 2.15vw, 1.55rem);
 }
 
-.mark img {
-  display: block;
-  height: clamp(3.6rem, 7vw, 5.4rem);
-  width: auto;
-  padding: 0.42rem 0.55rem 0.34rem;
-  background: var(--ink);
+.talk__mark {
+  margin: clamp(2.5rem, 6vw, 4rem) 0 0.6rem;
+  font-size: clamp(1.85rem, 5.4vw, 3.1rem);
+}
+
+.mark__dot {
+  color: var(--lime);
 }
 
 .nav__end {
@@ -508,7 +502,7 @@ p + p,
   width: auto;
   max-width: min(56vw, 50rem);
   align-items: flex-start;
-  padding: clamp(10rem, 18vh, 12.5rem) var(--pad) 1.2rem;
+  padding: clamp(6.5rem, 13vh, 8.5rem) var(--pad) 1.2rem;
   text-align: left;
   transform: translateY(calc(var(--p) * -52vh)) scale(calc(1 - var(--p) * 0.06));
   opacity: calc(1 - max(0, var(--p) - 0.9) * 10);
@@ -525,7 +519,6 @@ p + p,
   font-size: clamp(1.12rem, 1.9vw, 1.42rem);
   font-weight: 700;
   line-height: 1.25;
-  box-shadow: var(--plate-shadow);
 }
 
 .hero__giant {
@@ -535,7 +528,6 @@ p + p,
   line-height: 0.82;
   letter-spacing: -0.02em;
   color: var(--lime);
-  text-shadow: 0 0.045em 0.22em rgba(23, 23, 24, 0.88);
   white-space: nowrap;
 }
 
@@ -546,7 +538,6 @@ p + p,
   letter-spacing: 0.01em;
   color: var(--lime);
   margin-top: 0.06em;
-  text-shadow: 0 0.045em 0.22em rgba(23, 23, 24, 0.88);
   white-space: nowrap;
 }
 
@@ -629,7 +620,7 @@ p + p,
     bottom: auto;
     width: auto;
     max-width: min(88vw, 36rem);
-    padding: clamp(8.6rem, 14vh, 10rem) var(--pad) 1rem;
+    padding: clamp(5.8rem, 12vh, 7.5rem) var(--pad) 1rem;
     transform: none;
     opacity: 1;
     z-index: 2;
@@ -1613,32 +1604,6 @@ h3 {
   outline-color: var(--lime);
 }
 
-.talk__mark {
-  position: relative;
-  isolation: isolate;
-  margin: clamp(2.5rem, 6vw, 4rem) 0 0.6rem;
-  line-height: 0;
-  display: inline-block;
-  padding: 0.85rem 1.05rem 0.75rem 0.95rem;
-}
-
-.talk__mark::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  background: var(--lime);
-  transform: skewX(-16deg);
-  box-shadow: 10px 12px 0 #000;
-}
-
-.talk__mark img {
-  display: block;
-  height: clamp(3.8rem, 12vw, 7.2rem);
-  width: auto;
-  padding: 0.5rem 0.7rem 0.42rem;
-  background: var(--ink);
-}
 
 .talk__bar {
   display: grid;
