@@ -70,7 +70,8 @@ Images and the trailer may 404 until you copy them in. The markup already points
 Dark studio, one light accent: `#171718` canvas, `#d3d2c9` body, `#252828` plates, lime `#e6ff5a`
 used sparingly on pulls, pills, the cursor plate, and key type. No purple, no gold, no beige
 paper as the page background. Anton for display (RENT, pulls, prices) and Barlow for body.
-The header and footer use `assets/img/logo.png` on a dark plate with a drop shadow. The hero is scroll-driven —
+The header and footer sit `assets/img/logo.png` on a lime parallelogram plate
+with a hard black drop shadow. The hero is scroll-driven —
 the giant word rides up while the LA overlook stays full-bleed, with type kept off Dave and
 the back placard. Everything degrades to a static, fully visible layout under
 `prefers-reduced-motion`.
