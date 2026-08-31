@@ -508,7 +508,7 @@ p + p,
   width: auto;
   max-width: min(56vw, 50rem);
   align-items: flex-start;
-  padding: clamp(8.2rem, 15vh, 10.5rem) var(--pad) 1.2rem;
+  padding: clamp(10rem, 18vh, 12.5rem) var(--pad) 1.2rem;
   text-align: left;
   transform: translateY(calc(var(--p) * -52vh)) scale(calc(1 - var(--p) * 0.06));
   opacity: calc(1 - max(0, var(--p) - 0.9) * 10);
@@ -517,8 +517,8 @@ p + p,
 .hero__tag {
   display: inline-block;
   width: fit-content;
-  max-width: 26rem;
-  margin: 0 0 0.9rem;
+  max-width: 38rem;
+  margin: 0 0 1rem;
   padding: 0.55rem 0.8rem;
   background: var(--ink);
   color: var(--paper);
@@ -629,7 +629,7 @@ p + p,
     bottom: auto;
     width: auto;
     max-width: min(88vw, 36rem);
-    padding: clamp(7.4rem, 13vh, 9rem) var(--pad) 1rem;
+    padding: clamp(8.6rem, 14vh, 10rem) var(--pad) 1rem;
     transform: none;
     opacity: 1;
     z-index: 2;
@@ -1847,6 +1847,11 @@ code {
 /* --- breakpoints --- */
 
 @media (min-width: 640px) {
+  .hero__tag {
+    white-space: nowrap;
+    max-width: none;
+  }
+
   .lies,
   .pair,
   .split,
